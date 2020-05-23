@@ -1,0 +1,452 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Supplimentary materials},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{float}
+\usepackage{longtable}
+\pagenumbering{gobble}
+\usepackage{caption}
+\captionsetup[table]{labelformat=empty}
+% https://github.com/rstudio/rmarkdown/issues/337
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+% https://github.com/rstudio/rmarkdown/pull/252
+\usepackage{titling}
+\setlength{\droptitle}{-2em}
+
+\pretitle{\vspace{\droptitle}\centering\huge}
+\posttitle{\par}
+
+\preauthor{\centering\large\emph}
+\postauthor{\par}
+
+\predate{\centering\large\emph}
+\postdate{\par}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+
+\title{Supplimentary materials}
+\date{}
+
+\begin{document}
+\maketitle
+
+\textbf{S1 Table. Summary of modifications to LESCA items.}
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-2}}
+\centering
+\begin{tabular}[t]{>{\raggedleft\arraybackslash}p{0.3cm}|>{\raggedright\arraybackslash}p{4.8cm}|>{\raggedright\arraybackslash}p{4.8cm}|>{\raggedright\arraybackslash}p{4.8cm}}
+\hline
+Q & Original & Students & Non-students\\
+\hline
+19 & Beginning a new school experience  (beginning college, transferring college etc) & Beginning a new school experience (beginning university, transferring university etc) & Beginning a new work experience\\
+\hline
+21 & Academic probation / ineligibility & \textit{No change} & Removed\\
+\hline
+22 & Being dismissed from dorm or other residence & Being dismissed from halls or other residence & Being asked to vacate house/home\\
+\hline
+27 & Financial problems concerning school & \textit{No change} & Financial problems\\
+\hline
+29 & Conflict with room-mate & \textit{No change} & Conflict within household\\
+\hline
+36 & Suspended from team for non-academic reasons & \textit{No change} & Removed\\
+\hline
+49 & Being absent from school (classes) because of participation in sport & Being absent from university (classes) because of participation in sport & Being absent from work because of participation in sport\\
+\hline
+61 & Major change in level of academic performance (doing better or worse) & \textit{No change} & Major change in level of performance at work (doing better or worse)\\
+\hline
+62 & Making career decisions (applying to graduate school,interviewing for jobs, etc) & Making career decisions (applying for Masters degree, interviewing for jobs, etc) & Making career decisions (applying for Masters degree, interviewing for jobs, etc)\\
+\hline
+\end{tabular}
+\end{table}
+
+\newpage
+
+\textbf{S2 Table. All arc strengths greater than 0.3 included in the first network.}
+
+\begin{longtable}[t]{l|l|r|r}
+\caption{\label{tab:unnamed-chunk-3}}\\
+\hline
+from & to & strength & direction\\
+\hline
+\endfirsthead
+\caption[]{ S3 Table continued}\\
+\hline
+from & to & strength & direction\\
+\hline
+\endhead
+nlebase & nlelg\_1 & 1.00 & 1.00\\
+\hline
+nlebase & nlelg\_2 & 1.00 & 1.00\\
+\hline
+nlelg\_1 & injured\_1 & 1.00 & 1.00\\
+\hline
+nlelg\_2 & injured\_2 & 1.00 & 1.00\\
+\hline
+BIS\_1 & FFFS\_1 & 0.98 & 0.68\\
+\hline
+FFFS\_1 & BIS\_1 & 0.98 & 0.32\\
+\hline
+ind\_team & hours & 0.95 & 0.50\\
+\hline
+hours & ind\_team & 0.95 & 0.50\\
+\hline
+nlebase & RI\_1 & 0.83 & 1.00\\
+\hline
+ind\_team & nlebase & 0.78 & 1.00\\
+\hline
+BIS\_2 & FFFS\_2 & 0.73 & 0.71\\
+\hline
+FFFS\_2 & BIS\_2 & 0.73 & 0.29\\
+\hline
+gender & stiffness\_1 & 0.72 & 1.00\\
+\hline
+hours & rmssd\_1 & 0.66 & 1.00\\
+\hline
+gender & stiffness\_2 & 0.60 & 1.00\\
+\hline
+nlelg\_1 & BIS\_1 & 0.52 & 0.97\\
+\hline
+BIS\_1 & nlelg\_1 & 0.52 & 0.03\\
+\hline
+pi & stiffness\_1 & 0.51 & 1.00\\
+\hline
+injured\_2 & stiffness\_2 & 0.51 & 0.65\\
+\hline
+stiffness\_2 & injured\_2 & 0.51 & 0.35\\
+\hline
+clevel & balance\_1 & 0.49 & 1.00\\
+\hline
+FFFS\_1 & BIS\_2 & 0.49 & 1.00\\
+\hline
+nlebase & rmssd\_1 & 0.49 & 1.00\\
+\hline
+injured\_1 & stiffness\_1 & 0.46 & 0.34\\
+\hline
+stiffness\_1 & injured\_1 & 0.46 & 0.66\\
+\hline
+clevel & RI\_2 & 0.46 & 1.00\\
+\hline
+FFFS\_1 & injured\_2 & 0.44 & 1.00\\
+\hline
+hours & injured\_1 & 0.40 & 1.00\\
+\hline
+nlelg\_2 & BIS\_2 & 0.38 & 0.98\\
+\hline
+BIS\_2 & nlelg\_2 & 0.38 & 0.02\\
+\hline
+gender & FFFS\_1 & 0.37 & 1.00\\
+\hline
+injured\_2 & rmssd\_2 & 0.37 & 0.84\\
+\hline
+rmssd\_2 & injured\_2 & 0.37 & 0.16\\
+\hline
+pi & nlelg\_2 & 0.37 & 1.00\\
+\hline
+nlebase & RI\_2 & 0.36 & 1.00\\
+\hline
+RI\_1 & BIS\_1 & 0.34 & 0.44\\
+\hline
+BIS\_1 & RI\_1 & 0.34 & 0.56\\
+\hline
+injured\_2 & balance\_2 & 0.34 & 0.95\\
+\hline
+balance\_2 & injured\_2 & 0.34 & 0.05\\
+\hline
+injured\_1 & balance\_1 & 0.34 & 0.68\\
+\hline
+balance\_1 & injured\_1 & 0.34 & 0.32\\
+\hline
+gender & FFFS\_2 & 0.33 & 1.00\\
+\hline
+RI\_1 & balance\_1 & 0.32 & 0.21\\
+\hline
+balance\_1 & RI\_1 & 0.32 & 0.79\\
+\hline
+pi & clevel & 0.32 & 0.50\\
+\hline
+clevel & pi & 0.32 & 0.50\\
+\hline
+BIS\_1 & FFFS\_2 & 0.32 & 1.00\\
+\hline
+pi & ind\_team & 0.31 & 0.44\\
+\hline
+ind\_team & pi & 0.31 & 0.56\\
+\hline
+pi & stiffness\_2 & 0.31 & 1.00\\
+\hline
+ind\_team & FFFS\_1 & 0.30 & 1.00\\
+\hline
+\end{longtable}
+
+\newpage
+
+\textbf{S3 Table. All arc strengths greater than 0.3 included in the second network.}
+
+\begin{longtable}[t]{l|l|r|r}
+\caption{\label{tab:unnamed-chunk-4}}\\
+\hline
+from & to & strength & direction\\
+\hline
+BIS & FFFS & 1.00 & 0.75\\
+\hline
+FFFS & BIS & 1.00 & 0.25\\
+\hline
+hours & injured & 0.72 & 1.00\\
+\hline
+injured & stiffness & 0.66 & 1.00\\
+\hline
+rmssd & FFFS & 0.64 & 0.67\\
+\hline
+FFFS & rmssd & 0.64 & 0.33\\
+\hline
+clevel & BIS & 0.61 & 1.00\\
+\hline
+gender & stiffness & 0.57 & 1.00\\
+\hline
+injured & nlec & 0.45 & 1.00\\
+\hline
+pi & balance & 0.42 & 1.00\\
+\hline
+pi & injured & 0.38 & 1.00\\
+\hline
+RI & BIS & 0.36 & 0.35\\
+\hline
+BIS & RI & 0.36 & 0.65\\
+\hline
+stiffness & BIS & 0.34 & 0.92\\
+\hline
+BIS & stiffness & 0.34 & 0.08\\
+\hline
+\end{longtable}
+
+\newpage
+
+\textbf{S4 Table. Probabilities of injury conditional on the variables in the Markov blanket for injured\_1.}
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-5}}
+\centering
+\begin{tabular}[t]{l|l|l|l|l|l}
+\hline
+prob & clevel & hours & nlelg\_1 & stiffness\_1 & balance\_1\\
+\hline
+0.53 & club\_university\_county & High & Low & High & High\\
+\hline
+0.46 & national\_international & High & Low & High & Low\\
+\hline
+0.44 & national\_international & High & Low & High & High\\
+\hline
+0.39 & club\_university\_county & Low & High & High & High\\
+\hline
+0.37 & club\_university\_county & High & Low & High & Low\\
+\hline
+0.34 & club\_university\_county & High & High & High & High\\
+\hline
+0.32 & national\_international & Low & High & High & Low\\
+\hline
+0.3 & national\_international & Low & High & High & High\\
+\hline
+0.29 & club\_university\_county & Low & High & Low & High\\
+\hline
+0.29 & club\_university\_county & High & High & Low & High\\
+\hline
+0.27 & national\_international & High & High & High & Low\\
+\hline
+0.26 & national\_international & High & High & High & High\\
+\hline
+0.25 & club\_university\_county & Low & High & High & Low\\
+\hline
+0.24 & national\_international & Low & High & Low & Low\\
+\hline
+0.23 & national\_international & High & High & Low & Low\\
+\hline
+0.22 & national\_international & Low & High & Low & High\\
+\hline
+0.22 & national\_international & High & High & Low & High\\
+\hline
+0.21 & club\_university\_county & High & High & High & Low\\
+\hline
+0.18 & club\_university\_county & Low & High & Low & Low\\
+\hline
+0.18 & club\_university\_county & High & High & Low & Low\\
+\hline
+0.17 & club\_university\_county & Low & Low & High & High\\
+\hline
+0.16 & club\_university\_county & High & Low & Low & High\\
+\hline
+0.13 & national\_international & Low & Low & High & Low\\
+\hline
+0.12 & national\_international & High & Low & Low & Low\\
+\hline
+0.12 & national\_international & Low & Low & High & High\\
+\hline
+0.12 & national\_international & High & Low & Low & High\\
+\hline
+0.09 & club\_university\_county & Low & Low & High & Low\\
+\hline
+0.09 & club\_university\_county & High & Low & Low & Low\\
+\hline
+0.07 & club\_university\_county & Low & Low & Low & High\\
+\hline
+0.06 & national\_international & Low & Low & Low & Low\\
+\hline
+0.05 & national\_international & Low & Low & Low & High\\
+\hline
+0.04 & club\_university\_county & Low & Low & Low & Low\\
+\hline
+\end{tabular}
+\end{table}
+
+\newpage
+
+\textbf{S5 Table. Probabilities of injury conditional on the variables in the Markov blanket for injured\_2.}
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-6}}
+\centering
+\begin{tabular}[t]{r|l|l|l|l|l}
+\hline
+prob & FFFS\_1 & nlelg\_2 & stiffness\_2 & rmssd\_2 & balance\_2\\
+\hline
+0.53 & Low & Low & High & Low & High\\
+\hline
+0.45 & Low & High & High & Low & High\\
+\hline
+0.41 & Low & Low & High & High & High\\
+\hline
+0.39 & Low & Low & High & Low & Low\\
+\hline
+0.34 & Low & High & High & High & High\\
+\hline
+0.32 & Low & High & High & Low & Low\\
+\hline
+0.31 & Low & Low & Low & Low & High\\
+\hline
+0.29 & Low & Low & High & High & Low\\
+\hline
+0.28 & Low & High & Low & Low & High\\
+\hline
+0.25 & High & Low & High & Low & High\\
+\hline
+0.23 & Low & High & High & High & Low\\
+\hline
+0.22 & Low & Low & Low & High & High\\
+\hline
+0.21 & High & High & High & Low & High\\
+\hline
+0.21 & Low & Low & Low & Low & Low\\
+\hline
+0.19 & Low & High & Low & High & High\\
+\hline
+0.18 & Low & High & Low & Low & Low\\
+\hline
+0.17 & High & Low & High & High & High\\
+\hline
+0.16 & High & Low & High & Low & Low\\
+\hline
+0.14 & High & High & High & High & High\\
+\hline
+0.14 & Low & Low & Low & High & Low\\
+\hline
+0.13 & High & High & High & Low & Low\\
+\hline
+0.13 & High & Low & Low & Low & High\\
+\hline
+0.12 & Low & High & Low & High & Low\\
+\hline
+0.12 & High & High & Low & Low & High\\
+\hline
+0.11 & High & Low & High & High & Low\\
+\hline
+0.08 & High & High & High & High & Low\\
+\hline
+0.08 & High & Low & Low & High & High\\
+\hline
+0.08 & High & Low & Low & Low & Low\\
+\hline
+0.07 & High & High & Low & High & High\\
+\hline
+0.07 & High & High & Low & Low & Low\\
+\hline
+0.05 & High & Low & Low & High & Low\\
+\hline
+0.04 & High & High & Low & High & Low\\
+\hline
+\end{tabular}
+\end{table}
+
+\end{document}

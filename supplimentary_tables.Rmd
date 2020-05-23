@@ -1,0 +1,174 @@
+---
+title: Supplimentary materials
+output: 
+  pdf_document:
+    keep_tex: yes
+header-includes:
+  - \usepackage{float} 
+  - \usepackage{longtable}
+  - \pagenumbering{gobble}
+  - \usepackage{caption}
+  - \captionsetup[table]{labelformat=empty}
+knit: (function(inputFile, encoding) {
+  rmarkdown::render(inputFile, encoding = encoding, output_dir = "supplimentary") })
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+pacman::p_load(tidyverse, knitr, kableExtra, qwraps2, brms, broom.mixed, bnlearn)
+
+source("r-files/functions.R")
+source("r-files/methods_code.R")
+source("r-files/results_code.R")
+```
+
+
+\textbf{S1 Table. Summary of modifications to LESCA items.}
+
+```{r}
+ tab <- data.frame(stringsAsFactors=FALSE,
+ Question = c(19, 21, 22, 27, 29, 36, 49, 61, 62),
+ original = c("Beginning a new school experience  (beginning college, transferring college etc)",
+                "Academic probation / ineligibility",
+                "Being dismissed from dorm or other residence",
+                "Financial problems concerning school",
+                "Conflict with room-mate",
+                "Suspended from team for non-academic reasons",
+                "Being absent from school (classes) because of participation in sport",
+                "Major change in level of academic performance (doing better or worse)",
+                "Making career decisions (applying to graduate school,interviewing for jobs, etc)"),
+ "Sportsstudents" = c("Beginning a new school experience (beginning university, transferring university etc)",
+                       NA,
+                       "Being dismissed from halls or other residence", 
+                       NA, 
+                       NA, 
+                       NA,
+                       "Being absent from university (classes) because of participation in sport",
+                     NA,
+                     "Making career decisions (applying for Masters degree, interviewing for jobs, etc)"),
+ "non-student" = c("Beginning a new work experience",
+                   "Removed",
+                   "Being asked to vacate house/home",
+                   "Financial problems",
+                   "Conflict within household",
+                   "Removed",
+                   "Being absent from work because of participation in sport",
+                   "Major change in level of performance at work (doing better or worse)",
+                   "Making career decisions (applying for Masters degree, interviewing for jobs, etc)")) 
+
+tab[is.na(tab)] <- "\\textit{No change}"
+
+kable(
+  tab %>%
+    mutate(Sportsstudents = ifelse(str_detect(Sportsstudents, "-"), text_spec(Sportsstudents, align = "c"), Sportsstudents)),
+  col.names = c("Q", "Original", "Students", "Non-students"),
+  escape = F,
+  caption = ""
+) %>% 
+  column_spec(1, width = c("0.3cm")) %>% 
+   column_spec(2:4, width = ("4.8cm")) %>% 
+  kable_styling(latex_options = "HOLD_position")
+```
+
+\newpage
+
+\textbf{S2 Table. All arc strengths greater than 0.3 included in the first network.}
+
+```{r results='asis'}
+full <- str %>%
+  filter(strength > 0.299 & direction != 0) %>%
+  arrange(-strength) %>%
+  `colnames<-`(str_replace_all(colnames(.), "_", "\\\\_")) %>%
+   mutate_at(c("from", "to"), ~str_replace_all(., "_", "\\\\_")) %>% 
+  dendroTools::round_df(2) 
+
+  kable(
+    full,
+    caption = "",
+    longtable = T,
+    escape = F,
+    format = "latex"
+  ) %>% 
+  kable_styling(latex_options = c("HOLD_position" , "repeat_header"), repeat_header_text = "S3 Table continued")
+
+```
+
+
+
+\textbf{S3 Table. All arc strengths greater than 0.3 included in the second network.}
+
+```{r results='asis'}
+strchange %>%
+  filter(strength > 0.299 & direction != 0) %>%
+  arrange(-strength) %>%
+  `colnames<-`(str_replace_all(colnames(.), "_", "\\\\_")) %>%
+   mutate_at(c("from", "to"), ~str_replace_all(., "_", "\\\\_")) %>% 
+  dendroTools::round_df(2) %>% 
+  kable(
+    caption = "",
+    longtable = T,
+    escape = F,
+    format = "latex"
+  ) %>% 
+  kable_styling(latex_options = ("HOLD_position"))
+```
+
+\newpage
+
+\textbf{S4 Table. Probabilities of injury conditional on the variables in the Markov blanket for injured\_1.}
+
+```{r results='asis'}
+set.seed(1001)
+
+tab3 <- newprobtable(
+  tallc,
+  c("balance_1", "stiffness_1", "nlelg_1", "hours", "clevel"),
+  "injured_1",
+  "injured",
+  avg30
+) %>%
+  arrange(-prob) %>%
+  select(outcome, everything()) %>%
+  dendroTools::round_df(2) %>% 
+  select(7, 2:6) %>% 
+  `colnames<-`(str_replace_all(colnames(.), "_", "\\\\_")) %>% 
+  mutate_all(~str_replace_all(., "_", "\\\\_"))
+
+kable(
+  tab3,
+  caption = "",
+    escape = F
+) %>%
+  kable_styling(latex_options = "HOLD_position")
+```
+
+\newpage
+
+\textbf{S5 Table. Probabilities of injury conditional on the variables in the Markov blanket for injured\_2.}
+
+```{r results='asis'}
+
+set.seed(1002)
+
+tab4 <- newprobtable(
+  tallc,
+  c("balance_2", "stiffness_2", "nlelg_2", "FFFS_1", "rmssd_2"),
+  "injured_2",
+  "injured",
+  avg30
+) %>%
+  arrange(-prob) %>%
+  select(outcome, everything()) %>%
+  dendroTools::round_df(2) %>%
+  select(7, 2:6) %>%
+  `colnames<-`(str_replace_all(colnames(.), "_", "\\\\_")) 
+
+
+  kable(
+    tab4,
+    caption = "",
+    escape = F
+  ) %>%
+  kable_styling(latex_options = "HOLD_position")
+
+```

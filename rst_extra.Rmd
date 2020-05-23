@@ -1,0 +1,53 @@
+---
+title: "S1 Appendix - RST-PQ Validation"
+bibliography: library.bib
+output: pdf_document
+csl: plos.csl
+
+header-includes:
+  - \usepackage{float}
+  - \usepackage{lmodern}
+  - \usepackage[T1]{fontenc}
+  - \usepackage{setspace}
+  - \linespread{2.0}
+
+knit: (function(inputFile, encoding) {
+  rmarkdown::render(inputFile, encoding = encoding, output_dir = "supplimentary") })  
+  
+---
+
+The validation of the RST-PQ was examined in a separate programme of PhD research which has yet to be published [@Young2019].
+The present author was involved in the validation process as the participants from this study were used to validate the RST-PQ. 
+Details of validation process are included here for detail but are not strictly part of this programme of research.
+
+To establish the factorial validity of the 65-item model of the RST-PQ in a population of university sports students, Bayesian Structural Equation Modelling [BSEM; @Muthen2012] was used with responses from sample of 419 university-level athletes [@Young2019]. 
+BSEM was used for the validation as it several advantages over the maximal likelihood procedures used in traditional confirmatory factor analysis (CFA). 
+In particular, BSEM allows informative variance priors to be specified on cross loadings.
+In traditional CFA, cross loadings are held at zero and can lead to a blocked or miss-specified model [@Marsh2009].
+By recognising that some small cross-loadings and correlated residuals could be present within the items, BSEM can reduce the possibility of model misspecification [@Gucci2016].
+To perform the validation, three models were specified following the recommendations of @Muthen2012.
+Model one specified non-informative priors on the factor loadings and exact zeros on the cross-loadings and correlated residuals.
+Model two specified non-informative priors on the factor loadings, informative approximate zeros on the cross-loadings and exact zeros on the correlated residuals.
+
+Lastly, model three specified non-informative priors on the factor loadings, and informative approximate zeros on the cross-loadings and correlated residuals.
+The variance of the informative priors was set at $\pm$ 0.10, which equates to loadings with 95% limit of $\pm$ .20 and implies weak cross loading and correlated residuals.
+Loadings that were outside of the range were identified as being highly correlated or having a large source of residual variance [@Muthen2012]. 
+
+Estimation of the BSEM models was performed in MPLUS where a Markov chain Monte Carlo (MCMC) algorithm was used with a Gibbs sampler, in which 100,000 iterations were drawn to examine the parameter estimates and model convergence. 
+Model convergence was assessed using potential scale reduction factor (PSRF), where values between 1.0 and 1.1 indicated good model convergence (@Gelman1998; @Gelman2013).
+Model fit was assessed by Posterior Predictive P (PPP) values and 95 % credibility intervals, where PPP values >= 0.50 and 95 % confidence interval balanced around approximately zero indicated good model fit [@Muthen2012]
+To compare the different BSEM models, the deviance information criterion (DIC) was used, where lower values indicate a better model-fit. 
+
+The analysis revealed the 65 item RST-PQ to have both good model convergence and model fit. In addition, all the main factor loadings were significant.
+However, several problematic items were identified based on weak factor loadings and substantial cross-loadings and correlated residuals.
+Consequently, the model was re-specified following an item deletion process [@Young2019] and a 51-item RST-PQ emerged with acceptable model-fit (PPP = .739, 95% posterior predictive confidence intervals = -199.220, 101.356). 
+The findings from the BSEM were replicated with a sample of 350 participants from the current research programme (PPP = .787, 95% posterior predictive confidence intervals = -208.405, 90.785).
+Consequently, the 51-item questionnaire was adopted as the chosen measure of RST in the current research.
+
+\newpage
+
+# References
+
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+<div id="refs"></div>
