@@ -4,3 +4,6 @@
 .Ruserdata
 plos/
 *.log
+dev.R
+demo.*
+wordmaker.*

@@ -25,10 +25,6 @@ x %>%
   group_by(time) %>% 
   count()
 
-datanet %>% 
-  group_by(time) %>% 
-  count()
-
 parchar <- read_csv("data/participant_chars.csv") %>% 
   filter(!id %in% id_remove)
 
