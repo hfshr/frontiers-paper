@@ -235,9 +235,9 @@ fittedcont <- bn.fit(avgcont, diffg)
 
 testdataa <- cpdist(fittedcont, nodes = c("FFFS", "rmssd", "BIS"), evidence = TRUE, n = 1000) 
 
-bm1 <- brm(FFFS ~ BIS*rmssd, data = testdataa)
+prior1 <- prior(normal(0, 5), class = "b")
 
-
+bm1 <- brm(FFFS ~ BIS*rmssd, data = testdataa, prior = prior1)
 
 
 

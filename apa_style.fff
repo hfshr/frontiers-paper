@@ -1,0 +1,67 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[!h]
+\caption{{\bf Stress and injury model (Williams and Andersen, 1998).}}
+\label{fig:fig1}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[!h]
+\caption{{\bf mBESS positions (A-F).}
+Top row, firm surface. Bottom row, foam surface. Left column, dominant leg stance. Middle column, non-dominant leg stance. Right column, Tandem leg stance.}
+\label{fig:fig2}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[!h]
+\caption{{\bf Study design.}
+For each time point (T), each box contains the number of participants who completed the data collection (N), the measures used for data collection and the approximate date of the data collection.}
+\label{fig:fig3}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[!h]
+\caption{{\bf Session protocol.}
+Outline of the protocol for each data collection.}
+\label{fig:fig4}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+\caption{{\bf Example network.}
+A simple discrete network contain nodes, possible states of the nodes and the arcs connecting nodes.}
+\label{fig:fig5}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+\caption{{\bf Network structure.}
+The full Bayesian network structure was plotted using the strength.plot function in bnlearn. The strength of each arc is shown graphically by the style of the arc. Thin, dashed arcs indicate the weakest arcs (arc strength below 0.50), whereas thick solid arcs indicate the strongest arcs (arc strength of 1). White nodes in the network indicate the explanatory variables, blue nodes indicate T1\_1 and T2\_1 variables, and red nodes indicated T2\_2 and T3\_2 variables. The injured\_X nodes have been coloured gold as they are the main nodes of interest within the network.}
+\label{fig:fig6}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+\caption{{\bf Markov blanket of injured\_1.}
+Arc strengths are included as arc labels.}
+\label{fig:fig7}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+\caption{{\bf Markov blanket for injured\_2.} }
+\label{fig:fig8}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+\caption{{\bf Change network.}
+Network structure of the changes within variables between time points.}
+\label{fig:fig9}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+\caption{{\bf Markov blanket for the injured node in the network reflecting changes within variables between time points.}}
+\label{fig:fig10}
+\end{figure*}
