@@ -1,13 +1,13 @@
 ## Methods
-pacman::p_load(tidyverse, knitr, kableExtra, qwraps2, brms, broom.mixed, bnlearn, tidyselect)
-library(readxl)
-library(janitor)
-library(irr)
-library(lavaan)
-library(caret)
-library(parallel)
-library(zoo)
-library(sjmisc)
+pacman::p_load(tidyverse, knitr, kableExtra, qwraps2, brms, broom.mixed, bnlearn, tidyselect,
+               readxl,
+               janitor,
+               irr,
+               lavaan,
+               caret,
+               parallel,
+               zoo,
+               sjmisc)
 ## Table 1
 
 x <- read_csv("data/new_cleandata_inj.csv")
@@ -63,7 +63,7 @@ npars <- parchar %>%
   ) %>%
   ungroup()
 
-rm(clevel)
+rm(clevel,x)
 
 ## RST reliability
 
@@ -97,6 +97,7 @@ i=~V22_IMP+V27_IMP+V28_IMP+V38_IMP+V40_IMP+V44_IMP+V51_IMP"
 fullmodel <- str_remove_all(fullmodel, "_")
 
 # example of cfa model
+set.seed(123)
 fit <- cfa(fullmodel, data = d)
 sl <- standardizedSolution(fit)
 sl <- sl$est.std[sl$op == "=~"]
@@ -142,7 +143,8 @@ icc <- irr::icc(d, model = "twoway", type = "agreement")
 
 
 data <- read_csv("data/fulldatajoined.csv") %>%
-  filter(time != 4) # remove last time point as only questionnaire data is available
+  filter(time != 4) %>% 
+  rename(hrv= rmssd)# remove last time point as only questionnaire data is available
 
 ####################### Cleaning up variables + impute #################################
 
@@ -181,7 +183,7 @@ voi <- data %>%
     stiffness,
     frequency,
     decrement,
-    rmssd,
+    hrv,
     sdnn,
     meanHR,
     bis,
@@ -202,20 +204,20 @@ ids <- data %>%
 
 missingcount <- tibble(
   var = c("hrv", "myoton"),
-  missing = c(map(voi, ~ sum(is.na(.)))$rmssd, map(voi, ~ sum(is.na(.)))$stiffness),
+  missing = c(map(voi, ~ sum(is.na(.)))$hrv, map(voi, ~ sum(is.na(.)))$stiffness),
   total = c(668, 668)
 ) %>%
   mutate(percdiff = missing / total * 100)
 
 missingtot <- voi %>%
-  select(id, rmssd, stiffness) %>%
+  select(id, hrv, stiffness) %>%
   mutate(
-    rmssd = tidyr::replace_na(rmssd, 0),
+    hrv = tidyr::replace_na(hrv, 0),
     stiffness = tidyr::replace_na(stiffness, 0)
   )
 
 ## impute missing values using bag impute
-
+set.seed(123)
 prepro <- preProcess(voi[, c(4:length(voi))], "bagImpute")
 datanew <- predict(prepro, voi[, c(4:length(voi))]) %>%
   cbind(ids, .)
@@ -297,7 +299,7 @@ datanet <- datanew %>%
   ungroup() %>%
   mutate(negsev = ifelse(negsev == "NaN", 0, negsev)) %>%
   ungroup() %>%
-  mutate(rmssd = round(log(rmssd), digits = 2)) %>%
+  mutate(hrv = round(log(hrv), digits = 2)) %>%
   group_by(time) %>%
   mutate(
     totneg_d = splitr(totneg),
@@ -330,7 +332,7 @@ nlename <- list(
       GDP,
       RI,
       sdnn,
-      rmssd,
+      hrv,
       balance,
       FFFS
     ) %>% names(),
@@ -353,7 +355,7 @@ nlename <- list(
       GDP,
       RI,
       sdnn,
-      rmssd,
+      hrv,
       balance,
       FFFS
     ) %>% names(),
@@ -377,29 +379,29 @@ nlename <- list(
       GDP,
       RI,
       sdnn,
-      rmssd,
+      hrv,
       balance,
       FFFS
     ) %>% names()
 )
 rstnames <- list(BAS = datanet %>% 
                    select(id, time, injured, nlelg, tlelg, pi, nlebase, gender, ind_team, clevel, hours, BIS, stiffness, 
-                          BAS, rmssd,sdnn, balance, FFFS) %>% names(),
+                          BAS, hrv,sdnn, balance, FFFS) %>% names(),
                  RI = datanet %>% 
                    select(id, time, injured, nlelg, tlelg, pi, nlebase, gender, ind_team, clevel, hours, BIS, stiffness, 
-                          RI, rmssd,sdnn, balance, FFFS) %>% names(),
+                          RI, hrv,sdnn, balance, FFFS) %>% names(),
                  GDP = datanet %>% 
                    select(id, time, injured,nlelg,tlelg, pi, nlebase, gender, ind_team, clevel, hours, BIS, stiffness, 
-                          GDP, rmssd,sdnn, balance, FFFS) %>% names(),
+                          GDP, hrv,sdnn, balance, FFFS) %>% names(),
                  I = datanet %>% 
                    select(id, time, injured, nlelg,tlelg, pi, nlebase, gender, ind_team, clevel, hours, BIS, stiffness, 
-                          I, rmssd,sdnn, balance, FFFS) %>% names(),
+                          I, hrv,sdnn, balance, FFFS) %>% names(),
                  RR = datanet %>% 
                    select(id, time, injured,nlelg,tlelg, pi, nlebase, gender, ind_team, clevel, hours, BIS, stiffness, 
-                          RR, rmssd,sdnn, balance, FFFS) %>% names(),
+                          RR, hrv,sdnn, balance, FFFS) %>% names(),
                  ALL = datanet %>% 
                    select(id, time, injured, nlelg,tlelg, pi, nlebase, gender, ind_team, clevel, hours, BIS, stiffness, 
-                          RR, I, GDP, RI, rmssd,sdnn, balance, FFFS) %>% names())
+                          RR, I, GDP, RI, hrv,sdnn, balance, FFFS) %>% names())
 
 scorer <- function(names) {
   test <- map(names, ~ networkmaker(.x))
@@ -411,10 +413,9 @@ scorer <- function(names) {
     arrange(-score)
 }
 
-
-le <- scorer(nlename)
-rstmodel <- scorer(rstnames)
-
+set.seed(125)
+le <- scorer(all_of(nlename))
+rstmodel <- scorer(all_of(rstnames))
 
 #### Code used for table 3
 
@@ -433,7 +434,7 @@ networkdata <- datanet %>%
     stiffness,
     RI,
     BIS,
-    rmssd,
+    hrv,
     balance,
     FFFS
   ) %>%
@@ -482,7 +483,7 @@ varcutoffs <- tallc %>%
         I,
         GDP,
         BIS,
-        rmssd,
+        hrv,
         sdnn,
         bal_asym,
         balance,
@@ -541,7 +542,7 @@ varcutoffs <- tallc %>%
           "I",
           "GDP",
           "stiffness",
-          "rmssd",
+          "hrv",
           "sdnn",
           "bal_asym",
           "balance"

@@ -80,7 +80,7 @@ library(parallel)
 
 cl = makeCluster(8, type = "SOCK")
 clusterSetRNGStream(cl, 30)
-
+set.seed(44)
 str <- boot.strength(
   tallc,
   algorithm = "tabu",
@@ -94,11 +94,9 @@ str <- boot.strength(
 
 
 stopCluster(cl)
-
 ## get average network with 30% cut off value
 avg30 <- averaged.network(str, threshold = 0.30)
 fitted <- bn.fit(avg30, tallc)
-
 ## plot the network
 gR <- strength.plot(
   avg30,
@@ -113,8 +111,8 @@ nodeRenderInfo(gR)$fill[g1] = "deepskyblue"
 nodeRenderInfo(gR)$fill[g2] = "tomato"
 nodeRenderInfo(gR)$fill["injured_1"] = "gold"
 nodeRenderInfo(gR)$fill["injured_2"] = "gold"
-#gR <- renderGraph(gR)
-
+gR <- renderGraph(gR)
+renderGraph(gR)
 # tiff("main_network.tif", res = 300, width = 15, height = 10, units = "in")
 #renderGraph(gR)
 # dev.off()
@@ -137,7 +135,7 @@ networkdatacont <- datanet %>%
     nlec,
     RI,
     BIS,
-    rmssd,
+    hrv,
     balance,
     FFFS
   ) %>%
@@ -200,7 +198,7 @@ bl <- expand.grid(
 cl = makeCluster(4, type = "SOCK")
 clusterSetRNGStream(cl, 44)
 
-
+set.seed(55)
 strchange <- boot.strength(
   diffg,
   algorithm = "tabu",
@@ -223,74 +221,175 @@ change <- strength.plot(
   layout = "dot"
 )
 nodeRenderInfo(change)$fill[indivars] = "tomato"
+
 nodeRenderInfo(change)$fill["injured"] = "gold"
-# 
-# tiff("change_network.tif", res = 300, width = 15, height = 10, units = "in")
-# renderGraph(change)
-# dev.off()
+
+jpeg("./figures_doc/Fig9.jpeg", res = 300, width = 15, height = 10, units = "in")
+renderGraph(change)
+dev.off()
 fittedcont <- bn.fit(avgcont, diffg)
 
 
 ## Bayesian lm
 
-testdataa <- cpdist(fittedcont, nodes = c("FFFS", "rmssd", "BIS"), evidence = TRUE, n = 1000) 
+testdataa <- cpdist(fittedcont, nodes = c("FFFS", "hrv", "BIS"), evidence = TRUE, n = 1000) 
 
 prior1 <- prior(normal(0, 5), class = "b")
+set.seed(66)
+bm1 <- brm(FFFS ~ BIS*hrv, data = testdataa, prior = prior1)
 
-bm1 <- brm(FFFS ~ BIS*rmssd, data = testdataa, prior = prior1)
 
 
-
-comp <- newprobtable(
-  tallc,
-  vars = names(tallc[c(1:6, 8:14)]),
-  outcome = "injured_1",
-  state = "injured",
-  avg30,
-  repeats = 10000
-)
-
-injured1comp <- comp %>%
-  top_n(1, prob) %>%
-  as_tibble() %>%
-  mutate(
-    id = "highrisk",
-    prob = round(prob, digits = 8)
-  ) %>%
-  rbind(
-    .,
-    comp %>%
-      top_n(1, -prob) %>%
-      as_tibble() %>%
-      mutate(
-        id = "lowrisk",
-        prob = round(prob, digits = 8)
-      )
-  ) %>%
-  mutate(prob = round(prob, digits = 2)) %>%
-  gather(variable, value, -id) %>%
-  spread(id, value) %>%
-  mutate(variable = factor(
-    variable,
-    levels = c(
-      "outcome",
-      "prob",
-      "pi",
-      "clevel",
-      "hours",
-      "ind_team",
-      "nlebase",
-      "stiffness_1",
-      "balance_1",
-      "RI_1",
-      "BIS_1",
-      "FFFS_1",
-      "nlelg_1",
-      "rmssd_1",
-      "gender"
-    )
-  )) %>%
-  arrange(variable)
+# comp <- newprobtable(
+#   tallc,
+#   vars = names(tallc[c(1:6, 8:14)]),
+#   outcome = "injured_1",
+#   state = "injured",
+#   avg30,
+#   repeats = 10000
+# )
+# 
+# injured1comp <- comp %>%
+#   top_n(1, prob) %>%
+#   as_tibble() %>%
+#   mutate(
+#     id = "highrisk",
+#     prob = round(prob, digits = 8)
+#   ) %>%
+#   rbind(
+#     .,
+#     comp %>%
+#       top_n(1, -prob) %>%
+#       as_tibble() %>%
+#       mutate(
+#         id = "lowrisk",
+#         prob = round(prob, digits = 8)
+#       )
+#   ) %>%
+#   mutate(prob = round(prob, digits = 2)) %>%
+#   gather(variable, value, -id) %>%
+#   spread(id, value) %>%
+#   mutate(variable = factor(
+#     variable,
+#     levels = c(
+#       "outcome",
+#       "prob",
+#       "pi",
+#       "clevel",
+#       "hours",
+#       "ind_team",
+#       "nlebase",
+#       "stiffness_1",
+#       "balance_1",
+#       "RI_1",
+#       "BIS_1",
+#       "FFFS_1",
+#       "nlelg_1",
+#       "hrv_1",
+#       "gender"
+#     )
+#   )) %>%
+#   arrange(variable)
 
 ## MB 2
 
+plotsg1 <- model2network('[hours][stiffness_1][nlelg_1][clevel][injured_1|hours:nlelg_1:stiffness_1][balance_1|clevel:injured_1]')
+q1p <- graphviz.plot(plotsg1,
+                     shape = "rectangle",
+                     render = F,
+                     groups = list(c("clevel", "hours"), "injured_1", c("stiffness_1", "nlelg_1", "balance_1")))
+
+strq1 <- str %>%
+  filter(from %in% c("clevel", "hours", "nlelg_1", "stiffness_1", "injured_1") &
+           to %in% c("balance_1", "injured_1")) %>%
+  filter(strength > 0.30) %>%
+  mutate(strength = format(round(strength, digits = 2), nsmall = 2))
+
+labels <- as.character(strq1$strength)
+labels[4] <- str_pad(labels[4], side = "left", width = 2)
+
+edgenames <- edgeNames(q1p)
+names(labels) <- edgenames
+nodeRenderInfo(q1p)$fill[c("injured_1", "nlelg_1")] = "gold"
+edgeRenderInfo(q1p) <- list(lwd = c("nlelg_1~injured_1" = 6,
+                                    "stiffness_1~injured_1" = 3,
+                                    "clevel~balance_1" = 3),
+                            lty = c("injured_1~balance_1" = "dashed",
+                                    "hours~injured_1" = "dashed"))
+
+q1p <- layoutGraph(q1p, edgeAttrs=list(label = labels))
+graph.par(list(edges=list(fontsize = 25)))
+
+nodeRenderInfo(q1p)$fill[c("nlelg_1", "stiffness_1", "balance_1")] = "deepskyblue"
+nodeRenderInfo(q1p)$fill["injured_1"] = "gold"
+
+jpeg("figures_doc/Fig7.jpeg", res = 300, width = 15, height = 10, units = "in")
+renderGraph(q1p)
+dev.off()
+
+
+plotsg2 <- model2network('[nlelg_2][gender][FFFS_1][injured_2|FFFS_1:nlelg_2][stiffness_2|gender:injured_2][balance_2|injured_2][rmssd_2|injured_2]')
+q2p <- graphviz.plot(plotsg2,
+                     render = F,
+                     shape = "rectangle",
+                     groups = list(c("gender"), "injured_2", c("stiffness_2", "nlelg_2", "balance_2", "rmssd_2")))
+
+strq2 <- str %>%
+  filter(from %in% c("FFFS_1", "nlelg_2", "stiffness_1", "injured_2", "gender") &
+           to %in% c("balance_2", "injured_2", "nlelg_2", "stiffness_2", "rmssd_2")) %>%
+  filter(strength > 0.30) %>%
+  filter(direction != 0) %>%
+  mutate(strength = format(round(strength, digits = 2), nsmall = 2))
+
+labels <- as.character(strq2$strength)
+labels[6] <- str_pad(labels[6], side = "left", width = 2)
+edgenames <- c("gender~stiffness_2", "FFFS_1~injured_2",
+               "injured_2~stiffness_2", "injured_2~balance_2", "injured_2~rmssd_2", "nlelg_2~injured_2")
+names(labels) <- edgenames
+nodeRenderInfo(q2p)$fill[c("injured_2", "nlelg_2")] = "gold"
+edgeRenderInfo(q2p) <- list(lwd = c("injured_2~stiffness_2" = 3,
+                                    "nlelg_2~injured_2" = 6,
+                                    "clevel~balance_1" = 3,
+                                    "gender~stiffness_2" = 4),
+                            lty = c("FFFS_1~injured_2" = "dashed",
+                                    "injured_2~balance_2" = "dashed",
+                                    "injured_2~rmssd_2" = "dashed"))
+
+q2p <- layoutGraph(q2p, edgeAttrs=list(label = labels))
+graph.par(list(edges=list(fontsize = 25)))
+nodeRenderInfo(q2p)$fill[c("nlelg_2", "stiffness_2", "balance_2", "FFFS_1", "rmssd_2")] = "tomato"
+nodeRenderInfo(q2p)$fill["injured_2"] = "gold"
+jpeg("figures_doc/Fig8.jpeg", res = 300, width = 15, height = 10, units = "in")
+renderGraph(q2p)
+dev.off()
+
+
+plotsg3 <- model2network('[gender][pi][hours][injured|pi:hours][stiffness|gender:injured][nlec|injured]')
+q3p <- graphviz.plot(plotsg3,
+                     render = F,
+                     shape = "rectangle",
+                     groups = list(c("gender", "pi", "hours"), "injured", c("stiffness", "nlec")))
+strq3 <- strchange %>%
+  filter(from %in% c("pi", "hours", "injured", "gender") &
+           to %in% c("stiffness", "nlec", "injured")) %>%
+  filter(strength > 0.30) %>%
+  mutate(strength = format(round(strength, digits = 2), nsmall = 2))
+
+labels <- as.character(strq3$strength)
+edgenames <- c("pi~injured", "gender~stiffness", "hours~injured",
+               "injured~stiffness", "injured~nlec")
+names(labels) <- edgenames
+nodeRenderInfo(q3p)$fill[c("injured")] = "gold"
+edgeRenderInfo(q3p) <- list(lwd = c("injured~stiffness" = 4,
+                                    "hours~injured" = 5,
+                                    "gender~stiffness" = 4),
+                            lty = c("pi~injured" = "dashed"))
+
+q3p <- layoutGraph(q3p, edgeAttrs=list(label = labels))
+graph.par(list(edges=list(fontsize = 25)))
+nodeRenderInfo(q3p)$fill[c("nlec", "stiffness")] = "tomato"
+nodeRenderInfo(q3p)$fill["injured"] = "gold"
+jpeg("./figures_doc/Fig10.jpeg", res = 300, width = 15, height = 10, units = "in")
+renderGraph(q3p)
+dev.off()
+rm(plotsg3, strq3, labels)

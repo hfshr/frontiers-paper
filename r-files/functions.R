@@ -46,6 +46,7 @@ networkmaker <- function(names){
   cl = makeCluster(4, type = "SOCK")
   clusterSetRNGStream(cl, 40)
   
+  set.seed(155)
   str = boot.strength(tallc, algorithm = "tabu",
                       algorithm.args = list(blacklist = bl, 
                                             #whitelist = wl,
@@ -155,7 +156,7 @@ newprobtable <- function(tallc, vars, outcome, state, model, repeats = 500000) {
     lapply(tallc[, (names(tallc) %in% vars)], levels) 
   } else {
     all.levels <- tallc %>% 
-      select(vars) %>% 
+      select(all_of(vars)) %>% 
       sapply(levels) %>% 
       as_tibble() 
   } # makes the code work for when only one variable is used as evidence

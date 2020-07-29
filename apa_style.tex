@@ -4,7 +4,7 @@
 %
 \documentclass[
   english,
-  man]{apa6}
+  man,floatsintext]{apa6}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -115,12 +115,6 @@
 
 Correspondence concerning this article should be addressed to Harry Fisher, Cyncoed Road, Cardiff, CF23 6XD. E-mail: harryfisher21@gmail.com}
 \keywords{Sports Injury, Stress, Interdisciplinary, Bayesian Network}
-\DeclareDelayedFloatFlavor{ThreePartTable}{table}
-\DeclareDelayedFloatFlavor{lltable}{table}
-\DeclareDelayedFloatFlavor*{longtable}{table}
-\makeatletter
-\renewcommand{\efloat@iwrite}[1]{\immediate\expandafter\protected@write\csname efloat@post#1\endcsname{}}
-\makeatother
 \usepackage{lineno}
 
 \linenumbers
@@ -150,9 +144,22 @@ This paper adopts a novel, interdisciplinary approach to explore the relationshi
 \begin{document}
 \maketitle
 
-\section{Introduction}
+10422 words in text body
+3142 words in reference section
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
 Over the last four decades sport-related injuries have received increased research attention (Ivarsson et al., 2017) in response to the high incidence (Rosa et al., 2014; Sheu et al., 2016) and associated undesirable physical and psychological effects (Leddy et al., 1994; Brewer, 2012). Multiple psychological (Slimani et al., 2018), anatomical (Murphy et al., 2003), biomechanical (Neely, 1998; Hughes, 2014) and environmental (Meeuwisse et al., 2007) factors have been associated with sports injury occurrence and several models of injury causation have been proposed that highlight the multifactorial nature of injury occurrence (Kumar, 2001; Meeuwisse et al., 2007; Wiese-Bjornstal, 2009), of which one of the most widely cited was developed by Williams and Anderson (Fig \ref{fig:fig1}; Andersen and Williams, 1988; Williams and Andersen, 1998).
+
+\begin{figure}[!h]
+
+{\centering \includegraphics[width=5.67in]{figures_doc/Fig1} 
+
+}
+
+\caption{Stress and injury model (Williams and Andersen, 1998).}\label{fig:fig1}
+\end{figure}
 
 Williams and Andersen's (Williams and Andersen, 1998) stress-injury model proposed that when faced with a potentially stressful athletic situation, an athlete's personality traits (e.g., hardiness, locus of control and competitive trait anxiety), history of stressors (e.g., major life events and previous injuries) and coping resources (e.g., general coping behaviours) contribute to the injury response, either interactively or in isolation. The stress response is central to the model and reflects the bi-directional relationship between athletes' appraisal of, and response to, a stressful athletic situation. The model predicts that athletes who have a history of stressors, personality traits that intensify the stress response and few coping resources, will exhibit greater attentional (e.g., peripheral narrowing) and/or physiological (e.g., increased muscle tension) responses that put these individuals at greater injury risk.
 
@@ -168,16 +175,22 @@ Recently, Bittencourt et al.~(Bittencourt et al., 2016) advocated a move away fr
 
 Using the frameworks provided by Williams and Andersen's (Williams and Andersen, 1998) stress injury model and Appaneal's BMSAIH model, the aim of this interdisciplinary study was to develop new understanding of the multifaceted interactions of psychological and physiological stress-related factors with injury occurrence. A prospective, repeated measures design incorporating field-based physiological and psychological measures combined with a BN modelling analysis was used to address the study aim.
 
-\section{Methods}
+\hypertarget{material-and-methods}{%
+\section{Material and Methods}\label{material-and-methods}}
 
-\subsection{Participants}
+\hypertarget{ethics-statement}{%
+\subsection{Ethics Statement}\label{ethics-statement}}
+
+Ethical approval was obtained from the University ethics committee prior to the start of the study and all participants provided informed consent.
+
+\hypertarget{participants}{%
+\subsection{Participants}\label{participants}}
 
 A total of 351 athletes (male: \emph{n} = 231, female: \emph{n} = 120) were initially recruited for the study from a British University and local sports clubs (Table \ref{tab:table1}). Participants had an average age of 22.0 \(\pm\) 7.0 years and represented a range of team (football, rugby, netball, cricket, lacrosse, basketball and field hockey) and individual sports (athletics, tennis, weightlifting, gymnastics, judo, swimming and golf.
 Participants self-rated competitive level ranged from recreational to international standard.
 They were engaged in training for their respective sports for at least five hours per week.
 A total of 126 (49.03\%) participants had sustained an injury in the 12 months prior to the start of the study (male: \emph{n} = 114 {[}49\%{]}, female; \emph{n} = 48 {[}40\%{]}).
 All participants were injury free (no modifications to their usual training routine due to a sport related medical problem for a minimum of four weeks) at the start of the study.
-Ethical approval was obtained from the University ethics committee prior to the start of the study and all participants provided informed consent.
 
 \begin{table}[H]
 
@@ -266,6 +279,15 @@ Participants were asked to maintain each stance for a total of 20-seconds.
 Participants hands were placed on hips at the level of the iliac crests.
 A Sony DSC-RX10 video camera (Sony Europe Limited, Surrey, United Kingdom) was used to record each participants performance during the mBESS.
 
+\begin{figure}[!h]
+
+{\centering \includegraphics[width=1\linewidth]{figures_doc/Fig2} 
+
+}
+
+\caption{mBESS positions (A-F). Top row, firm surface. Bottom row, foam surface. Left column, dominant leg stance. Middle column, non-dominant leg stance. Right column, Tandem leg stance.}\label{fig:fig2}
+\end{figure}
+
 The error identification criteria from the original BESS protocol was used by the lead researcher who scored all the BESS trials.
 One error was recorded if any of the following movements were observed during each trial: a) lifting hands off iliac crests;
 b) opening eyes;
@@ -284,10 +306,23 @@ The test-retest scoring of BESS resulted in a ``good'' to ``excellent'' ICC scor
 
 At the start of the academic year (September), coaches of sports teams at a British University and local sports clubs were contacted and informed about the study. With the coaches' permission, the lead researcher attended training sessions to inform athletes about the overall purpose of the study and the requirements of participation. Athletes who met the participation criteria and volunteered to take part in the study were invited to attend scheduled testing sessions. A repeated measures prospective cohort design was used to assess athletes' major life events, stress-related physiological markers and injury status over two consecutive 12-month periods. Each participant was asked to attend a total of three data collections over a 12-month period, with each data collection separated by a four-month interval (Fig \ref{fig:fig3}). Participants provided informed consent before data collection commenced.
 
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures_doc/studydesign_new} \caption{Study design. For each time point (T), each box contains the number of participants who completed the data collection (\textit{n}), the measures used for data collection and the approximate date of the data collection.}\label{fig:fig3}
+\end{figure}
+
 For the first three data collections (T1, T2 and T3), participants followed the same protocol in a specific order (Fig \ref{fig:fig4}).
 To ensure all measures could be collected within a viable time-frame, participants were separated into two groups.
 The first group completed all computer-based measures followed by all physical measurements, whereas the second group completed all physical measurements followed by computer-based measures.
 Participants were randomly assigned to one of the two groups and remained in those groups across all time points.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figures_doc/sessionprotocol} 
+
+}
+
+\caption{Outline of the protocol for each data collection.}\label{fig:fig4}
+\end{figure}
 
 \hypertarget{questionnaires}{%
 \subsubsection{Questionnaires}\label{questionnaires}}
@@ -350,6 +385,15 @@ A BN consists of arcs and nodes that together are formally known as a directed a
 However, the direction of the arc does not necessarily imply causation, and the relationship between variables are often described as probabilistic instead of casual (Scutari and Denis, 2014).
 The information within a node can be either continuous or discrete, and a complete network can contain both continuous and discrete nodes; however, discrete networks are the most commonly used form of BN (Chen and Pollino, 2012). In discrete networks, conditional probabilities for each child node are allocated for each combination of the possible states in their parent nodes and can be used to assess the strength of a dependency in the network.
 
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{figures_doc/examplenetwork} 
+
+}
+
+\caption{A simple discrete Bayesian network contain nodes, possible states of the nodes and the arcs connecting nodes.}\label{fig:fig5}
+\end{figure}
+
 In order to use discrete networks, continuous variables must first be split into categorical levels.
 When there are a large number of variables in the network, limiting the number of levels has the benefit of producing a network that is more parsimonious in terms of parameters. For example, a network with 10 variables each with two levels has 100 (10\^{}2) possible parameter combinations, however the same network with three levels has 1000 (10\^{}3) possible parameter combinations, the latter being significantly more computationally expensive. Using a larger number of splits in the data also comes at a cost of reducing the statistical power in detecting probabilistic associations, and reduces the precision of parameter estimates for the probabilistic associations that are detected because it reduces the sample-size-to-parameters ratio (Scutari and Denis, 2014). Typically, no more than three levels have been used in Bayesian networks in the sports injury literature (Olmedilla et al., 2018; Ruiz-Pérez et al., 2019)
 
@@ -360,7 +404,7 @@ In the example network presented in Fig \ref{fig:fig5}, new values assigned to e
 In a more complex network containing many nodes, the outcome of a particular node can be assessed conditional on the states of any subset of nodes in the network.
 BNs therefore provide a unique and versatile approach to modelling a set of variables to uncover dependency structures within the data.
 
-BNs have recently been used in the sport psychology literature (Olmedilla et al., 2018; Fuster-Parra et al., 2017) and offer several benefits over traditional statistical analysis.
+BNs have recently been used in the sport psychology literature (Olmedilla et al., 2018; Fuster-Parra et al., 2017; Ruiz-Pérez et al., 2019) and offer several benefits over traditional statistical analysis.
 For example, predictions can be made about any variable in the network, rather than there being a distinction between dependent and independent variables in the data, such as in linear regression models that are often used within the sport psychology literature (Olmedilla et al., 2018; Bittencourt et al., 2016).
 Furthermore, the structure of a network can be obtained from both empirical data \emph{and} prior knowledge about the area of study; the latter being particularly useful when there are a large number of variables in the network, or only a small number of observations are available in the data (Xiao-xuan et al., 2008).
 In such instances, a purely data driven approach to learning the network would be time-consuming due to the large parameter space, and inefficiency at identifying an approximation of the true network structure.
@@ -382,7 +426,7 @@ A bagged tree model using all of the non-missing data was first generated and th
 The bagged tree method is a reliable and accurate method for imputing missing values in data and is superior to other commonly used methods such a median imputation (Kuhn et al., 2008).
 
 A median split technique was used to discretise the data used in the network into ``Low'' and ``High'' levels.
-All variables apart from negative and total life events were approximately normally distributed (based on visual inspection, see supplementary material Sx) and required no further transformation prior to the median split.
+All variables apart from negative and total life events were approximately normally distributed and required no further transformation prior to the median split.
 For the LESCA questionnaire data, a cumulative total of the current, and previous time points was calculated at each time point to account for the potential continuing effect of the life events experienced by athletes over time.
 Given the limited support for a relationship between positive life events and injury (Williams and Andersen, 2007), only negative and total life events were included in the network.
 Cumulative negative, and cumulative total life event scores at each time point were first log scaled so distributions were approximately normal, and then binarised using the median at each time point (nlelg and tlelg respectively).
@@ -395,9 +439,9 @@ To obtain the network structure, several steps were taken to ensure that both a 
 Prior knowledge about the network structure was included by providing a list of arcs that are always \emph{restricted} from being in the network (blacklist), and a list of arcs that are always \emph{included} in the network (whitelist).
 Additionally, there are several scoring functions such as Bayesian Information Criteria (BIC) and Bayesian Dirichlet equivalent uniform (BDeu) that can be used to compare network structures with certain nodes and arcs included or excluded (Scutari and Denis, 2014).
 To account for the repeated measures design employed in this study and to maximise the use of the data, pairs of complete cases (e.g., participants who completed T1 + T2, and T2 + T3) were used in a two-time Bayesian network (2TBN) structure (Murphy, 2002).
-In the 2TBN, variables measured T2 could depend on variables measured at T1 (e.g., T1 \(\rightarrow\) T2) and variables measured at T3 could depend on variables measured at T2 (e.g., T2 \(\rightarrow\) T3).
+In the 2TBN, variables measured at T2 could depend on variables measured at T1 (e.g., T1 \(\rightarrow\) T2) and variables measured at T3 could depend on variables measured at T2 (e.g., T2 \(\rightarrow\) T3).
 However, arcs were blacklisted between T2 \(\rightarrow\) T1 and T3 \(\rightarrow\) T2 to preserve the order in which data was collected.
-Variables were separated into two groups; ``explanatory'', for variables that did not change during the study (e.g., gender), or ``independent'', for variables that were measured at each time point and could vary during the study.
+Variables were separated into two groups; ``explanatory'', for variables that were fixed (e.g., gender), or ``independent'', for variables that were measured at each time point and could vary during the study.
 Independent variable names were suffixed with \_1 for time point T, and \_2 for time point T+1 (e.g., T1\_1 \(\rightarrow\) T2\_2 and T2\_1 \(\rightarrow\) T3\_2).
 Formatting the data in this way meant participants who completed T1 and T2, but did not complete T3, could still be included in the analysis.
 Table \ref{tab:table2} provides an example of the formatted data and demonstrates that participants 1 and 3 have complete data, and therefore have two rows of data each representing variables from T1 \(\rightarrow\) T2 and T2 \(\rightarrow\) T3, respectively.
@@ -431,17 +475,17 @@ All subsequent models used the same blacklist.
 \hypertarget{preliminary-network-structures}{%
 \paragraph{Preliminary network structures}\label{preliminary-network-structures}}
 
-Prior to the final network structure presented in the results section, several structures with different combinations of variables were explored. Networks were learned using a Tabu search algorithm (Russell and Norvig, 2009) and BIC was used to compare different models. A higher BIC value indicates the structure of a DAG is a better fit to the observed data (Scutari and Denis, 2014). BIC values for each combination of variables of interest are reported as the combination of variables with the highest BIC value, followed by the relative scores of the other variables in the model.
+Prior to the final network structure presented in the results section, several structures with different combinations of variables were explored. Networks were learned using a Tabu search algorithm (Russell and Norvig, 2009) and BIC was used to compare different models.
+A higher BIC value indicates the structure of a DAG is a better fit to the observed data (Scutari and Denis, 2014). BIC values for each combination of variables of interest are reported as the combination of variables with the highest BIC value, followed by the relative scores of the other variables in the model.
 
-Initially, both negative life events and total life events were included in the network structure, however, the network score was improved when only nlelg or tlelg was included (highest BIC value = nleleg, BIC values relative to nlelg; tlelg only = -83.64, tlelg and nlelg = -218.31).
+Initially, both negative life events and total life events were included in the network structure, however, the network score was improved when only nlelg or tlelg was included (highest BIC value = nleleg, BIC values relative to nlelg; tlelg only = -83.64, tlelg and nlelg = -216.47).
 Additionally, despite strong evidence in the literature that both negative (NLE) and total life event (TLE) stress are related to injury occurrence (Williams and Andersen, 2007), network structures learned using the Tabu search algorithm failed to identify a relationship between NLE and injury or TLE and injury in the data.
 Given that nlelg provided the highest network score, and there is a stronger relationship between negative life events and injury in the literature, an arc was whitelisted between nlelg\_1 and injured\_1 and nlelg\_2 and injured\_2 in the final network structure. TLE score was not included in the final structure.
 
 The subscales representing the BAS (RR, RI, GDP and I) showed limited connection to other variables in the network.
-Therefore, several models were run with each scale individually to find the scale that resulted in the highest BIC value (values are shown relative to the highest value).
-RI provided the highest BIC value, compared to RR (-9.07), GDP (-15.06) and I (-16.33).
-Including all the variables (RR, RI, GDP and I) resulted in a significantly lower score -894.33) indicating that including all the variables was not beneficial to the model structure and did not offset the cost of the additional parameters. Therefore, only RI was included in the final structure.
-
+Therefore, competing models were examined and BIC scores compared to establish the model with the best fit to the data (values are shown relative to the highest value).
+RI provided the highest BIC value (-3,563.13), compared to RR (-15.98), GDP (-19.26) and I (-19.76).
+Including all the variables (RR, RI, GDP and I) resulted in a significantly lower score -900.12) indicating that including all the variables was not beneficial to the model structure and did not offset the cost of the additional parameters. Therefore, only RI was included in the final structure.
 Finally, both total score and asymmetry for balance were included in the initial network. However, visual inspection of the network revealed no arcs between bal\_asym\_1 or bal\_asym\_2 and any other node in the network.
 Therefore, balance asymmetry was removed from the final network structure.
 To summarise, Table \ref{tab:table3} reports the variables that were included in the final network structure.
@@ -474,7 +518,7 @@ RI & Reward Interest & 4-10 (Low) & >10-16 (High)\\
 \hline
 stiffness & Sum of all stiffness locations & 1543-2330 (Low) & >2330-4518 (High)\\
 \hline
-HRV & Root mean squared difference of successive RR intervals & 2.03-4 (Low) & >4-5.94 (High)\\
+HRV & Root mean squared difference of successive RR intervals & 2.03-4.01 (Low) & >4.01-5.94 (High)\\
 \hline
 balance & Total balance score & 5-15 (Low) & >15-46 (High)\\
 \hline
@@ -530,7 +574,7 @@ Weakly regularising priors (normal prior with mean of 0 and standard deviation o
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
-During the study, 26\% of participants reported at least one injury with an average severity of 11 \(\pm\) 31, days (range = 2 - 365 days).
+During the study, 46\% (\emph{n} = 117) of participants reported at least one injury with an average severity of 11 \(\pm\) 31, days (range = 2 - 365 days).
 Both male and female participants reported a greater number of acute compared to chronic injuries (male, acute = 85 {[}69\%{]}, chronic = 39 {[}31\%{]}; female, acute = 38 {[}72\%{]} chronic = 15 {[}28\%{]}), and non-contact injuries were more common than contact injuries (male, non-contact = 83 {[}67\%{]}, contact = 39 {[}31\%{]}; female, non-contact = 35 {[}66\%{]} contact = 18 {[}34\%{]}).
 Table \ref{tab:table4} shows the number and percentage of injury types sustained by both male and female participants.
 
@@ -558,27 +602,46 @@ Other & 8 (21) & 3 (21) & 5 (6) & 11 (30)\\
 \hypertarget{first-network-structure}{%
 \subsection{First network structure}\label{first-network-structure}}
 
-The first network structure obtained from the data is shown in Fig \ref{fig:fig6}.
-Several of the explanatory variables showed strong connections with independent variables in the network.
-The arc from nlebase \(\rightarrow\) RI\_1 had a strength of 0.84, and the probability of RI\_1 being in the ``High'' state increased from 0.23 to 0.47 when nlebase increased from ``Low'' to ``High''.
-The ind\_team node had strong arcs to hours (0.90) and nlebase (0.84).
+The first network structure obtained from the data (Fig \ref{fig:fig6}) examined the interactions between explanatory variables, independent variables and probability of injury across time points in the study.
+Strong sport-related and gender-based connections between several explanatory and independent variables were demonstrated for individual and team-based sports.
+The ``ind\_team'' node had strong arcs to hours (0.94) and nlebase (0.78).
 Individual athletes were more likely to have ``High'' hours per week (0.84) compared to team-based athletes (0.60).
-Individual athletes were also more likely to have ``High'' negative life events in the 12 months preceding the start of the study compared to team based athletes (individual athletes = 0.65, team-based athletes = 0.41).
-The arcs from gender \(\rightarrow\) stiffness\_1 and gender \(\rightarrow\) stiffness\_2 were 0.76, and 0.65 respectively, with males more likely to have ``High'' stiffness compared to females (males = 0.62, females = 0.43).
-The arc from pi \(\rightarrow\) stiffness\_1 was 0.55 with athletes who reported an injury in the preceding 12 months more likely to have ``High'' (0.65) compared to ``Low'' (0.35) stiffness.
-The arc from clevel \(\rightarrow\) balance\_1 had a strength of 0.51, with lower level performers more likely to have decreased balance ability (0.48), compared to national level athletes (0.29).
-Arcs were also present between independent variables in the network. Strong arcs were present between BIS\_1 \(\rightarrow\) FFFS\_1 (0.98) and BIS\_2 \(\rightarrow\) FFFS\_2 (0.68).
-In both instances, ``High'' FFFS was more likely when BIS was ``High'' (0.65 for \_1, 0.61 for \_2) compared to ``Low'' (0.32 for \_1, 0.36 for \_2).
-The arc between nlelg \(\rightarrow\) BIS had a strength of 0.62 for nlelg\_1 \(\rightarrow\) BIS\_1, however no arc was present between nlelg\_2 and BIS\_2.
-For nlelg\_1 \(\rightarrow\) BIS\_1, ``Low'' negative life events increased the probability of BIS being in the ``High'' state from 0.33 to 0.55.
+Individual athletes were also more likely to have ``High'' negative life events in the 12 months preceding the start of the study compared to team-based athletes (individual athletes = 0.65, team-based athletes = 0.41).
+The arc from clevel \(\rightarrow\) balance\_1 had a strength of 0.47, with lower level performers more likely to have decreased balance ability (0.48), compared to national level athletes (0.29).
+High gender-based connections were reported for the arcs from gender \(\rightarrow\) stiffness\_1 (0.71) and gender \(\rightarrow\) stiffness\_2 (0.43), with males more likely to have ``High'' stiffness compared to females (males = 0.62, females = 0.43).
+Irrespective of sport or gender, strong connections were found between explanatory variables. The arc from nlebase \(\rightarrow\) RI\_1 had a strength of 0.84, and the probability of RI\_1 being in the ``High'' state increased from 0.47 to 0.77 when nlebase increased from ``Low'' to ``High''.
+
+The first network demonstrated further strong variable interactions between high stiffness, poor balance and injury probability.
+The arc from pi \(\rightarrow\) stiffness\_1 was 0.57 with athletes who reported an injury in the preceding 12 months being more likely to have ``High'' (0.65) compared to ``Low'' (0.35). stiffness.
+Strong arcs were present between BIS\_1 \(\rightarrow\) FFFS\_1 (0.98) and BIS\_2 \(\rightarrow\) FFFS\_2 (0.74) were identified.
+In both instances, ``High'' FFFS was more likely when BIS was ``High'' (0.64 for \_1, 0.61 for \_2) compared to ``Low'' (0.33 for \_1, 0.37 for \_2).
+The arc between nlelg \(\rightarrow\) BIS had a strength of 0.55 for nlelg\_1 \(\rightarrow\) BIS\_1, and 0.37 nlelg\_2 and BIS\_2.
+``Low'' negative life events increased the probability of BIS being in the ``High'' state from 0.33 to 0.55 for nlelg\_1 \(\rightarrow\) BIS\_1, and 0.38 to 0.58 for nlelg\_2 \(\rightarrow\) BIS\_2.
+
+\newpage
+
+\begin{figure}
+\centering
+\includegraphics{apa_style_files/figure-latex/fig6-1.pdf}
+\caption{\label{fig:fig6}The full Bayesian network structure was plotted using the \emph{strength.plot} function in bnlearn. The strength of each arc is shown graphically by the style of the arc. Thin, dashed arcs indicate the weakest arcs (arc strength below 0.50), whereas thick solid arcs indicate the strongest arcs (arc strength of 1). White nodes in the network indicate the explanatory variables, blue nodes indicate T1\_1 and T2\_1 variables, and red nodes indicated T2\_2 and T3\_2 variables. The injured\_X nodes have been coloured gold as they are the main nodes of interest within the network.}
+\end{figure}
 
 \hypertarget{markov-blanket-for-injured_1}{%
 \subsubsection{Markov blanket for injured\_1}\label{markov-blanket-for-injured_1}}
 
-The Markov blanket for injured\_1, which contained hours spent training per week (hours), negative life events (nlelg\_1), muscle stiffness (stiffness\_1), current competitive level (clevel) and balance (balance\_1), is shown in Fig \ref{fig:fig7}.
+The first conditional probability query (CPQ) investigated the variables in the Markov blanket for injured\_1 (Fig \ref{fig:fig7}), which contained hours spent training per week (hours), negative life events (nlelg\_1), muscle stiffness (stiffness\_1), current competitive level (clevel) and balance (balance\_1).
 The arc between nlelg\_1 and injured\_1 was fixed in the network, so has the maximum strength of 1.
 
-The conditional probability query (CPQ) for injured\_1 in the ``injured'' state for all variables that were directly linked to injured\_1 is shown in Table \ref{tab:table5}.
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figures_doc/Fig7} 
+
+}
+
+\caption{Markov blanket of injured\_1. Arc strengths are included as arc labels.}\label{fig:fig7}
+\end{figure}
+
+The CPQ for injured\_1 in the ``injured'' state for all variables that were linked to injured\_1 is shown in Table \ref{tab:table5}.
 The probability of injured\_1 = ``injured'' rose from 0.17 to 0.31 when stiffness was ``High'' compared to ``Low''.
 Negative life events had a negligible effect when moving from the ``Low'' to ``High'' state.
 
@@ -605,14 +668,15 @@ The second CPQ investigated the outcome of injured\_1 being ``injured'' conditio
 The Markov blanket contained five nodes, each with two possible states resulting in \(2^5\) combinations of variables, therefore only the three lowest and highest probabilities are shown in Table \ref{tab:table6} (complete results in S4 Table).
 The combination of lower competitive level, ``High'' hours per week, ``Low'' negative life events, ``High'' balance and ``High'' stiffness resulted in a probability of 0.53 for injured\_1 being in the ``injured'' state.
 When all variables were in the ``Low'' state the probability of ``injured'' was approximately 0.04
-Negative life events only had a substantial effect on injured\_1 when all other variable were fixed to ``Low''.
-In this instance the probability of injured\_1 being ``injured'' rose from 0.04 to 0.19, when negative life events was in the ``Low'' and ``High'' states respectively.
+
+Negative life event stress had a negligible effect on the probability of injury, only influencing injured\_1 when all other variable were fixed to ``Low''.
+In this instance, the probability of injured\_1 being ``injured'' rose marginally from 0.04 to 0.19, when negative life events was in the ``Low'' and ``High'' states, respectively.
 
 \begin{table}[H]
 
 \caption{\label{tab:table6}Highest and lowest probability of injured\_1 being in the 'injured' state, conditional on the all variables in the Markov blanket for injured\_1.}
 \centering
-\begin{tabular}[t]{r|l|l|l|l|l}
+\begin{tabular}[t]{c|c|c|c|c|c}
 \hline
 \textbf{Probability} & \textbf{clevel} & \textbf{hours} & \textbf{nlelg\_1} & \textbf{stiffness\_1} & \textbf{balance\_1}\\
 \hline
@@ -622,7 +686,7 @@ In this instance the probability of injured\_1 being ``injured'' rose from 0.04 
 \hline
 \hspace{1em}0.46 & national\_international & High & Low & High & Low\\
 \hline
-\hspace{1em}0.43 & national\_international & High & Low & High & High\\
+\hspace{1em}0.44 & national\_international & High & Low & High & High\\
 \hline
 \multicolumn{6}{l}{\textbf{Lowest}}\\
 \hline
@@ -638,56 +702,63 @@ In this instance the probability of injured\_1 being ``injured'' rose from 0.04 
 \hypertarget{markov-blanket-of-injured_2}{%
 \subsubsection{Markov blanket of injured\_2}\label{markov-blanket-of-injured_2}}
 
-The Markov blanket for injured\_2 is shown in Fig \ref{fig:fig8} and contained gender, FFFS\_1, stiffness\_2, balance\_2 and rmssd\_2.
+The Markov blanket for injured\_2 is shown in Figure \ref{fig:fig8} and contained gender, FFFS\_1, stiffness\_2, balance\_2 and hrv\_2.
 The arc between stiffness\_2 \(\rightarrow\) injured\_2 was comparable to the arc between stiffness\_1 \(\rightarrow\) injured\_1.
-Very weak arcs (0.3) between injured\_2 \(\rightarrow\) balance\_2 and injured\_2 \(\rightarrow\) rmssd\_2 were also present in the Markov blanket for injured\_2.
-Results of the first query for injured\_2 in the ``injured'' state are presented in table \ref{tab:table8}.
+Very weak arcs (0.3) between injured\_2 \(\rightarrow\) balance\_2 and injured\_2 \(\rightarrow\) hrv\_2 were also present in the Markov blanket for injured\_2.
 Similar to injured\_1, stiffness\_2 doubled the probability of injured\_2 being ``injured'' from 0.13 in the ``Low'' state to 0.27 in the ``High'' state.
 FFFS\_1 in the ``Low'' state increased probability of injured\_2 being ``injured'' by 0.19 compared to the ``High'' state.
-``High'' negative life events decreased the probability of injury from 0.24 to 0.19.
+``High'' negative life events decreased the probability of injury from 0.26 to 0.17.
 
 \begin{table}[H]
 
-\caption{\label{tab:table8}Probability of injured\_2 being in the ``injured' state, conditional on each variable in the Markov blanket for injured\_2.}
+\caption{\label{tab:table7}Probability of injured\_2 being in the ``injured' state, conditional on each variable in the Markov blanket for injured\_2.}
 \centering
-\begin{tabular}[t]{l|l|l}
+\begin{tabular}[t]{c|c|c}
 \hline
 \textbf{Variable} & \textbf{Low} & \textbf{High}\\
 \hline
 balance\_2 & 0.17 & 0.27\\
 \hline
-FFFS\_1 & 0.3 & 0.11\\
+FFFS\_1 & 0.30 & 0.11\\
 \hline
-nlelg\_2 & 0.24 & 0.19\\
+hrv\_2 & 0.26 & 0.17\\
 \hline
-rmssd\_2 & 0.24 & 0.19\\
+nlelg\_2 & 0.23 & 0.19\\
 \hline
 stiffness\_2 & 0.13 & 0.27\\
 \hline
 \end{tabular}
 \end{table}
 
-The conditional probabilities based on all the variables in injured\_2 Markov blanket are presented in Table \ref{tab:table9}.
-Again, only the three lowest and highest probabilities are shown (complete results in S5 Table).
-The combination ``Low'' FFFS\_1, ``High'' stiffness\_2, ``High'' balance resulted in the greatest probability of injured\_2 being ``injured'', with the highest probability of injury being 0.52.
-With all other variables held in the ``High'' state, the probability of injured\_2 being ``injured'' rose from 0.14 to 0.34 when FFFS\_1 was in the ``Low'' compared to ``High'' state.
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figures_doc/Fig8} 
+
+}
+
+\caption{Markov blanket for injured\_2.}\label{fig:fig8}
+\end{figure}
+
+The three lowest and highest conditional probabilities based on all the variables in injured\_2 Markov blanket are presented in Table \ref{tab:table8} (complete results in S5 Table).
+The combination of ``Low'' FFFS\_1, ``High'' stiffness\_2, ``High'' balance resulted in the greatest probability of injured\_2 being ``injured'', with the highest probability of injury being 0.53.
+With all other variables held in the ``High'' state, the probability of injured\_2 being ``injured'' rose from 0.15 to 0.35 when FFFS\_1 was in the ``Low'' compared to ``High'' state.
 The combination of ``Low'' stiffness, ``Low'' balance and ``High'' FFFS resulted in the lowest probability of injured\_2 being ``injured''.
 
 \begin{table}[H]
 
-\caption{\label{tab:table9}Highest and lowest probability of injured\_2 being in the 'injured' state, conditional on the all variables in the Markov blanket for injured\_2.}
+\caption{\label{tab:table8}Highest and lowest probability of injured\_2 being in the 'injured' state, conditional on the all variables in the Markov blanket for injured\_2.}
 \centering
-\begin{tabular}[t]{l|l|l|l|l|l}
+\begin{tabular}[t]{c|c|c|c|c|c}
 \hline
-\textbf{Probability} & \textbf{FFFS\_1} & \textbf{nlelg\_2} & \textbf{stiffness\_2} & \textbf{rmssd\_2} & \textbf{balance\_2}\\
+\textbf{Probability} & \textbf{FFFS\_1} & \textbf{nlelg\_2} & \textbf{stiffness\_2} & \textbf{hrv\_2} & \textbf{balance\_2}\\
 \hline
 \multicolumn{6}{l}{\textbf{Highest}}\\
 \hline
-\hspace{1em}0.52 & Low & Low & High & Low & High\\
+\hspace{1em}0.53 & Low & Low & High & Low & High\\
 \hline
-\hspace{1em}0.45 & Low & High & High & Low & High\\
+\hspace{1em}0.46 & Low & High & High & Low & High\\
 \hline
-\hspace{1em}0.43 & Low & Low & High & High & High\\
+\hspace{1em}0.41 & Low & Low & High & High & High\\
 \hline
 \multicolumn{6}{l}{\textbf{Lowest}}\\
 \hline
@@ -703,47 +774,66 @@ The combination of ``Low'' stiffness, ``Low'' balance and ``High'' FFFS resulted
 \hypertarget{second-network-structure---changes-within-variables}{%
 \subsection{Second network structure - changes within variables}\label{second-network-structure---changes-within-variables}}
 
-The network for changes within variables is presented in Fig \ref{fig:fig9}.
-An arc between BIS \(\rightarrow\) FFFS with strength 1 was present in the network.
-Arcs between clevel \(\rightarrow\) BIS and gender \(\rightarrow\) stiffness had a strength of 0.60.
-The arc between RMSSD \(\rightarrow\) FFFS was 0.56.
-The arcs between BIS \(\rightarrow\) FFFS and RMSSD \(\rightarrow\) FFFS were examined further by drawing random observations from the conditional probability distribution and examining the relationship in a Bayesian linear regression model.
-The use of a separate linear regression enabled the interaction between BIS and RMSSD to be examined.
+The second network structure (Fig \ref{fig:fig9}) examined changes within variables between time points and the probability of injury/
+An arc between BIS \(\rightarrow\) FFFS with strength 1.00 was present in the network.
+Arcs between clevel \(\rightarrow\) BIS and gender \(\rightarrow\) stiffness had a strengths of 0.60 and 0.56 respectively
+Similarly, the arc between hrv \(\rightarrow\) FFFS was 0.58.
+The arcs between BIS \(\rightarrow\) FFFS and hrv \(\rightarrow\) FFFS were examined further by drawing random observations from the conditional probability distribution and examining the relationship in a Bayesian linear regression model.
+A separate linear regression examined the interaction between BIS and hrv to be examined.
 
-Results from the Bayesian linear regression model are presented in Table \ref{tab:table10} and include 95\% credible intervals (CrI).
-Increases in BIS were associated with increases in FFFS (\(b\) = -0.14, 95\% CrI = {[}-0.20, -0.08{]}), whereas positive changes in RMSSD where associated with decreased changes in FFFS (\(b\) = 0.4, 95\% CrI = {[}0.34, 0.45{]}).
-There was no clear interaction between RMSSD and BIS (\(b\) = -0.04, 95\% CrI = {[}-0.10, 0.02{]}).
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figures_doc/Fig9} 
+
+}
+
+\caption{Network structure of the changes within variables between time points.}\label{fig:fig9}
+\end{figure}
+
+Results from the Bayesian linear regression model are presented in Table \ref{tab:table9} and include 95\% credible intervals (CrI).
+Increases in BIS were associated with increases in FFFS (\(b\) = -0.19, 95\% CrI = {[}-0.25, -0.13{]}), whereas positive changes in hrv where associated with decreased changes in FFFS (\(b\) = 0.41, 95\% CrI = {[}0.36, 0.47{]}).
+There was no clear interaction between hrv and BIS (\(b\) = -0.02, 95\% CrI = {[}-0.08, 0.03{]}).
 
 \begin{table}[H]
 
-\caption{\label{tab:table10}Estimate, error and 95\% credible intervals for the fixed effects in the linear model containing FFFS, BIS and RMSSD.}
+\caption{\label{tab:table9}Estimate, error and 95\% credible intervals for the fixed effects in the linear model containing FFFS, BIS and hrv.}
 \centering
-\begin{tabular}[t]{l|r|r|l}
+\begin{tabular}[t]{l|c|c|c}
 \hline
 \textbf{Term} & \textbf{Estimate} & \textbf{Error} & \textbf{95\% CI}\\
 \hline
-Intercept & 0.00 & 0.03 & [-0.06, 0.05]\\
+Intercept & 0.00 & 0.03 & [-0.05, 0.06]\\
 \hline
-BIS & 0.40 & 0.03 & [0.34, 0.45]\\
+BIS & 0.41 & 0.03 & [0.36, 0.47]\\
 \hline
-rmssd & -0.14 & 0.03 & [-0.20, -0.08]\\
+hrv & -0.19 & 0.03 & [-0.25, -0.13]\\
 \hline
-BIS:rmssd & -0.04 & 0.03 & [-0.10, 0.02]\\
+BIS:hrv & -0.02 & 0.03 & [-0.08, 0.03]\\
 \hline
 \end{tabular}
 \end{table}
 
-The Markov blanket for the ``injured'' node contained previous injury, gender, hours per week, stiffness and nlec (Fig \ref{fig:fig10}).
+The Markov blanket for the ``injured'' node contained previous injury, gender, training hours per week, stiffness and nlec (Fig \ref{fig:fig10}).
 For stiffness and nlec the values in the nodes represent the standardised change between time point.
-Combinations of nlec and stiffness at one SD below the mean change, at the mean change, and 1 SD above the mean change are presented in table \ref{tab:table11}.
-Changes in both nlec and stiffness 1SD above the mean change resulted in a probability of being injured of 0.71 over the duration of the study.
-With stiffness held at the mean change, the probability of ``injured'' rose from 0.35 to 0.64 with nlec at 1 SD below an 1 SD above respectively.
+Combinations of nlec and stiffness at one SD below the mean change, at the mean change, and 1 SD above the mean change are presented in table \ref{tab:table10}.
+Increases in muscle stiffness was found to increase the risk of injury, which was further increased when there were increases in NLE stress.
+Changes in both nlec and stiffness of 1SD above the mean change resulted in a high probability of being injured (0.71) over the duration of the study.
+With stiffness held at the mean change, the probability of ``injured'' rose notably from 0.35 to 0.64 with nlec at 1 SD below an 1 SD above respectively.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{figures_doc/Fig10} 
+
+}
+
+\caption{Markov blanket for the injured node in the network reflecting changes within variables between time points.}\label{fig:fig10}
+\end{figure}
 
 \begin{table}[H]
 
-\caption{\label{tab:table11}The probability of injury with values of stiffness and nlec held at 1SD below the mean change, at the mean change and 1 SD above the mean change.}
+\caption{\label{tab:table10}The probability of injury with values of stiffness and nlec held at 1SD below the mean change, at the mean change and 1 SD above the mean change.}
 \centering
-\begin{tabular}[t]{r|l|l}
+\begin{tabular}[t]{c|c|c}
 \hline
 \textbf{Probability} & \textbf{nlec} & \textbf{Stiffness}\\
 \hline
@@ -768,15 +858,15 @@ With stiffness held at the mean change, the probability of ``injured'' rose from
 \end{tabular}
 \end{table}
 
-Table \ref{tab:table12} shows the three highest and lowest probabilities for injury for all variables in the Markov blanket.
+Table \ref{tab:table11} shows the three highest and lowest probabilities for injury for all variables in the Markov blanket.
 The combination of 1 SD above the mean change for nlec and stiffness and ``High'' hours per week and previous injury resulted in the highest probability that an injury would be sustained during the study (0.77).
-In contrast, below average changes in nlec and stiffness combined with ``Low'' hours per week and no previous injury resulted in the lowest probability of an injury (0.12).
+In contrast, below average changes in nlec and stiffness combined with ``Low'' hours per week and no previous injury resulted in the lowest probability of an injury (0.11).
 
 \begin{table}[H]
 
-\caption{\label{tab:table12}Highest and lowest probability of injury, conditional on the all variables in the Markov blanket for ``injured''.}
+\caption{\label{tab:table11}Highest and lowest probability of injury, conditional on the all variables in the Markov blanket for ``injured''.}
 \centering
-\begin{tabular}[t]{r|l|l|l|l}
+\begin{tabular}[t]{c|c|c|c|c}
 \hline
 \textbf{Probability} & \textbf{hours} & \textbf{pi} & \textbf{nle} & \textbf{stiffness}\\
 \hline
@@ -805,114 +895,71 @@ In contrast, below average changes in nlec and stiffness combined with ``Low'' h
 \hypertarget{summary-fo-results}{%
 \subsection{Summary fo results}\label{summary-fo-results}}
 
-(not sure where this would go /if needed at all?). The first BN revealed both high stiffness and poor balance resulted in an increased probability of injury. However, contrary to previous literature, negative life event stress had a negligible effect on the probability of injury.
-In the second network that modelled changes between time points in the study, increases in muscle stiffness was found to increase the risk of injury. In addition, the probability of injury was further increased when there were increases in NLE stress.
+The study investigated the multifaceted interactions of stress-related variables and injury occurrence using the stress-injury frameworks presented by Williams and Andersen (1998) and Appaneal and Perna (2014) and a prospective, repeated measures design applied to a large cohort of athletes. Relationships between stress-related psychosocial and physiological factors and injury were investigated using two BN structures; the first was a two-time Bayesian Network that investigated the relationships between variables across time points in the study, and the second network used differential equations to model the changes in variables between time points.
+The latter facilitated the development of new insights into the interactions of stress-related factors with injury occurrence, exploring changes in both psychological and physiological factors that may occur preceding an injury.
 
-(Main discussion starts here..)
-
-Informed by Appaneal and Perna's (2014) extension to the widely cited Williams and Anderson's (1998) stress-injury model, the purpose of this study was to examine how psychosocial stress-related factors, and physiological stress-related markers may interact and act synergistically to increase the risk of injury; therein addressing several of the limitations of the sport injury literature (Johnson et al., 2014).
-Potential relationships between psychosocial stress-related factors, physiological stress-related markers of stress and injury were investigated using two BN structures; the first was a two-time Bayesian Network that investigated the relationships between variables \emph{across} time points in the study (Fig \ref{fig:fig5}), and the second network used differential equations to model the changes in variables \emph{between} time points (Fig \ref{fig:fig8}).
-
-The first network revealed several links between the injured nodes and other variables in the network.
-For example, Fig \ref{fig:fig6} and Fig \ref{fig:fig7} show the Markov blankets for the injured\_1 and injured\_2 nodes in the first network and include all the variables that had a direct effect on the probability of injury.
-The combination of high stiffness and poor balance resulted in the highest probability of injury in the Markov blankets for ``injured'' nodes.
-The presence of these factors at both injured nodes indicates that the combined action of these variables is important for determining an athlete's risk of injury.
-In the second network, the highest probability of injury was observed when changes in stiffness \emph{and} negative life events were both greater than average (Table \ref{tab:table11}), indicating that the combination of changes in psychological and physiological measures of stress may combine additively to increase the risk of injury (Appaneal and Perna, 2014).
+The first network revealed several links between the injured nodes and other variables in the network. A combination of high stiffness and poor balance resulted in the highest probability of injury in the Markov blankets for ``injured'' nodes. The presence of these factors at both injured nodes indicated that the interaction of these variables is important for determining an athlete's risk of injury. In the second network, the highest probability of injury was observed when changes in stiffness and negative life events were both greater than average, indicating that the combination of changes in psychological and physiological stress-related factors may combine additively to increase the risk of injury (Appaneal and Perna, 2014).
 
 Of all the variables measured in the study, muscle stiffness appeared to be most strongly related to injury.
 Both ``High'' levels of stiffness in the first network, and greater than average increases in stiffness in the second network were found to increase the risk of injury.
-In this study, a novel hand-held device (MyotonPRO) was used to measure muscle stiffness.
-To date, one of only a small number of studies that have used the MyotonPRO to explore the relationship between muscle stiffness and sports injury, found that increased muscle stiffness in the soleus and Achilles tendon was related to increased injury incidence in elite level netball players (Pickering-Rodriguez et al., 2017).
-The results of the current study build on these findings, with a larger sample of athletes from a range of different sports, strengthening the evidence for a relationship between higher levels of muscle stiffness and injury.
-However, high levels of muscle stiffness, as measured by the MyotonPRO, have also been found to be related to improved performance, with elite level athletes having increased lower extremity stiffness (Pruyn et al., 2015; Kalkhoven and Watsford, 2017).
-Collectively, therefore, these findings suggest that while muscle stiffness plays a vital role in performance, increased levels of stiffness also increase the risk of injury, with each athlete likely to have an optimum level of stiffness that maximises performance while minimising the risk of injury (Butler et al., 2003).
-Additionally, high stiffness may only increase the risk of injury if other factors are also present.
+However, high stiffness may only increase the risk of injury if other factors are also present.
 To elaborate, the combination of high stiffness \emph{and} poor balance was found to result in the greatest probability of injury.
 In contrast, athletes with high stiffness and good balance were less likely to be injured, suggesting that improved postural stability may counteract the potential harmful effects of high levels of muscle stiffness.
-Several studies have identified how balance (Romero-Franco et al., 2014; Trojian and McKeag, 2006) and muscle stiffness (Butler et al., 2003; Pickering-Rodriguez et al., 2017) are related to injury individually; however this study has demonstrated how these two factors may have an additive effect in relation to injury occurrence.
+Several studies have identified how balance (Romero-Franco et al., 2014; Trojian and McKeag, 2006) and muscle stiffness (Butler et al., 2003; Pickering-Rodriguez et al., 2017) are separately related to injury. The BN structures examined in this study provided insight into these two stress-related factors and their relation to injury occurrence.
 
-In addition to stiffness, balance is also linked to injury at both injured nodes in the first network, however the strength of the arc was only 0.35 and 0.30 from balance \(\rightarrow\) injured\_1 and balance \(\rightarrow\) injured\_2 respectively.
-Despite the weak arc strength, a ``High'' balance score, indicating impaired postural stability, was found to increase the probability of injury.
-This finding is consistent with previous research that has reported an association between decrements in postural stability and increased injury risk (Riemann et al., 1999; Romero-Franco et al., 2014; Trojian and McKeag, 2006).
+The findings also facilitated an understanding of the interaction between balance and injury. At both injured nodes in the first network, balance was linked to injury. Despite the weak arc strength at both injured nodes, a ``High'' balance score, which is considered indicative of impaired postural stability {[}Romero-Franco et al. (2014);{]}, was found to increase the probability of injury. This finding is consistent with previous research that has reported an association between decrements in postural stability and increased injury risk (Riemann et al., 1999; Romero-Franco et al., 2014; Trojian and McKeag, 2006).
 Postural stability is often used as an indicator of athlete performance level, with higher level athletes demonstrating better postural stability over their lower level counterparts (Paillard et al., 2006).
-In the current study, athletes who competed at a higher level were also more likely to have good balance (``Low'' balance), compared to their lower level counterparts.
+Athletes who competed at a higher level were also more likely to have good balance (``Low'' balance), compared to their lower level counterparts.
 These findings suggest that better postural stability is associated with both a higher level of performance and a lower probability of sustaining an injury, reinforcing the importance of postural stability as a feature of athletic training programmes designed to prepare athletes for the demands of high intensity training and competition (Hrysomallis, 2011).
 
-Of the psychological variables in the study, negative life events have previously been reported to be most strongly associated with injury (Williams and Andersen, 2007; Ivarsson et al., 2017).
-In the current study, the second network revealed that greater than average increases in negative life event stress increased the probability of being injured during the study period.
-However, negative life event stress had almost no effect on the probability of injury in the first network.
-This finding suggests that the \emph{relative change} in life events may be more important than the \emph{absolute score} for life events, despite the latter being commonly used in sports injury research to date.
-For example, an athlete who reports a negative life event score of 1 during the first time point, but then a score of 5 at the second time point will have a 400\% increase in their life event score.
-Although the absolute score would be ``Low'', the relative increase could have been caused by a significant event in the athlete's life, that could have a considerable psychological and physiological effect (Appaneal and Perna, 2014).
-Future research should therefore consider study designs and appropriate analysis methods that enable relative changes in an individual athlete's life events to be assessed (cf.~Ivarsson et al., 2014).
+Negative life events captured at a single time point have previously been reported to be most strongly associated with injury (Williams and Andersen, 2007; Ivarsson et al., 2017).
+The repeated measures approach combined with the second network analysis employed in this study demonstrated that greater than average increases in negative life event stress between time points increased the probability of being injured during the study period. However, negative life event stress had almost no effect on the probability of injury in the first network, which indicated that the relative change in life events may be more important than the absolute score for life events, despite the latter being commonly used in sports injury research to date.
+For example, an athlete who reports a negative life event score of 1 during the first time point, but then a score of 5 at the second time point will have a 400\% increase in their life event score. Although the absolute score would be ``Low'', the relative increase between time points may have been caused by a significant event in the athlete's life that had a considerable psychological and physiological effect (Appaneal and Perna, 2014).
+Future research should therefore consider study designs and analyses that enable relative changes in an individual athlete's life events to be assessed (cf.~Ivarsson et al., 2014).
 
-The finding that negative life events had almost no impact on the probability of injury in the first network was surprising given that the majority of research has consistently identified major life events, particularly those events with a \emph{negative} valence, as the strongest predictor of injury in Williams and Andersen's (Williams and Andersen, 1998) model (Ivarsson et al., 2017).
+During the initial network structure development, no arcs between the negative life event and injured nodes were found by the Tabu search algorithm. The majority of research has however, consistently identified major life events, particularly those events with a negative valence, as the strongest predictor of injury in Williams and Andersen's model (Ivarsson et al., 2017).
 During the initial network structure development, no arcs between the negative life event nodes and injured nodes were found by the Tabu search algorithm.
-However, given the strength of the literature indicating that negative life events are related to injury, an arc was fixed between nlelg\_1 \(\rightarrow\) injured\_1 and nlelg\_2 \(\rightarrow\) injured\_2 to allow this relationship to be examined more closely.
-When negative life events were ``High'' the probability of injury showed a negligible change at the injured\_1 node and decreased by -0.05 at the injured\_2 node.
+Given the reported reported association between negative life events and injury, an arc was fixed between these variables to allow this relationship to be examined more closely.
+When negative life events were ``High'' the probability of injury showed a negligible change at the injured\_1 node and decreased by -0.04 at the injured\_2 node.
 One possible explanation for these findings may be due to the use of the LESCA questionnaire in a repeated measures design.
-In the original LESCA instructions, participants are asked to report major life events that have occurred over the previous 12-months (Petrie, 1992).
-However, in the current study, participants completed the LESCA at approximately 4-month intervals after baseline and were therefore asked to report any events which had occurred \emph{since the previous data collection session}, to avoid inflated scores caused by reporting the same event on multiple occasions.
-The reduced 4-month time interval between data collections may have reduced the likelihood for life events listed in the LESCA to have taken place.
-For example, at the second and third time points, 26\% of participants reported 0 negative life events for the preceding four-month period.
-Simply, it may be that the items on the LESCA are less suitable for repeated measurements with durations shorter than the original 12-months than a measure that captures minor life events (cf.~Fawkner et al., 1999).
+In the original LESCA, participants are asked to report major life events that have occurred over the previous 12-months (Petrie, 1992).
+In this study, athletes completed the LESCA at three time points with an approximate four-month interval after baseline. Athletes were asked to report any events which had occurred since the previous data collection session in order to avoid inflated scores caused by reporting the same event on multiple occasions.
+While modifications were made to the LESCA to tailor the items to the study cohort, the use of a shorter four-month time interval between data collections may have reduced the likelihood for life events listed in the LESCA to have taken place. For example, at the second and third time points, 26\% of participants reported 0 negative life events for the preceding four-month period. Simply, it may be that the items on the LESCA are less suitable for repeated measurements with durations shorter than the advocated 12-months than a measure that captures minor life events (cf.~Fawkner et al., 1999).
 
-Another possible explanation for the findings for major/negative life events is that participants in the study may have had access to the necessary coping resources to mitigate against the effects of any negative life event stress they experienced.
 Williams and Andersen's (Williams and Andersen, 1998) model proposed a number of coping resources that were either directly related to injury or moderated the relationship between life stress and injury occurrence; for example, general coping strategies (e.g., good sleeping habits and self-care), social support systems and stress management skills.
 Although coping was not measured in the current study, several studies have found high levels of social support can reduce the risk of injury (Petrie, 1993; Petrie et al., 2014; Johnson et al., 2014).
+The lack of association between major/negative life events and injury reported here may be attributed to athletes in this study having the necessary coping resources to mitigate against the effects of any negative life event stress they experienced.
 Therefore, future research should consider including a measure of coping alongside that of life event stress to help explain the possible moderating effect.
 
-Of the remaining variables, both FFFS and RMSSD were also linked to injury.
-A weak arc was observed between RMSSD\_2 \(\rightarrow\) injured\_2 (arc strength = 0.30), however no arc was present between RMSSD\_1 and injured\_1, suggesting the link between RMSSD and injury was not as certain as muscle stiffness and balance, where stronger arcs existed at both of the injured nodes.
-Despite the uncertainty regarding the relationship between injury and RMSSD in the first network, ``Low'' RMSSD increased the probability of injury from 0.17 (RMSSD = ``High'\,') to 0.27 (RMSSD =''Low'\,').
-This finding is consistent with previous research that has found reduced RMSSD to be indicative of illness or maladaptation to training due to decreased parasymapthic activity, which often precedes injury (Williams et al., 2017; Bellenger et al., 2016; Gisselman et al., 2016).
+Despite the uncertainty regarding the relationship between injury and heart rate variability (HRV) in the first network, ``Low'' HRV increased the probability of injury from 0.17 (``High'' HRV) to 0.26 (``Low'' HRV).
+This finding is consistent with previous research that has found reduced HRV indices to be indicative of illness or maladaptation to training due to decreased parasymapthic activity, which often precedes injury (Williams et al., 2017; Bellenger et al., 2016; Gisselman et al., 2016).
 An arc between FFFS\_1 and injured\_2 (arc strength = 0.40) was also observed in the first network, where the risk of injury was increased from 0.13 to 0.29 with FFFS in the ``High'' and ``Low'' states respectively.
-Interestingly, the ``Low'' FFFS score was also related to injuries at subsequent time points.
-One possible explanation for this finding could be that those athletes who reported ``Low'' FFFS score were less fearful, and may therefore engage in more risk taking behaviours, increasing the probability of injury.
+Interestingly, the ``Low'' FFFS score was also related to injuries at subsequent time points. One possible explanation for this finding could be that those athletes who reported ``Low'' FFFS score were less fearful, and may therefore engage in more risk taking behaviours, increasing the probability of injury.
 The RST theory proposes that higher levels of FFFS increase avoidance motivation (Corr et al., 2016), and therefore ``High'' FFFS may have acted as a deterrent from taking risks while training and competing, reducing exposure to situations that could have resulted in injury.
+The RST theory further proposes that the combination of high BIS and high FFFS is likely to result in a more anxious disposition due to high levels of avoidance and high goal conflict characterised by high levels of FFFS and BIS (Corr, 2013).
+The first network reported an association between ``High'' FFFS and ``High'' BIS, while the second network found an association between increases in FFFS and increases in BIS. High levels of anxiety and anticipation of stressful situations have been linked to reductions in HRV indices including RMSSD (Chalmers et al., 2014; Pulopulos et al., 2018).
+This association along with the proposed actions of the RST theory (Corr et al., 2016) provides a potential explanation for the negative relationship between FFFS and HRV identified in the second network.
+To elaborate, high levels of BIS are proposed to be the result of goal conflict, an example of which would be simultaneous triggering of the FFFS (avoidance) and BAS (approach) systems. The goal conflict is likely to elicit a physiological response (e.g., decreased HRV) in preparation to engage in the required behaviour to resolve the goal conflict (Corr et al., 2016).
+In the present study, however, the role of BAS was limited, as evidenced by the initial network structures in which the BAS had limited connectivity with other components of the network.
+Consequently, a more detailed examination of the role of RST in the injury process is warranted.
 
-In the first network, ``High'' BIS was associated with ``High'' FFFS, while in the second network, increases in BIS were associated with increases in FFFS.
-RST proposes that the combination of high BIS and high FFFS is likely to result in a more anxious disposition due to high levels of avoidance and high goal conflict characterised by high levels of FFFS and BIS (Corr, 2013).
-High levels of anxiety and anticipation of stressful situations have been associated with reductions in HRV indices including RMSSD (Chalmers et al., 2014; Pulopulos et al., 2018), which is supported by the negative relationship between FFFS and RMSSD in the second network (Table \ref{tab:table10}).
-These findings align with the proposed actions of the RST theory (Corr et al., 2016).
-For example, high levels of BIS are proposed to be the result of goal conflict between the FFFS (avoidance) and BAS (approach) systems.
-The goal conflict is likely to elicit a physiological response (e.g., decreased HRV) in preparation to engage in the required behaviour to resolve the goal conflict (Corr et al., 2016).
-To extend these findings, the BAS should also be considered.
-Specifically, to establish how the BAS and FFFS interact, and how these two systems affect the BIS.
-However, in the current study, initial network structures revealed the BAS sub-scales to have limited connectivity with other measures in the network, therefore only one of the BAS sub-scales (RI) was included in the final network structure.
-In the first network, RI\_1 was connected to both BIS\_1 and BIS\_2, and in both instances, the probability of ``High'' BIS was increased when RI was also ``High''.
-However, the arcs between RI\_1 and BIS were weak (\textless{} 0.50), and RI represents only one component of the BAS system.
-Other BAS factors such as impulsivity may be more closely related to risk-taking behaviours and may reveal additional links to sports injury.
-Therefore, a more detailed examination of the different elements of RST, and specifically the BAS in relation to injury occurrence is warranted.
+This study had a number of strengths. A major critique of the sport injury literature has been the use of only one wave of measurement that may not be reflective of the dynamic nature of the variables that are associated with injury (Johnson et al., 2014).
+The longitudinal repeated measures design of the current study allowed changes over time and between time points to be captured and explored.
+Although there are unique and significant challenges with research employing such designs, a more fine-grained understanding of the dynamic relationships between stress-related factors and injury occurrence in athletes was achieved when compared to traditional cross-sectional, single time point research.
+Sport injury research has been criticised for adopting analytic approaches that are reductionist in nature (Bittencourt et al., 2016) that fail to account for the complex, emergent behaviour that is characteristic of injury occurrence. The use of an interdisciplinary framework combined with a BN modelling approach in the study facilitated extended insight into the complex interplay that exists between psychosocial and physiological markers of stress and injury occurrence.
+The BN networks allowed several markers of stress that were free to interact with each other, as well as injury, to be explored.
 
-The current research had several strengths, including the longitudinal repeated measures design and modelling approach.
-A major critique of the sport injury literature has been the use of only one wave of measurement that may not be reflective of and capture the dynamic nature of the variables that are associated with injury (Johnson et al., 2014).
-The longitudinal repeated measures design of the current study allowed \emph{changes} over time and between time points to be captured and explored.
-Another significant strength of the current research was the interdisciplinary approach, which enabled an examination of the complex interplay between psychosocial and physiological markers of stress.
-Although there are unique and significant challenges with research employing longitudinal repeated measures designs, they provide for far more fine-grained understanding of the dynamic relationships between stress-related factors and injury occurrence in athletes.
-Sport injury research has been criticised for adopting analytic approaches that are reductionist in nature (Bittencourt et al., 2016) that fail to account for the complex, emergent behaviour that is characteristic of injury occurrence.
-To address this issue, Bayesian networks (BN) were used to more closely align with the complex, multifactorial nature of injury.
-The networks allowed several markers of stress that were free to interact with each other, as well as injury, to be explored.
-Consequently, BN's provided a contemporary approach that improved upon traditional methods such as logistic regression (Olmedilla et al., 2018).
+While the BN's provided a contemporary approach that improved upon traditional methods such as logistic regression (Olmedilla et al., 2018), a number of assumptions were made that potentially limited the approach employed in the study.
+Firstly, the choice was made to binarise variables in the first network so only ``Low'' and ``High'' states were observed. Although binarising variables is a common procedure in BN analysis and has several advantages Qian and Miltner Qian and Miltner (2015) highlighted that both a loss of statistical accuracy and potential difficulty in the subsequent interpretation of the model may arise.
+For example, the meaning of a ``Low'' and ``High'' value in this study was only meaningful for the population studied, and there could be additional levels within each category that were not investigated.
+Furthermore, in order to collect data on a large sample of participants, suitable measures were required to ensure the viability of the data collection. However, a reduction in the sensitivity of some of these measures may have inhibited our ability to detect more subtle variation in the athletes' responses.
+For example, a more sensitive measure of postural stability may have been achieved with the use of a force plate, which is considered the gold standard to provide detailed data and enable a more fine-grained analysis (Ross et al., 2011).
+However, the video-capture approach employed in the study ensured an accessible, non-invasive and readily applied method of capturing the respective measure.
 
-As with most research, there were several limitations with the present study.
-Firstly, the choice was made to binarise variables in the first network so only ``Low'' and ``High'' states were observed.
-Although binarising variables is a common procedure in Bayesian network analysis and has several advantages, Qian and Miltner Qian and Miltner (2015) highlighted that both a loss of statistical accuracy and potential difficulty in subsequent interpretation of the model may arise when following a binarising procedure.
-For example, the meaning of a ``Low'' and ``High'' value in the current study is only meaningful for the population that was studied, and there could be additional levels within each category that were not investigated.
-A second limitation was the nature of the physiological measures used in the current study.
-In order to collect data on a large sample of participants, suitable measures were required to ensure the viability of the data collection; however, some of these measures may not have been sensitive enough to detect more subtle variation in athletes.
-For example, postural stability could have been assessed with the use of a force plate, which is considered the gold standard, to provide detailed data and enable a more fine-grained analysis (Ross et al., 2011).
+The multifactorial, interdisciplinary approach employed in the study required the selection of stress-related measures derived from a psychological and physiological perspective. The variables used in the present study were not definitive.
+Additional measures relating to coping, injury-specific biomechanics and stress hormones such as cortisol, which been found to be a marker of both psychological and training-related stress (Appaneal and Perna, 2014; Perna and McDowell, 1995), could help to further elucidate the relationship between stress and injury. Future developments in the capture of life event stress using the LESCA are also warranted. Although the LESCA is the most widely used measures of major life events in sports injury research, modifications, including adjustment to the scoring of items are potentially justified to facilitate extended insight into the reported responses. For example, the LESCA may negate vastly different psychological and physiological effects between moderately negative and extremely negative events since there is no way to differentiate between an athlete who has answered four items as moderately negative, and one item as extremely negative. Therefore, future research could develop a modified version of the LESCA that could distinguish between these types of responses and their effects.
 
-In addition to the future directions already outlined, the findings from the current study offer several avenues for future research.
-Although the current study used a range of measures to capture ``stress'' from both a psychological and physiological perspective, there may be additional measures available that could provide further insight into the relationship between stress-related factors and sports injury.
-For example, stress hormones such as cortisol have been found to be a marker of both psychological and training-related stress (Appaneal and Perna, 2014; Perna and McDowell, 1995), and could help elucidate the relationship between stress and injury.
-Additionally, although the LESCA is the most widely used measures of major life events in sports injury research, the current study found several limitations with using the LESCA in a repeated measures design, including how the items were scored.
-For example, there is no way to differentiate between an athlete who has answered four items as moderately negative, and one item as extremely negative.
-Both responses would be scored a ``-4''; however, there could be vastly different psychological and physiological effects between moderately negative and extremely negative events. Therefore, future research could develop a modified version of the LESCA that could distinguish between these types of responses and their effects.
-
-In conclusion, the purpose of this research was to explore the multifaceted nature of the stress-injury relationship, and several psychosocial and physiological markers were found to combine and exacerbate the risk of injury.
-Specifically, muscle stiffness and \emph{increases} in negative life event stress were identified as strong predictors of injury, while other factors including personality characteristics and postural stability were also found to contribute to the probability of injury occurrence.
-Taken together, the interdisciplinary approach coupled with the advanced analytical techniques used and complex systems framework has provided a novel examination of the stress-injury relationship that has addressed many of the limitations identified in previous research.
+To summarise, this study provided novel insights into the multifaceted nature of the stress-injury relationship using a novel interdisciplinary approach coupled with an advanced Baysian Network analytical techniques, Muscle stiffness and increases in negative life event stress were identified as strong predictors of injury within the multifaceted athlete cohort, while other factors including personality characteristics and postural stability were also found to contribute to the probability of injury occurrence. Future research combining a repeated measures approach and complex analyses of the interactions between multifaceted stress-related measures are advocated to enhance understanding of the injury occurrence in sport.
 
 \hypertarget{disclosureconflict-of-interest-statement}{%
 \section{Disclosure/Conflict-of-Interest Statement}\label{disclosureconflict-of-interest-statement}}
@@ -924,81 +971,7 @@ conflict of interest.
 \hypertarget{author-contributions}{%
 \section{Author Contributions}\label{author-contributions}}
 
-The statement about the authors and contributors can be up to several sentences
-long, describing the tasks of individual authors referred to by their initials
-and should be included at the end of the manuscript before the References
-section.
-
-\hypertarget{supplemental-data}{%
-\section{Supplemental Data}\label{supplemental-data}}
-
-Supplementary Material should be uploaded separately on submission, if there are
-Supplementary Figures, please include the caption in the same file as the
-figure. LaTeX Supplementary Material templates can be found in the Frontiers
-LaTeX folder
-
-\hypertarget{figures}{%
-\section{Figures}\label{figures}}
-
-\begin{figure}[!h]
-\caption{{\bf Stress and injury model (Williams and Andersen, 1998).}}
-\label{fig:fig1}
-\end{figure}
-
-\begin{figure}[!h]
-\caption{{\bf mBESS positions (A-F).}
-Top row, firm surface. Bottom row, foam surface. Left column, dominant leg stance. Middle column, non-dominant leg stance. Right column, Tandem leg stance.}
-\label{fig:fig2}
-\end{figure}
-
-\begin{figure}[!h]
-\caption{{\bf Study design.}
-For each time point (T), each box contains the number of participants who completed the data collection (N), the measures used for data collection and the approximate date of the data collection.}
-\label{fig:fig3}
-\end{figure}
-
-\begin{figure}[!h]
-\caption{{\bf Session protocol.}
-Outline of the protocol for each data collection.}
-\label{fig:fig4}
-\end{figure}
-
-\begin{figure}[H]
-\caption{{\bf Example network.}
-A simple discrete network contain nodes, possible states of the nodes and the arcs connecting nodes.}
-\label{fig:fig5}
-\end{figure}
-
-\begin{figure}[H]
-\caption{{\bf Network structure.}
-The full Bayesian network structure was plotted using the strength.plot function in bnlearn. The strength of each arc is shown graphically by the style of the arc. Thin, dashed arcs indicate the weakest arcs (arc strength below 0.50), whereas thick solid arcs indicate the strongest arcs (arc strength of 1). White nodes in the network indicate the explanatory variables, blue nodes indicate T1\_1 and T2\_1 variables, and red nodes indicated T2\_2 and T3\_2 variables. The injured\_X nodes have been coloured gold as they are the main nodes of interest within the network.}
-\label{fig:fig6}
-\end{figure}
-
-\begin{figure}[H]
-\caption{{\bf Markov blanket of injured\_1.}
-Arc strengths are included as arc labels.}
-\label{fig:fig7}
-\end{figure}
-
-\begin{figure}[H]
-\caption{{\bf Markov blanket for injured\_2.} }
-\label{fig:fig8}
-\end{figure}
-
-\begin{figure}[H]
-\caption{{\bf Change network.}
-Network structure of the changes within variables between time points.}
-\label{fig:fig9}
-\end{figure}
-
-\begin{figure}[H]
-\caption{{\bf Markov blanket for the injured node in the network reflecting changes within variables between time points.}}
-\label{fig:fig10}
-\end{figure}
-
-\hypertarget{tables}{%
-\section{Tables}\label{tables}}
+HF, MG, LE and RM developed the concept for the paper. HF was the lead author for the paper and designed, collected and analysed that data. MG, LE and RM were co-authors on the paper. MS provided assistance with data analysis. LB provided assistance with data collection.
 
 \hypertarget{references}{%
 \section{References}\label{references}}
@@ -1128,9 +1101,6 @@ Ivarsson, A., Johnson, U., Lindwall, M., Gustafsson, H., and Altemyr, M. (2014).
 
 \leavevmode\hypertarget{ref-Johnson2014}{}%
 Johnson, U., Tranaeus, U., and Ivarsson, A. (2014). Current status and future challenges in psychological research of sport injury prediction and prevention: A methodological perspective. \emph{Revista de Psicologia del Deporte} 23, 401--409. Available at: \url{https://www.rpd-online.com/article/view/v23-n2-johnson-tranaeus-ivarsson}.
-
-\leavevmode\hypertarget{ref-Kalkhoven2018}{}%
-Kalkhoven, J. T., and Watsford, M. L. (2017). The relationship between mechanical stiffness and athletic performance markers in sub-elite footballers. \emph{Journal of Sports Sciences} 36, 1022--1029. doi:\href{https://doi.org/10.1080/02640414.2017.1349921}{10.1080/02640414.2017.1349921}.
 
 \leavevmode\hypertarget{ref-Koller2009}{}%
 Koller, D., and Friedman, N. (2009). \emph{Probabilistic graphical models: Principles and techniques - Adaptive computation and machine learning}. Cambridge, MA: The MIT Press doi:\href{https://doi.org/10.1017/CBO9781107415324.004}{10.1017/CBO9781107415324.004}.
