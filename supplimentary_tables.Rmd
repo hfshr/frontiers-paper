@@ -14,7 +14,7 @@ knit: (function(inputFile, encoding) {
 ---
 
 ```{r include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 pacman::p_load(tidyverse, knitr, kableExtra, qwraps2, brms, broom.mixed, bnlearn)
 
 source("r-files/functions.R")
@@ -94,6 +94,8 @@ full <- str %>%
 ```
 
 
+\clearpage
+\newpage
 
 \textbf{S3 Table. All arc strengths greater than 0.3 included in the second network.}
 
@@ -152,7 +154,7 @@ set.seed(1002)
 
 tab4 <- newprobtable(
   tallc,
-  c("balance_2", "stiffness_2", "nlelg_2", "FFFS_1", "rmssd_2"),
+  c("balance_2", "stiffness_2", "nlelg_2", "FFFS_1", "hrv_2"),
   "injured_2",
   "injured",
   avg30
@@ -172,3 +174,58 @@ tab4 <- newprobtable(
   kable_styling(latex_options = "HOLD_position")
 
 ```
+
+
+\newpage
+
+\textbf{S6 Table. Highest and lowest probability of injury, conditional on the all variables in the Markov blanket for ``injured''.}
+
+```{r results='asis'}
+set.seed(1007)
+testt <- expand.grid(list(
+  c(-1:1),
+  c(-1:1),
+  c("Low", "High"),
+  c("injury", "no injury")
+))
+
+query7 <- pmap_dfr(
+  .l = testt,
+  ~ tibble(
+    prob = cpquery(
+      fittedcont,
+      event = (injured == "injured"),
+      evidence = list(
+        nlec = as.numeric(..1),
+        stiffness = as.numeric(..2),
+        hours = ..3,
+        pi = ..4
+      ),
+      method = "lw"
+    ),
+    nle = ..1,
+    stiffness = ..2,
+    hours = ..3,
+    pi = ..4
+  )
+) %>%
+  arrange(-prob)
+
+query7 %>%
+  mutate_at(vars(nle, stiffness), ~ case_when(
+    . == 1 ~ "+1SD",
+    . == 0 ~ "mean",
+    . == -1 ~ "-1SD"
+  )) %>%
+  select(prob, hours, pi, nle, stiffness) %>%
+  rename(Probability = "prob") %>%
+  dendroTools::round_df(2) %>%
+  kable(
+    .,
+    align = "ccccc"
+  ) %>%
+  kable_styling(latex_options = "HOLD_position") %>%
+
+  row_spec(0,bold=TRUE)
+```
+

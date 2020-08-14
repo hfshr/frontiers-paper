@@ -34,7 +34,7 @@
 
 \caption{\label{tab:table2}Example of the data arrangement used for the network.}
 \centering
-\begin{tabular}[t]{l|l|l}
+\begin{tabular}[t]{c|c|c}
 \hline
 \textbf{Participant} & \textbf{X\_1} & \textbf{X\_2}\\
 \hline
@@ -80,7 +80,7 @@ RI & Reward Interest & 4-10 (Low) & >10-16 (High)\\
 \hline
 stiffness & Sum of all stiffness locations & 1543-2330 (Low) & >2330-4518 (High)\\
 \hline
-HRV & Root mean squared difference of successive RR intervals & 2.03-4 (Low) & >4-5.94 (High)\\
+HRV & Root mean squared difference of successive RR intervals & 2.03-4.01 (Low) & >4.01-5.94 (High)\\
 \hline
 balance & Total balance score & 5-15 (Low) & >15-46 (High)\\
 \hline
@@ -98,7 +98,7 @@ nlelg\_3 & Log NLE at TP 3 & 0-3.18 (Low) & >3.18-4.79 (High)\\
 
 \caption{\label{tab:table4}The number and percentage (\%) of types of injuries sustained by male and female participants.}
 \centering
-\begin{tabular}[t]{l|l|l|l|l}
+\begin{tabular}[t]{l|c|c|c|c}
 \hline
 \multicolumn{1}{c|}{\textbf{ }} & \multicolumn{2}{c|}{\textbf{Female}} & \multicolumn{2}{c}{\textbf{Male}} \\
 \cline{2-3} \cline{4-5}
@@ -118,7 +118,7 @@ Other & 8 (21) & 3 (21) & 5 (6) & 11 (30)\\
 \ifnextchar[{\eatarg}{}
 [H]
 
-\caption{\label{tab:table5}Probability of injured\_1 being in the ``injured'' state, conditional on each variable.}
+\caption{\label{tab:table5}Probability of injured\_1 being in the ``injured'' state, conditional on each variable}
 \centering
 \begin{tabular}[t]{l|r|r}
 \hline
@@ -140,7 +140,7 @@ stiffness\_1 & 0.17 & 0.31\\
 
 \caption{\label{tab:table6}Highest and lowest probability of injured\_1 being in the 'injured' state, conditional on the all variables in the Markov blanket for injured\_1.}
 \centering
-\begin{tabular}[t]{r|l|l|l|l|l}
+\begin{tabular}[t]{c|c|c|c|c|c}
 \hline
 \textbf{Probability} & \textbf{clevel} & \textbf{hours} & \textbf{nlelg\_1} & \textbf{stiffness\_1} & \textbf{balance\_1}\\
 \hline
@@ -150,7 +150,7 @@ stiffness\_1 & 0.17 & 0.31\\
 \hline
 \hspace{1em}0.46 & national\_international & High & Low & High & Low\\
 \hline
-\hspace{1em}0.43 & national\_international & High & Low & High & High\\
+\hspace{1em}0.44 & national\_international & High & Low & High & High\\
 \hline
 \multicolumn{6}{l}{\textbf{Lowest}}\\
 \hline
@@ -166,19 +166,19 @@ stiffness\_1 & 0.17 & 0.31\\
 \ifnextchar[{\eatarg}{}
 [H]
 
-\caption{\label{tab:table8}Probability of injured\_2 being in the ``injured' state, conditional on each variable in the Markov blanket for injured\_2.}
+\caption{\label{tab:table7}Probability of injured\_2 being in the ``injured' state, conditional on each variable in the Markov blanket for injured\_2.}
 \centering
-\begin{tabular}[t]{l|l|l}
+\begin{tabular}[t]{c|c|c}
 \hline
 \textbf{Variable} & \textbf{Low} & \textbf{High}\\
 \hline
 balance\_2 & 0.17 & 0.27\\
 \hline
-FFFS\_1 & 0.3 & 0.11\\
+FFFS\_1 & 0.30 & 0.11\\
 \hline
-nlelg\_2 & 0.24 & 0.19\\
+hrv\_2 & 0.26 & 0.17\\
 \hline
-rmssd\_2 & 0.24 & 0.19\\
+nlelg\_2 & 0.23 & 0.19\\
 \hline
 stiffness\_2 & 0.13 & 0.27\\
 \hline
@@ -188,19 +188,19 @@ stiffness\_2 & 0.13 & 0.27\\
 \ifnextchar[{\eatarg}{}
 [H]
 
-\caption{\label{tab:table9}Highest and lowest probability of injured\_2 being in the 'injured' state, conditional on the all variables in the Markov blanket for injured\_2.}
+\caption{\label{tab:table8}Highest and lowest probability of injured\_2 being in the 'injured' state, conditional on the all variables in the Markov blanket for injured\_2.}
 \centering
-\begin{tabular}[t]{l|l|l|l|l|l}
+\begin{tabular}[t]{c|c|c|c|c|c}
 \hline
-\textbf{Probability} & \textbf{FFFS\_1} & \textbf{nlelg\_2} & \textbf{stiffness\_2} & \textbf{rmssd\_2} & \textbf{balance\_2}\\
+\textbf{Probability} & \textbf{FFFS\_1} & \textbf{nlelg\_2} & \textbf{stiffness\_2} & \textbf{hrv\_2} & \textbf{balance\_2}\\
 \hline
 \multicolumn{6}{l}{\textbf{Highest}}\\
 \hline
-\hspace{1em}0.52 & Low & Low & High & Low & High\\
+\hspace{1em}0.53 & Low & Low & High & Low & High\\
 \hline
-\hspace{1em}0.45 & Low & High & High & Low & High\\
+\hspace{1em}0.46 & Low & High & High & Low & High\\
 \hline
-\hspace{1em}0.43 & Low & Low & High & High & High\\
+\hspace{1em}0.41 & Low & Low & High & High & High\\
 \hline
 \multicolumn{6}{l}{\textbf{Lowest}}\\
 \hline
@@ -216,19 +216,19 @@ stiffness\_2 & 0.13 & 0.27\\
 \ifnextchar[{\eatarg}{}
 [H]
 
-\caption{\label{tab:table10}Estimate, error and 95\% credible intervals for the fixed effects in the linear model containing FFFS, BIS and RMSSD.}
+\caption{\label{tab:table9}Estimate, error and 95\% credible intervals for the fixed effects in the linear model containing FFFS, BIS and hrv.}
 \centering
-\begin{tabular}[t]{l|r|r|l}
+\begin{tabular}[t]{l|c|c|c}
 \hline
 \textbf{Term} & \textbf{Estimate} & \textbf{Error} & \textbf{95\% CI}\\
 \hline
-Intercept & 0.00 & 0.03 & [-0.06, 0.05]\\
+Intercept & 0.00 & 0.03 & [-0.05, 0.06]\\
 \hline
-BIS & 0.40 & 0.03 & [0.34, 0.45]\\
+BIS & 0.41 & 0.03 & [0.36, 0.47]\\
 \hline
-rmssd & -0.14 & 0.03 & [-0.20, -0.08]\\
+hrv & -0.19 & 0.03 & [-0.25, -0.13]\\
 \hline
-BIS:rmssd & -0.04 & 0.03 & [-0.10, 0.02]\\
+BIS:hrv & -0.02 & 0.03 & [-0.08, 0.03]\\
 \hline
 \end{tabular}
 \end{table*}
@@ -236,9 +236,9 @@ BIS:rmssd & -0.04 & 0.03 & [-0.10, 0.02]\\
 \ifnextchar[{\eatarg}{}
 [H]
 
-\caption{\label{tab:table11}The probability of injury with values of stiffness and nlec held at 1SD below the mean change, at the mean change and 1 SD above the mean change.}
+\caption{\label{tab:table10}The probability of injury with values of stiffness and nlec held at 1SD below the mean change, at the mean change and 1 SD above the mean change.}
 \centering
-\begin{tabular}[t]{r|l|l}
+\begin{tabular}[t]{c|c|c}
 \hline
 \textbf{Probability} & \textbf{nlec} & \textbf{Stiffness}\\
 \hline
@@ -266,9 +266,9 @@ BIS:rmssd & -0.04 & 0.03 & [-0.10, 0.02]\\
 \ifnextchar[{\eatarg}{}
 [H]
 
-\caption{\label{tab:table12}Highest and lowest probability of injury, conditional on the all variables in the Markov blanket for ``injured''.}
+\caption{\label{tab:table11}Highest and lowest probability of injury, conditional on the all variables in the Markov blanket for ``injured''.}
 \centering
-\begin{tabular}[t]{r|l|l|l|l}
+\begin{tabular}[t]{c|c|c|c|c}
 \hline
 \textbf{Probability} & \textbf{hours} & \textbf{pi} & \textbf{nle} & \textbf{stiffness}\\
 \hline

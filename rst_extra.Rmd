@@ -2,7 +2,7 @@
 title: "S1 Appendix - RST-PQ Validation"
 bibliography: library.bib
 output: pdf_document
-csl: plos.csl
+csl: frontiers.csl
 
 header-includes:
   - \usepackage{float}
