@@ -32,29 +32,7 @@
 \ifnextchar[{\eatarg}{}
 [H]
 
-\caption{\label{tab:table2}Example of the data arrangement used for the network.}
-\centering
-\begin{tabular}[t]{c|c|c}
-\hline
-\textbf{Participant} & \textbf{X\_1} & \textbf{X\_2}\\
-\hline
-1 & T1 & T2\\
-\hline
-1 & T2 & T3\\
-\hline
-2 & T1 & T2\\
-\hline
-3 & T1 & T2\\
-\hline
-3 & T2 & T3\\
-\hline
-\end{tabular}
-\end{table*}
-\begin{table*}[hbt]
-\ifnextchar[{\eatarg}{}
-[H]
-
-\caption{\label{tab:table3}Variables included in the final Bayesian network structure.}
+\caption{\label{tab:table2}Variables included in the final Bayesian network structure.}
 \centering
 \begin{tabular}[t]{l|>{\raggedright\arraybackslash}p{5.2cm}|c|c}
 \hline
@@ -96,7 +74,7 @@ nlelg\_3 & Log NLE at TP 3 & 0-3.18 (Low) & >3.18-4.79 (High)\\
 \ifnextchar[{\eatarg}{}
 [H]
 
-\caption{\label{tab:table4}The number and percentage (\%) of types of injuries sustained by male and female participants.}
+\caption{\label{tab:table3}The number and percentage (\%) of types of injuries sustained by male and female participants.}
 \centering
 \begin{tabular}[t]{l|c|c|c|c}
 \hline
@@ -118,7 +96,7 @@ Other & 8 (21) & 3 (21) & 5 (6) & 11 (30)\\
 \ifnextchar[{\eatarg}{}
 [H]
 
-\caption{\label{tab:table5}Probability of injured\_1 being in the ``injured'' state, conditional on each variable}
+\caption{\label{tab:table4}Probability of injured\_1 being in the ``injured'' state, conditional on each variable}
 \centering
 \begin{tabular}[t]{l|r|r}
 \hline
@@ -138,7 +116,7 @@ stiffness\_1 & 0.17 & 0.31\\
 \ifnextchar[{\eatarg}{}
 [H]
 
-\caption{\label{tab:table6}Highest and lowest probability of injured\_1 being in the 'injured' state, conditional on the all variables in the Markov blanket for injured\_1.}
+\caption{\label{tab:table5}Highest and lowest probability of injured\_1 being in the ``injured'' state, conditional on the all variables in the Markov blanket for injured\_1.}
 \centering
 \begin{tabular}[t]{c|c|c|c|c|c}
 \hline
@@ -166,7 +144,7 @@ stiffness\_1 & 0.17 & 0.31\\
 \ifnextchar[{\eatarg}{}
 [H]
 
-\caption{\label{tab:table7}Probability of injured\_2 being in the ``injured' state, conditional on each variable in the Markov blanket for injured\_2.}
+\caption{\label{tab:table6}Probability of injured\_2 being in the ``injured'' state, conditional on each variable in the Markov blanket for injured\_2.}
 \centering
 \begin{tabular}[t]{c|c|c}
 \hline
@@ -188,7 +166,7 @@ stiffness\_2 & 0.13 & 0.27\\
 \ifnextchar[{\eatarg}{}
 [H]
 
-\caption{\label{tab:table8}Highest and lowest probability of injured\_2 being in the 'injured' state, conditional on the all variables in the Markov blanket for injured\_2.}
+\caption{\label{tab:table7}Highest and lowest probability of injured\_2 being in the ``injured'' state, conditional on the all variables in the Markov blanket for injured\_2.}
 \centering
 \begin{tabular}[t]{c|c|c|c|c|c}
 \hline
@@ -216,7 +194,7 @@ stiffness\_2 & 0.13 & 0.27\\
 \ifnextchar[{\eatarg}{}
 [H]
 
-\caption{\label{tab:table9}Estimate, error and 95\% credible intervals for the fixed effects in the linear model containing FFFS, BIS and hrv.}
+\caption{\label{tab:table8}Estimate, error and 95\% credible intervals for the fixed effects in the linear model containing FFFS, BIS and hrv.}
 \centering
 \begin{tabular}[t]{l|c|c|c}
 \hline
@@ -236,7 +214,7 @@ BIS:hrv & -0.02 & 0.03 & [-0.08, 0.03]\\
 \ifnextchar[{\eatarg}{}
 [H]
 
-\caption{\label{tab:table10}The probability of injury with values of stiffness and nlec held at 1SD below the mean change, at the mean change and 1 SD above the mean change.}
+\caption{\label{tab:table9}The probability of injury with values of stiffness and nlec held at 1SD below the mean change, at the mean change and 1 SD above the mean change.}
 \centering
 \begin{tabular}[t]{c|c|c}
 \hline
@@ -266,7 +244,7 @@ BIS:hrv & -0.02 & 0.03 & [-0.08, 0.03]\\
 \ifnextchar[{\eatarg}{}
 [H]
 
-\caption{\label{tab:table11}Highest and lowest probability of injury, conditional on the all variables in the Markov blanket for ``injured''.}
+\caption{\label{tab:table10}Highest and lowest probability of injury, conditional on the all variables in the Markov blanket for ``injured''.}
 \centering
 \begin{tabular}[t]{c|c|c|c|c}
 \hline

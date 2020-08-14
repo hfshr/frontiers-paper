@@ -114,7 +114,7 @@ nodeRenderInfo(gR)$fill["injured_2"] = "gold"
 gR <- renderGraph(gR)
 
 
-jpeg("./figures_doc/Fig6.jpeg", res = 300, width = 20, height = 15, units = "cm")
+jpeg("./figures_doc/Fig1.jpeg", res = 300, width = 20, height = 15, units = "cm")
 renderGraph(gR)
 dev.off()
 # tiff("main_network.tif", res = 300, width = 15, height = 10, units = "in")
@@ -228,7 +228,7 @@ nodeRenderInfo(change)$fill[indivars] = "tomato"
 
 nodeRenderInfo(change)$fill["injured"] = "gold"
 
-jpeg("./figures_doc/Fig9.jpeg", res = 300, width = 20, height = 15, units = "cm")
+jpeg("./figures_doc/Fig4.jpeg", res = 300, width = 20, height = 15, units = "cm")
 renderGraph(change)
 dev.off()
 fittedcont <- bn.fit(avgcont, diffg)
@@ -327,7 +327,7 @@ graph.par(list(edges=list(fontsize = 15)))
 nodeRenderInfo(q1p)$fill[c("nlelg_1", "stiffness_1", "balance_1")] = "deepskyblue"
 nodeRenderInfo(q1p)$fill["injured_1"] = "gold"
 
-jpeg("figures_doc/Fig7.jpeg", res = 300, width = 20, height = 15, units = "cm")
+jpeg("figures_doc/Fig2.jpeg", res = 300, width = 20, height = 15, units = "cm")
 renderGraph(q1p)
 dev.off()
 
@@ -367,7 +367,7 @@ q2p <- layoutGraph(q2p, edgeAttrs=list(label = labels))
 graph.par(list(edges=list(fontsize = 15)))
 nodeRenderInfo(q2p)$fill[c("nlelg_2", "stiffness_2", "balance_2", "FFFS_1", "hrv_2")] = "tomato"
 nodeRenderInfo(q2p)$fill["injured_2"] = "gold"
-jpeg("figures_doc/Fig8.jpeg", res = 300, width = 20, height = 15, units = "cm")
+jpeg("figures_doc/Fig3.jpeg", res = 300, width = 20, height = 15, units = "cm")
 renderGraph(q2p)
 dev.off()
 
@@ -397,7 +397,7 @@ q3p <- layoutGraph(q3p, edgeAttrs=list(label = labels))
 graph.par(list(edges=list(fontsize = 15)))
 nodeRenderInfo(q3p)$fill[c("nlec", "stiffness")] = "tomato"
 nodeRenderInfo(q3p)$fill["injured"] = "gold"
-jpeg("./figures_doc/Fig10.jpeg", res = 300, width = 20, height = 15, units = "cm")
+jpeg("./figures_doc/Fig5.jpeg", res = 300, width = 20, height = 15, units = "cm")
 renderGraph(q3p)
 dev.off()
 rm(plotsg3, strq3, labels)

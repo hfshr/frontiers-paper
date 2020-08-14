@@ -1,27 +1,29 @@
 \begin{figure*}[hbt]
 \ifnextchar[{\eatarg}{}
-[!h]
 
-{\centering \includegraphics[width=5.67in]{figures_doc/Fig1}
-
-}
-
-\caption{Stress and injury model (Williams and Andersen, 1998).}\label{fig:fig1}
+\centering
+\includegraphics{manuscript_files/figure-latex/fig1-1.pdf}
+\caption{\label{fig:fig1}The full Bayesian network structure was plotted using the \emph{strength.plot} function in bnlearn. The strength of each arc is shown graphically by the style of the arc. Thin, dashed arcs indicate the weakest arcs (arc strength below 0.50), whereas thick solid arcs indicate the strongest arcs (arc strength of 1). White nodes in the network indicate the explanatory variables, blue nodes indicate T1\_1 and T2\_1 variables, and red nodes indicated T2\_2 and T3\_2 variables. The injured\_X nodes have been coloured gold as they are the main nodes of interest within the network.}
 \end{figure*}
 \begin{figure*}[hbt]
 \ifnextchar[{\eatarg}{}
-[!h]
+
 
 {\centering \includegraphics[width=1\linewidth]{figures_doc/Fig2}
 
 }
 
-\caption{mBESS positions (A-F). Top row, firm surface. Bottom row, foam surface. Left column, dominant leg stance. Middle column, non-dominant leg stance. Right column, Tandem leg stance.}\label{fig:fig2}
+\caption{Markov blanket of injured\_1. Arc strengths are included as arc labels.}\label{fig:fig2}
 \end{figure*}
 \begin{figure*}[hbt]
 \ifnextchar[{\eatarg}{}
 
-\includegraphics[width=1\linewidth]{figures_doc/Fig3} \caption{Study design. For each time point (T), each box contains the number of participants who completed the data collection (\textit{n}), the measures used for data collection and the approximate date of the data collection.}\label{fig:fig3}
+
+{\centering \includegraphics[width=1\linewidth]{figures_doc/Fig3}
+
+}
+
+\caption{Markov blanket for injured\_2.}\label{fig:fig3}
 \end{figure*}
 \begin{figure*}[hbt]
 \ifnextchar[{\eatarg}{}
@@ -31,62 +33,15 @@
 
 }
 
-\caption{Outline of the protocol for each data collection.}\label{fig:fig4}
-\end{figure*}
-\begin{figure*}[hbt]
-\ifnextchar[{\eatarg}{}
-[H]
-
-{\centering \includegraphics[width=1\linewidth]{figures_doc/Fig5}
-
-}
-
-\caption{A simple discrete Bayesian network contain nodes, possible states of the nodes and the arcs connecting nodes.}\label{fig:fig5}
-\end{figure*}
-\begin{figure*}[hbt]
-\ifnextchar[{\eatarg}{}
-
-\centering
-\includegraphics{manuscript_files/figure-latex/fig6-1.pdf}
-\caption{\label{fig:fig6}The full Bayesian network structure was plotted using the \emph{strength.plot} function in bnlearn. The strength of each arc is shown graphically by the style of the arc. Thin, dashed arcs indicate the weakest arcs (arc strength below 0.50), whereas thick solid arcs indicate the strongest arcs (arc strength of 1). White nodes in the network indicate the explanatory variables, blue nodes indicate T1\_1 and T2\_1 variables, and red nodes indicated T2\_2 and T3\_2 variables. The injured\_X nodes have been coloured gold as they are the main nodes of interest within the network.}
-\end{figure*}
-\begin{figure*}[hbt]
-\ifnextchar[{\eatarg}{}
-
-
-{\centering \includegraphics[width=1\linewidth]{figures_doc/Fig7}
-
-}
-
-\caption{Markov blanket of injured\_1. Arc strengths are included as arc labels.}\label{fig:fig7}
-\end{figure*}
-\begin{figure*}[hbt]
-\ifnextchar[{\eatarg}{}
-
-
-{\centering \includegraphics[width=1\linewidth]{figures_doc/Fig8}
-
-}
-
-\caption{Markov blanket for injured\_2.}\label{fig:fig8}
-\end{figure*}
-\begin{figure*}[hbt]
-\ifnextchar[{\eatarg}{}
-
-
-{\centering \includegraphics[width=1\linewidth]{figures_doc/Fig9}
-
-}
-
 \caption{Network structure of the changes within variables between time points.}\label{fig:fig9}
 \end{figure*}
 \begin{figure*}[hbt]
 \ifnextchar[{\eatarg}{}
 
 
-{\centering \includegraphics[width=1\linewidth]{figures_doc/Fig10}
+{\centering \includegraphics[width=1\linewidth]{figures_doc/Fig5}
 
 }
 
-\caption{Markov blanket for the injured node in the network reflecting changes within variables between time points.}\label{fig:fig10}
+\caption{Markov blanket for the injured node in the network reflecting changes within variables between time points.}\label{fig:fig5}
 \end{figure*}
