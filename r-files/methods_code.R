@@ -142,7 +142,7 @@ icc <- irr::icc(d, model = "twoway", type = "agreement")
 
 
 
-data <- read_csv("data/fulldatajoined.csv") %>%
+data <- read_csv("data/full_data_raw.csv") %>%
   filter(time != 4) %>% 
   rename(hrv= rmssd)# remove last time point as only questionnaire data is available
 

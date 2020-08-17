@@ -80,11 +80,11 @@ options(kableExtra.auto_format = FALSE)
 ```{r include=FALSE}
 options(scipen=999, digits = 2)
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
- # source("r-files/functions.R")
- # source("r-files/methods_code.R")
- # source("r-files/results_code.R")
+ source("r-files/functions.R")
+ source("r-files/methods_code.R")
+ source("r-files/results_code.R")
 
-load("all_data.RData")
+#load("all_data.RData")
 #myEnv <- new.env()
 #attach(myEnv, name="sourced_scripts")
 
@@ -113,7 +113,7 @@ pacman::p_load(tidyverse,
 
 Over the last four decades sport-related injuries have received increased research attention [@Ivarsson2017] in response to the high incidence [@Rosa2014; @Sheu2016] and associated undesirable physical and psychological effects [@Leddy1994; @Brewer2012]. Multiple psychological [@Slimani2018], anatomical [@Murphy2003], biomechanical [@Neely1998; @Hughes2014] and environmental [@Meeuwisse2007] factors have been associated with sports injury occurrence and several models of injury causation have been proposed that highlight the multifactorial nature of injury occurrence [@Kumar2001; @Meeuwisse2007; @Wiese-Bjornstal2009], of which one of the most widely cited was developed by Williams and Anderson [@Andersen1988; @Williams1998].
 
-Williams and Andersen’s [@Williams1998] stress-injury model proposed that when faced with a potentially stressful athletic situation, an athlete’s personality traits (e.g., hardiness, locus of control and competitive trait anxiety), history of stressors (e.g., major life events and previous injuries) and coping resources (e.g., general coping behaviours) contribute to the injury response, either interactively or in isolation. The stress response is central to the model and reflects the bi-directional relationship between athletes’ appraisal of, and response to, a stressful athletic situation. The model predicts that athletes who have a history of stressors, personality traits that intensify the stress response and few coping resources, will exhibit greater attentional (e.g., peripheral narrowing) and/or physiological (e.g., increased muscle tension) responses that put these individuals at greater injury risk (supplementary figure 1).
+Williams and Andersen’s [@Williams1998] stress-injury model proposed that when faced with a potentially stressful athletic situation, an athlete’s personality traits (e.g., hardiness, locus of control and competitive trait anxiety), history of stressors (e.g., major life events and previous injuries) and coping resources (e.g., general coping behaviours) contribute to the injury response, either interactively or in isolation. The stress response is central to the model and reflects the bi-directional relationship between athletes’ appraisal of, and response to, a stressful athletic situation. The model predicts that athletes who have a history of stressors, personality traits that intensify the stress response and few coping resources, will exhibit greater attentional (e.g., peripheral narrowing) and/or physiological (e.g., increased muscle tension) responses that put these individuals at greater injury risk (Supplementary figure 1).
 
 Within Williams and Andersen’s [@Williams1998] model, major life events, which is a component of an athlete’s history of stressors, most consistently predicts injury occurrence [@Williams2007]; specifically, major life events with a negative, as opposed to positive, valence [@Passer1983a; @Maddison2005].
 Personality traits and coping resources have also been found to predict injury with athletes more likely to sustain an injury if they have poor social support and psychological coping skills, and high trait anxiety and elevated competitive state anxiety; compared to those with the opposing profile [@Smith1990; @Lavallee1996; @Ivarsson2010]. 
@@ -185,7 +185,7 @@ Injury status (did / did not sustain an injury) served as the main outcome measu
 
 A modified version of the Life Events Survey for Collegiate Athletes (LESCA) was used to measure participants’ history of life event stress [@Petrie1992]. 
 The LESCA is the most widely used measure of major life events for athletes in the sports injury literature. 
-Modifications were made to the LESCA to ensure the suitability of the items for the study cohort (supplementary table 1). 
+Modifications were made to the LESCA to ensure the suitability of the items for the study cohort (Supplementary Table 1). 
 The LESCA comprises 69 items that reflect possible life events that participants may have experienced. Example items include, “Major change in the frequency (increased or decreased) of social activities due to participation in sport”, “Major change in the amount (more or less) of academic activity (homework, class time, etc)” and “Major change in level of athletic performance in actual competition (better or worse)”. Participants were asked to rate the perceived impact of each life event they had experienced within 12-months preceding the study onset on an 8-point Likert scale anchored at -4  ($extremely\;negative$) and +4 ($extremely\;positive$). 
 Negative and positive life event scores were calculated by summing the negative and positive scores, respectively. A score for total life events was also calculated by summing the absolute values for both negative and positive events. 
 Petrie (1992) [@Petrie1992] reported test-retest reliabilities at 1-week and 8-weeks with values ranging from .76 to .84 (p < .001) and .48 to .72 (p < .001) respectively. Petrie also provided evidence of discriminant, convergent and predictive validity. For this study, composite reliability [@Fornell1981] was preferred to Cronbach’s alpha as it does not assume parallelity (i.e., all factor loadings are constrained to be equal, and all error variances are constrained to be equal) and instead takes into consideration the varying factor loadings of the items in the questionnaire. The composite reliability for the LESCA in this study was .84.
@@ -196,7 +196,7 @@ A revised version of the Reinforcement Sensitivity Theory Personality Questionna
 The revised version of the RST-PQ comprises 51 statements that measure three major systems: Fight-Flight-Freeze System (FFFS; e.g., "I am the sort of person who easily freezes-up when scared"), Behavioural Inhibition System (BIS; e.g., "When trying to make a decision, I find myself constantly chewing it over") and four Behavioural Approach System (BAS) factors; Reward Interest (e.g., “I regularly try new activities just to see if I enjoy them”), Goal Drive Persistence (e.g., “I am very persistent in achieving my goals”), Reward Reactivity (e.g., “I get a special thrill when I am praised for something I've done well”) and Impulsivity (e.g., “I find myself doing things on the spur of the moment”).
 Participants rated each item on a scale from 1 ($not\; at\; all$) to 4 ($highly$) to reflect how well each statement described their personality in general. 
 The responses to items associated with each subscale (FFFS, BIS, RI, GDP, RR and I) were summed to give a total personality score that was subsequently used for further analysis.
-The composite reliabilities for each subscale were; BIS = `r rst_rel$final[1]`, FFFS = `r rst_rel$final[2]`, GDP = `r rst_rel$final[3]`, I = `r rst_rel$final[4]`, RI = `r rst_rel$final[5]`, RR = `r rst_rel$final[6]`. Further details regarding the revised RST are in supplementary Appendix 1.
+The composite reliabilities for each subscale were; BIS = `r rst_rel$final[1]`, FFFS = `r rst_rel$final[2]`, GDP = `r rst_rel$final[3]`, I = `r rst_rel$final[4]`, RI = `r rst_rel$final[5]`, RR = `r rst_rel$final[6]`. Further details regarding the revised RST are in Supplementary Appendix 1.
 
 ### Heart rate variability   
 
@@ -217,7 +217,7 @@ The MyotonPRO has previously been reported to be a reliable and valid tool for t
 Postural stability was assessed with a modified version of the balance error scoring system (mBESS) based on the protocol recommended by @Hunt2009. 
 In total, each trial of the mBESS was performed without shoes [@McCrory2013] and included six stances in the following order; dominant leg (DL; standing on the dominant foot with the non-dominant foot at approximately 30-degrees of hip flexion and 45-degrees of knee flexion),
 non-dominant leg (NDL; standing on the non-dominant foot with the dominant foot at approximately 30-degrees of hip flexion and 45-degrees of knee flexion) 
-and tandem leg stance (TS; standing heel-to-toe with the non-dominant foot behind the dominant) on firm and foam (Alcan airex AG, Sins, Switzerland) surfaces respectively (supplementary figure 2). 
+and tandem leg stance (TS; standing heel-to-toe with the non-dominant foot behind the dominant) on firm and foam (Alcan airex AG, Sins, Switzerland) surfaces respectively (Supplementary figure 2). 
 To determine leg dominance, participants were asked their preferred leg to kick a ball to a target, and the chosen limb was labelled as dominant [cf. @VanCingel2017]. 
 Participants were asked to maintain each stance for a total of 20-seconds.
 Participants hands were placed on hips at the level of the iliac crests. 
@@ -239,9 +239,9 @@ The test-retest scoring of BESS resulted in a "good" to "excellent" ICC score (I
 
 ## Procedure   
 
-At the start of the academic year (September), coaches of sports teams at a British University and local sports clubs were contacted and informed about the study. With the coaches’ permission, the lead researcher attended training sessions to inform athletes about the overall purpose of the study and the requirements of participation. Athletes who met the participation criteria and volunteered to take part in the study were invited to attend scheduled testing sessions. A repeated measures prospective cohort design was used to assess athletes’ major life events, stress-related physiological markers and injury status over two consecutive 12-month periods. Each participant was asked to attend a total of three data collections over a 12-month period, with each data collection separated by a four-month interval (supplementary figure 3). Participants provided informed consent before data collection commenced.
+At the start of the academic year (September), coaches of sports teams at a British University and local sports clubs were contacted and informed about the study. With the coaches’ permission, the lead researcher attended training sessions to inform athletes about the overall purpose of the study and the requirements of participation. Athletes who met the participation criteria and volunteered to take part in the study were invited to attend scheduled testing sessions. A repeated measures prospective cohort design was used to assess athletes’ major life events, stress-related physiological markers and injury status over two consecutive 12-month periods. Each participant was asked to attend a total of three data collections over a 12-month period, with each data collection separated by a four-month interval (Supplementary figure 3). Participants provided informed consent before data collection commenced.
 
-For the first three data collections (T1, T2 and T3), participants followed the same protocol in a specific order (supplementary figure 4). 
+For the first three data collections (T1, T2 and T3), participants followed the same protocol in a specific order (Supplementary figure 4). 
 To ensure all measures could be collected within a viable time-frame, participants were separated into two groups. 
 The first group completed all computer-based measures followed by all physical measurements, whereas the second group completed all physical measurements followed by computer-based measures. 
 Participants were randomly assigned to one of the two groups and remained in those groups across all time points.
@@ -391,7 +391,7 @@ Preliminary network structures also revealed strong dependencies between the sam
 To obtain the final network, the appropriate blacklist and whitelists were provided and a Tabu search algorithm identified the remaining structure of the network. 
 The final network structure was obtained by averaging 1000 bootstrapped models [@Efron1993] to reduce the impact of locally optimal, but globally suboptimal network learning, and to obtain a more robust model [@Olmedilla2018]. Arcs that were present in at least 30% of the models were included in the averaged model. 
 The strength of each arc was determined by the percentage of models that the arc was included in, independent of the arc’s direction. An arc strength of 1 indicated that the arc was always present in the network, with the value decreasing as arcs were found in fewer networks. In the respective study arcs above 0.5 were considered “significant” with arcs below 0.5 and above 0.3 “non-significant” [@Scutari2013]. 
-Arcs below 0.3 were not included in the model. The full table of arc strengths for the first and second network are available in supplementary table 1 and supplementary table 3 respectively.
+Arcs below 0.3 were not included in the model. The full Table of arc strengths for the first and second network are available in Supplementary Table 1 and Supplementary Table 3 respectively.
 
 #### Network Inference   
 
@@ -504,7 +504,7 @@ str_cfinder <- function(from, to) {
 
 ## First network structure
 
-The first network structure obtained from the data (Fig \ref{fig:fig1}) examined the interactions between explanatory variables, independent variables and probability of injury across time points in the study. 
+The first network structure obtained from the data (Figure \ref{fig:fig1}) examined the interactions between explanatory variables, independent variables and probability of injury across time points in the study. 
 Strong sport-related and gender-based connections between several explanatory and independent variables were demonstrated for individual and team-based sports.
 The "ind_team" node had strong arcs to hours (`r str_finder("ind_team", "hours")`) and nlebase (`r str_finder("ind_team", "nlebase")`).
 Individual athletes were more likely to have "High" hours per week (`r x[5,1]`) compared to team-based athletes (`r x[6,1]`).
@@ -560,7 +560,7 @@ query2 <- newprobtable(
   dendroTools::round_df(2)
 ```
 
-The first conditional probability query (CPQ) investigated the variables in the Markov blanket for injured\_1 (Fig \ref{fig:fig2}), which contained hours spent training per week (hours), negative life events (nlelg_1), muscle stiffness (stiffness_1), current competitive level (clevel) and balance (balance_1). 
+The first conditional probability query (CPQ) investigated the variables in the Markov blanket for injured\_1 (Figure \ref{fig:fig2}), which contained hours spent training per week (hours), negative life events (nlelg_1), muscle stiffness (stiffness_1), current competitive level (clevel) and balance (balance_1). 
 The arc between nlelg_1 and injured_1 was fixed in the network, so has the maximum strength of 1.
 
 ```{r fig2, fig.cap="Markov blanket of injured\\_1. Arc strengths are included as arc labels.", out.width="100%", fig.align="center"}
@@ -587,7 +587,7 @@ query1 %>%
 ```
 
 The second CPQ investigated the outcome of injured_1 being "injured" conditional on all variables in the Markov blanket.
-The Markov blanket contained five nodes, each with two possible states resulting in $2^5$ combinations of variables, therefore only the three lowest and highest probabilities are shown in Table \ref{tab:table5} (complete results in supplementary table 4).
+The Markov blanket contained five nodes, each with two possible states resulting in $2^5$ combinations of variables, therefore only the three lowest and highest probabilities are shown in Table \ref{tab:table5} (complete results in Supplementary Table 4).
 The combination of lower competitive level, "High" hours per week, "Low" negative life events, "High" balance and "High" stiffness resulted in a probability of `r max(query2$prob)` for injured_1 being in the "injured" state.
 When all variables were in the "Low" state the probability of "injured" was approximately `r min(query2$prob)`
 
@@ -644,7 +644,7 @@ query4 <- newprobtable(tallc,
 ```
 
 
-The Markov blanket for injured_2 is shown in Figure \ref{fig:fig3} and contained gender, FFFS_1, stiffness_2, balance_2 and hrv_2 (table \ref{tab:table6}).
+The Markov blanket for injured_2 is shown in Figure \ref{fig:fig3} and contained gender, FFFS_1, stiffness_2, balance_2 and hrv_2 (Table \ref{tab:table6}).
 The arc between stiffness_2 $\rightarrow$ injured_2 was comparable to the arc between stiffness_1 $\rightarrow$ injured_1.
 Very weak arcs (0.3) between injured_2 $\rightarrow$ balance_2 and injured_2 $\rightarrow$ hrv_2 were also present in the Markov blanket for injured_2.
 Similar to injured_1, stiffness_2 doubled the probability of injured_2 being "injured" from `r query3[5,2]` in the "Low" state to `r query3[5,3]` in the "High" state.
@@ -678,7 +678,7 @@ fffs_query <- query4 %>%
 ```
 
 
-The three lowest and highest conditional probabilities based on all the variables in injured_2 Markov blanket are presented in Table \ref{tab:table7} (complete results in supplementary table 5).
+The three lowest and highest conditional probabilities based on all the variables in injured_2 Markov blanket are presented in Table \ref{tab:table7} (complete results in Supplementary Table 5).
 The combination of "Low" FFFS_1, "High" stiffness_2, "High" balance resulted in the greatest  probability of injured_2 being "injured", with the highest probability of injury being `r max(query4$prob)`.
 With all other variables held in the "High" state, the probability of injured_2 being "injured" rose from `r min(fffs_query$prob)` to `r max(fffs_query$prob)` when FFFS_1 was in the "Low" compared to "High" state.
 The combination of "Low" stiffness, "Low" balance and "High" FFFS resulted in the lowest probability of injured_2 being "injured".
@@ -720,7 +720,7 @@ bmtable <- fixef(bm1) %>%
 
 ```
 
-The second network structure (Fig \ref{fig:fig4}) examined changes within variables between time points and the probability of injury/
+The second network structure (Figure \ref{fig:fig4}) examined changes within variables between time points and the probability of injury/
 An arc between BIS $\rightarrow$ FFFS with strength `r str_cfinder("BIS", "FFFS")` was present in the network.
 Arcs between clevel $\rightarrow$ BIS and gender $\rightarrow$ stiffness had a strengths of `r str_cfinder("clevel", "BIS")` and `r str_cfinder("gender", "stiffness")` respectively
 Similarly, the arc between hrv $\rightarrow$ FFFS was `r str_cfinder("hrv","FFFS")`.
@@ -768,9 +768,9 @@ query6a <- query6 %>%
 ```
 
 
-The Markov blanket for the "injured" node contained previous injury, gender, training hours per week, stiffness and nlec (Fig \ref{fig:fig5}).
+The Markov blanket for the "injured" node contained previous injury, gender, training hours per week, stiffness and nlec (Figure \ref{fig:fig5}).
 For stiffness and nlec the values in the nodes represent the standardised change between time point.
-Combinations of nlec and stiffness at one SD below the mean change, at the mean change, and 1 SD above the mean change are presented in table \ref{tab:table9}.
+Combinations of nlec and stiffness at one SD below the mean change, at the mean change, and 1 SD above the mean change are presented in Table \ref{tab:table9}.
 Increases in muscle stiffness was found to increase the risk of injury, which was further increased when there were increases in NLE stress. 
 Changes in both nlec and stiffness of 1SD above the mean change resulted in a high probability of being injured (`r query6a[9,1]`) over the duration of the study.
 With stiffness held at the mean change, the probability of "injured" rose notably from `r query6a[4,1]` to `r query6a[6,1]` with nlec at 1 SD below an 1 SD above respectively.
@@ -857,7 +857,7 @@ query7 <- pmap_dfr(
 ```
 
 
-Table \ref{tab:table10} shows the three highest and lowest probabilities for injury for all variables in the Markov blanket (full results in supplementary table 7).
+Table \ref{tab:table10} shows the three highest and lowest probabilities for injury for all variables in the Markov blanket (full results in Supplementary Table 7).
 The combination of 1 SD above the mean change for nlec and stiffness and "High" hours per week and previous injury resulted in the highest probability that an injury would be sustained during the study (`r round(max(query7$prob), digits = 2)`).
 In contrast, below average changes in nlec and stiffness combined with "Low" hours per week and no previous injury resulted in the lowest probability of an injury (`r round(min(query7$prob), digits = 2)`).
 
@@ -973,3 +973,20 @@ HF, MG, LE and RM developed the concept for the paper. HF was the lead author fo
 
 <div id="refs" custom-style="Bibliography"></div>
 \endgroup
+
+This paper adopts a novel, interdisciplinary approach to explore the relationship between 
+psychosocial factors, physiological stress-related markers and occurrence of injury in athletes 
+using a repeated measures design across a 2-year data collection period. At three data 
+collection time-points, athletes completed measures of major life events, the reinforcement 
+sensitivity theory personality questionnaire, muscle stiffness, heart rate variability and 
+postural stability, and reported any injuries they had sustained since the last data collection. 
+Two Bayesian networks were used to examine the relationships between variables and model 
+the changes between data collection points in the study. Findings revealed muscle stiffness to 
+have the strongest relationship with injury occurrence, with high levels of stiffness increasing 
+the probability of sustaining an injury. Negative life events did not increase the probability 
+of injury occurrence at any single time-point; however, when examining changes between 
+time points, increases in negative life events did increase the probability of injury. In 
+addition, the combination of increases in negative life events and muscle stiffness resulted in 
+the greatest probability of sustaining an injury. Findings demonstrated the importance of 
+both an interdisciplinary approach and a repeated measures design to furthering our
+understanding of the relationship between stress-related markers and injury occurrence.
