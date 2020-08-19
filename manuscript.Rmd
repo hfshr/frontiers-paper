@@ -80,11 +80,12 @@ options(kableExtra.auto_format = FALSE)
 ```{r include=FALSE}
 options(scipen=999, digits = 2)
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
- source("r-files/functions.R")
- source("r-files/methods_code.R")
- source("r-files/results_code.R")
+ # source("r-files/functions.R")
+ # source("r-files/methods_code.R")
+ # source("r-files/results_code.R")
+# 
+load("all_data.RData")
 
-#load("all_data.RData")
 #myEnv <- new.env()
 #attach(myEnv, name="sourced_scripts")
 
@@ -960,10 +961,11 @@ The authors declare that the research was conducted in the absence of any
 commercial or financial relationships that could be construed as a potential
 conflict of interest.
 
-# Author Contributions  
+# Acknowledgements 
 
 HF, MG, LE and RM developed the concept for the paper. HF was the lead author for the paper and designed, collected and analysed that data. MG, LE and RM were co-authors on the paper. MS provided assistance with data analysis. LB provided assistance with data collection.
 
+The content of this manuscript has been published as part of the thesis of Harry Fisher, @Fisher2019.
 
 # References
 
@@ -974,19 +976,3 @@ HF, MG, LE and RM developed the concept for the paper. HF was the lead author fo
 <div id="refs" custom-style="Bibliography"></div>
 \endgroup
 
-This paper adopts a novel, interdisciplinary approach to explore the relationship between 
-psychosocial factors, physiological stress-related markers and occurrence of injury in athletes 
-using a repeated measures design across a 2-year data collection period. At three data 
-collection time-points, athletes completed measures of major life events, the reinforcement 
-sensitivity theory personality questionnaire, muscle stiffness, heart rate variability and 
-postural stability, and reported any injuries they had sustained since the last data collection. 
-Two Bayesian networks were used to examine the relationships between variables and model 
-the changes between data collection points in the study. Findings revealed muscle stiffness to 
-have the strongest relationship with injury occurrence, with high levels of stiffness increasing 
-the probability of sustaining an injury. Negative life events did not increase the probability 
-of injury occurrence at any single time-point; however, when examining changes between 
-time points, increases in negative life events did increase the probability of injury. In 
-addition, the combination of increases in negative life events and muscle stiffness resulted in 
-the greatest probability of sustaining an injury. Findings demonstrated the importance of 
-both an interdisciplinary approach and a repeated measures design to furthering our
-understanding of the relationship between stress-related markers and injury occurrence.

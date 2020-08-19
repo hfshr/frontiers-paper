@@ -1,0 +1,270 @@
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+\caption{\label{tab:table1}Participant characteristics.}
+\centering
+\begin{tabular}[t]{c|c|c}
+\hline
+\textbf{ } & \textbf{Female (n = 120)} & \textbf{Male (n = 231)}\\
+\hline
+\multicolumn{3}{l}{\textbf{Demographics M (SD)}}\\
+\hline
+\hspace{1em}Age (yrs) & 26.0 (11.3) & 20.2 (1.8)\\
+\hline
+\hspace{1em}Height (cm) & 167.4 (7.6) & 177.8 (7.8)\\
+\hline
+\hspace{1em}Body mass (kg) & 67.0 (9.5) & 82.0 (14.6)\\
+\hline
+\hspace{1em}Hours per week training & 8.5 (4.5) & 11.2 (8.8)\\
+\hline
+\multicolumn{3}{l}{\textbf{Current competitive level n (\%)}}\\
+\hline
+\hspace{1em}Recreational & 3 (4) & 7 (4)\\
+\hline
+\hspace{1em}University & 45 (56) & 141 (80)\\
+\hline
+\hspace{1em}National/International & 33 (41) & 28 (16)\\
+\hline
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+\caption{\label{tab:table2}Variables included in the final Bayesian network structure.}
+\centering
+\begin{tabular}[t]{l|>{\raggedright\arraybackslash}p{5.2cm}|c|c}
+\hline
+Variable & Definition & State 1 & State 2\\
+\hline
+clevel & Current competitive level & Club\_university\_county & National\_international\\
+\hline
+gender & Gender of the participant & Female & Male\\
+\hline
+hours & Number of hours spent training per week & 0-9 (Low) & >9-35 (High)\\
+\hline
+ind\_team & Participate in an individual or team based sport & Individual & Team\\
+\hline
+pi & Previous injury - Whether an injury had been sustained in the previous 12 months prior to the study & No Injury & Injury\\
+\hline
+nlebase & Untransformed NLE at TP 1 & 0-13 (Low) & >13-93 (High)\\
+\hline
+FFFS & Fight-Flight-Freeze System & 8-16 (Low) & >16-30 (High)\\
+\hline
+BIS & Behavioural Inhibition System & 17-38 (Low) & >38-68 (High)\\
+\hline
+RI & Reward Interest & 4-10 (Low) & >10-16 (High)\\
+\hline
+stiffness & Sum of all stiffness locations & 1543-2330 (Low) & >2330-4518 (High)\\
+\hline
+HRV & Root mean squared difference of successive RR intervals & 2.03-4.01 (Low) & >4.01-5.94 (High)\\
+\hline
+balance & Total balance score & 5-15 (Low) & >15-46 (High)\\
+\hline
+nlelg\_1 & Log NLE at TP 1 & 0-2.64 (Low) & >2.64-4.54 (High)\\
+\hline
+nlelg\_2 & Log NLE at TP 2 & 0-3.04 (Low) & >3.04-5.19 (High)\\
+\hline
+nlelg\_3 & Log NLE at TP 3 & 0-3.18 (Low) & >3.18-4.79 (High)\\
+\hline
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+\caption{\label{tab:table3}The number and percentage (\%) of types of injuries sustained by male and female participants.}
+\centering
+\begin{tabular}[t]{l|c|c|c|c}
+\hline
+\multicolumn{1}{c|}{\textbf{ }} & \multicolumn{2}{c|}{\textbf{Female}} & \multicolumn{2}{c}{\textbf{Male}} \\
+\cline{2-3} \cline{4-5}
+\textbf{} & \textbf{Lower body} & \textbf{Upper body} & \textbf{Lower body} & \textbf{Upper body}\\
+\hline
+Joint / ligament & 14 (36) & 5 (36) & 37 (43) & 14 (38)\\
+\hline
+Muscle / tendon & 17 (44) & 6 (43) & 45 (52) & 12 (32)\\
+\hline
+Other & 8 (21) & 3 (21) & 5 (6) & 11 (30)\\
+\hline
+\multicolumn{5}{l}{\textit{Note: }}\\
+\multicolumn{5}{l}{Other included bone, skin and brain injuries.}\\
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+\caption{\label{tab:table4}Probability of injured\_1 being in the ``injured'' state, conditional on each variable}
+\centering
+\begin{tabular}[t]{l|r|r}
+\hline
+\textbf{Variable} & \textbf{Low} & \textbf{High}\\
+\hline
+balance\_1 & 0.21 & 0.30\\
+\hline
+hours & 0.18 & 0.28\\
+\hline
+nlelg\_1 & 0.24 & 0.26\\
+\hline
+stiffness\_1 & 0.17 & 0.31\\
+\hline
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+\caption{\label{tab:table5}Highest and lowest probability of injured\_1 being in the ``injured'' state, conditional on the all variables in the Markov blanket for injured\_1.}
+\centering
+\begin{tabular}[t]{c|c|c|c|c|c}
+\hline
+\textbf{Probability} & \textbf{clevel} & \textbf{hours} & \textbf{nlelg\_1} & \textbf{stiffness\_1} & \textbf{balance\_1}\\
+\hline
+\multicolumn{6}{l}{\textbf{Highest}}\\
+\hline
+\hspace{1em}0.53 & club\_university\_county & High & Low & High & High\\
+\hline
+\hspace{1em}0.46 & national\_international & High & Low & High & Low\\
+\hline
+\hspace{1em}0.44 & national\_international & High & Low & High & High\\
+\hline
+\multicolumn{6}{l}{\textbf{Lowest}}\\
+\hline
+\hspace{1em}0.06 & national\_international & Low & Low & Low & Low\\
+\hline
+\hspace{1em}0.05 & national\_international & Low & Low & Low & High\\
+\hline
+\hspace{1em}0.04 & club\_university\_county & Low & Low & Low & Low\\
+\hline
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+\caption{\label{tab:table6}Probability of injured\_2 being in the ``injured'' state, conditional on each variable in the Markov blanket for injured\_2.}
+\centering
+\begin{tabular}[t]{c|c|c}
+\hline
+\textbf{Variable} & \textbf{Low} & \textbf{High}\\
+\hline
+balance\_2 & 0.17 & 0.27\\
+\hline
+FFFS\_1 & 0.30 & 0.11\\
+\hline
+hrv\_2 & 0.26 & 0.17\\
+\hline
+nlelg\_2 & 0.23 & 0.19\\
+\hline
+stiffness\_2 & 0.13 & 0.27\\
+\hline
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+\caption{\label{tab:table7}Highest and lowest probability of injured\_2 being in the ``injured'' state, conditional on the all variables in the Markov blanket for injured\_2.}
+\centering
+\begin{tabular}[t]{c|c|c|c|c|c}
+\hline
+\textbf{Probability} & \textbf{FFFS\_1} & \textbf{nlelg\_2} & \textbf{stiffness\_2} & \textbf{hrv\_2} & \textbf{balance\_2}\\
+\hline
+\multicolumn{6}{l}{\textbf{Highest}}\\
+\hline
+\hspace{1em}0.53 & Low & Low & High & Low & High\\
+\hline
+\hspace{1em}0.46 & Low & High & High & Low & High\\
+\hline
+\hspace{1em}0.41 & Low & Low & High & High & High\\
+\hline
+\multicolumn{6}{l}{\textbf{Lowest}}\\
+\hline
+\hspace{1em}0.06 & High & High & Low & Low & Low\\
+\hline
+\hspace{1em}0.05 & High & Low & Low & High & Low\\
+\hline
+\hspace{1em}0.04 & High & High & Low & High & Low\\
+\hline
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+\caption{\label{tab:table8}Estimate, error and 95\% credible intervals for the fixed effects in the linear model containing FFFS, BIS and hrv.}
+\centering
+\begin{tabular}[t]{l|c|c|c}
+\hline
+\textbf{Term} & \textbf{Estimate} & \textbf{Error} & \textbf{95\% CI}\\
+\hline
+Intercept & 0.00 & 0.03 & [-0.05, 0.06]\\
+\hline
+BIS & 0.41 & 0.03 & [0.36, 0.47]\\
+\hline
+hrv & -0.19 & 0.03 & [-0.25, -0.13]\\
+\hline
+BIS:hrv & -0.02 & 0.03 & [-0.08, 0.03]\\
+\hline
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+\caption{\label{tab:table9}The probability of injury with values of stiffness and nlec held at 1SD below the mean change, at the mean change and 1 SD above the mean change.}
+\centering
+\begin{tabular}[t]{c|c|c}
+\hline
+\textbf{Probability} & \textbf{nlec} & \textbf{Stiffness}\\
+\hline
+0.71 & +1SD & +1SD\\
+\hline
+0.64 & +1SD & mean\\
+\hline
+0.62 & +1SD & -1SD\\
+\hline
+0.52 & mean & +1SD\\
+\hline
+0.44 & mean & mean\\
+\hline
+0.43 & mean & -1SD\\
+\hline
+0.42 & -1SD & +1SD\\
+\hline
+0.35 & -1SD & mean\\
+\hline
+0.35 & -1SD & -1SD\\
+\hline
+\end{tabular}
+\end{table*}
+\begin{table*}[hbt]
+\ifnextchar[{\eatarg}{}
+[H]
+
+\caption{\label{tab:table10}Highest and lowest probability of injury, conditional on the all variables in the Markov blanket for ``injured''.}
+\centering
+\begin{tabular}[t]{c|c|c|c|c}
+\hline
+\textbf{Probability} & \textbf{hours} & \textbf{pi} & \textbf{nle} & \textbf{stiffness}\\
+\hline
+\multicolumn{5}{l}{\textbf{Highest}}\\
+\hline
+\hspace{1em}0.77 & High & injury & +1SD & +1SD\\
+\hline
+\hspace{1em}0.74 & High & no injury & +1SD & +1SD\\
+\hline
+\hspace{1em}0.72 & Low & injury & +1SD & +1SD\\
+\hline
+\multicolumn{5}{l}{\textbf{Lowest}}\\
+\hline
+\hspace{1em}0.15 & Low & no injury & -1SD & +1SD\\
+\hline
+\hspace{1em}0.13 & Low & no injury & -1SD & mean\\
+\hline
+\hspace{1em}0.11 & Low & no injury & -1SD & -1SD\\
+\hline
+\end{tabular}
+\end{table*}
