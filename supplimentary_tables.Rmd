@@ -9,17 +9,21 @@ header-includes:
   - \pagenumbering{gobble}
   - \usepackage{caption}
   - \captionsetup[table]{labelformat=empty}
+  - \usepackage{pdflscape}
+  - \newcommand{\blandscape}{\begin{landscape}}
+  - \newcommand{\elandscape}{\end{landscape}}
 knit: (function(inputFile, encoding) {
   rmarkdown::render(inputFile, encoding = encoding, output_dir = "supplimentary") })
 ---
 
-```{r include=FALSE}
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
-pacman::p_load(tidyverse, knitr, kableExtra, qwraps2, brms, broom.mixed, bnlearn)
+pacman::p_load(tidyverse, knitr, kableExtra, qwraps2, brms, broom.mixed, bnlearn, janitor)
 
-source("r-files/functions.R")
-source("r-files/methods_code.R")
-source("r-files/results_code.R")
+# source("r-files/functions.R")
+# source("r-files/methods_code.R")
+# source("r-files/results_code.R")
+load("all_data2.RData")
 ```
 
 
@@ -117,14 +121,76 @@ strchange %>%
 
 \newpage
 
-\textbf{S4 Table. Probabilities of injury conditional on the variables in the Markov blanket for injured\_1.}
+\textbf{S4 Table. Breakdown of injury count by sport and injury type (chronic or acute)}
+
+```{r results = 'asis'}
+
+injtable %>% 
+  left_join(datanet %>% 
+              select(id, sportg, time), c("id", "time")) %>% 
+  tabyl(sportg, acu_over) %>% 
+  adorn_percentages() %>% 
+  adorn_pct_formatting() %>% 
+  adorn_ns() %>% 
+  select(sport = sportg, everything()) %>% 
+  mutate(across(.fns = ~str_replace(.x, "%", "\\\\%"))) %>% 
+  kable(
+    caption = "",
+    escape = F,
+    format = "latex",
+    align = "lcc"
+  ) %>% 
+  kable_styling(latex_options = ("HOLD_position"))
+```
+
+\newpage
+\blandscape
+
+\textbf{S5 Table. Breakdown of injury count by sport and injury location}
+
+```{r results = 'asis'}
+
+injtable %>% 
+  left_join(datanet %>% 
+              select(id, sportg, time), c("id", "time")) %>% 
+  mutate(bodypart = ifelse(bodypart %in% c("foot_toe", "ankle_achilles"), "foot_ankle", bodypart)) %>% 
+  tabyl(sportg, bodypart) %>% 
+  adorn_totals() %>% 
+  adorn_percentages() %>% 
+  adorn_pct_formatting() %>% 
+  adorn_ns() %>% 
+  select(sport = sportg,  
+         `foot / ankle` = foot_ankle, 
+         `lower leg` = lowerleg, 
+         knee,
+         `upper leg` = upperleg, 
+         hip, 
+         torso, 
+         `upper arm / shoulder` = upperarm_shoulder,
+         `elbow / lower arm` = elbow_lowerarm_hand, 
+         `head / neck` = head_neck) %>% 
+  mutate(across(.fns = ~str_replace(.x, "%", "\\\\%"))) %>% 
+  kable(
+    caption = "",
+    escape = F,
+    format = "latex",
+    align = "lccccccccc"
+  ) %>% 
+  kable_styling(latex_options = ("HOLD_position"))
+```
+
+\elandscape
+
+\newpage
+
+\textbf{S6 Table. Probabilities of injury conditional on the variables in the Markov blanket for injured\_1.}
 
 ```{r results='asis'}
 set.seed(1001)
 
 tab3 <- newprobtable(
   tallc,
-  c("balance_1", "stiffness_1", "nlelg_1", "hours", "clevel"),
+  c("balance_1", "stiffness_1", "NLE_1", "hours", "clevel"),
   "injured_1",
   "injured",
   avg30
@@ -146,7 +212,7 @@ kable(
 
 \newpage
 
-\textbf{S5 Table. Probabilities of injury conditional on the variables in the Markov blanket for injured\_2.}
+\textbf{S7 Table. Probabilities of injury conditional on the variables in the Markov blanket for injured\_2.}
 
 ```{r results='asis'}
 
@@ -154,7 +220,7 @@ set.seed(1002)
 
 tab4 <- newprobtable(
   tallc,
-  c("balance_2", "stiffness_2", "nlelg_2", "FFFS_1", "hrv_2"),
+  c("balance_2", "stiffness_2", "NLE_2", "FFFS_1", "HRV_2"),
   "injured_2",
   "injured",
   avg30
@@ -178,7 +244,7 @@ tab4 <- newprobtable(
 
 \newpage
 
-\textbf{S6 Table. Highest and lowest probability of injury, conditional on the all variables in the Markov blanket for ``injured''.}
+\textbf{S8 Table. Highest and lowest probability of injury, conditional on the all variables in the Markov blanket for ``injured''.}
 
 ```{r results='asis'}
 set.seed(1007)

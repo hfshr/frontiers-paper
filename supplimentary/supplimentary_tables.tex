@@ -62,6 +62,9 @@
 \pagenumbering{gobble}
 \usepackage{caption}
 \captionsetup[table]{labelformat=empty}
+\usepackage{pdflscape}
+\newcommand{\blandscape}{\begin{landscape}}
+\newcommand{\elandscape}{\end{landscape}}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
@@ -86,7 +89,7 @@
 
 \begin{table}[H]
 
-\caption{\label{tab:unnamed-chunk-2}}
+\caption{\label{tab:unnamed-chunk-1}}
 \centering
 \begin{tabular}[t]{>{\raggedleft\arraybackslash}p{0.3cm}|>{\raggedright\arraybackslash}p{4.8cm}|>{\raggedright\arraybackslash}p{4.8cm}|>{\raggedright\arraybackslash}p{4.8cm}}
 \hline
@@ -118,23 +121,23 @@ Q & Original & Students & Non-students\\
 \textbf{S2 Table. All arc strengths greater than 0.3 included in the first network.}
 
 \begin{longtable}[t]{l|l|r|r}
-\caption{\label{tab:unnamed-chunk-3}}\\
+\caption{\label{tab:unnamed-chunk-2}}\\
 \hline
 from & to & strength & direction\\
 \hline
 \endfirsthead
-\caption[]{ S2 Table continued}\\
+\caption[]{ S3 Table continued}\\
 \hline
 from & to & strength & direction\\
 \hline
 \endhead
-nlebase & nlelg\_1 & 1.00 & 1.00\\
+nlebase & NLE\_1 & 1.00 & 1.00\\
 \hline
-nlebase & nlelg\_2 & 1.00 & 1.00\\
+nlebase & NLE\_2 & 1.00 & 1.00\\
 \hline
-nlelg\_1 & injured\_1 & 1.00 & 1.00\\
+NLE\_1 & injured\_1 & 1.00 & 1.00\\
 \hline
-nlelg\_2 & injured\_2 & 1.00 & 1.00\\
+NLE\_2 & injured\_2 & 1.00 & 1.00\\
 \hline
 BIS\_1 & FFFS\_1 & 0.98 & 0.70\\
 \hline
@@ -156,9 +159,9 @@ gender & stiffness\_1 & 0.71 & 1.00\\
 \hline
 pi & stiffness\_1 & 0.57 & 1.00\\
 \hline
-nlelg\_1 & BIS\_1 & 0.55 & 0.97\\
+NLE\_1 & BIS\_1 & 0.55 & 0.97\\
 \hline
-BIS\_1 & nlelg\_1 & 0.55 & 0.03\\
+BIS\_1 & NLE\_1 & 0.55 & 0.03\\
 \hline
 FFFS\_1 & BIS\_2 & 0.52 & 1.00\\
 \hline
@@ -180,23 +183,23 @@ hours & injured\_1 & 0.42 & 1.00\\
 \hline
 clevel & RI\_2 & 0.42 & 1.00\\
 \hline
-nlebase & hrv\_1 & 0.41 & 1.00\\
+nlebase & HRV\_1 & 0.41 & 1.00\\
 \hline
-hours & hrv\_1 & 0.40 & 1.00\\
+hours & HRV\_1 & 0.40 & 1.00\\
 \hline
-hrv\_1 & nlelg\_2 & 0.39 & 1.00\\
+HRV\_1 & NLE\_2 & 0.39 & 1.00\\
 \hline
 gender & FFFS\_1 & 0.37 & 1.00\\
 \hline
-injured\_2 & hrv\_2 & 0.37 & 0.89\\
+injured\_2 & HRV\_2 & 0.37 & 0.89\\
 \hline
-nlelg\_2 & BIS\_2 & 0.37 & 0.96\\
+NLE\_2 & BIS\_2 & 0.37 & 0.96\\
 \hline
-BIS\_2 & nlelg\_2 & 0.37 & 0.04\\
+BIS\_2 & NLE\_2 & 0.37 & 0.04\\
 \hline
-hrv\_2 & injured\_2 & 0.37 & 0.11\\
+HRV\_2 & injured\_2 & 0.37 & 0.11\\
 \hline
-pi & nlelg\_2 & 0.36 & 1.00\\
+pi & NLE\_2 & 0.36 & 1.00\\
 \hline
 RI\_1 & BIS\_1 & 0.36 & 0.41\\
 \hline
@@ -238,7 +241,7 @@ ind\_team & pi & 0.30 & 0.54\\
 \textbf{S3 Table. All arc strengths greater than 0.3 included in the second network.}
 
 \begin{longtable}[t]{l|l|r|r}
-\caption{\label{tab:unnamed-chunk-4}}\\
+\caption{\label{tab:unnamed-chunk-3}}\\
 \hline
 from & to & strength & direction\\
 \hline
@@ -252,9 +255,9 @@ injured & stiffness & 0.67 & 1.00\\
 \hline
 clevel & BIS & 0.60 & 1.00\\
 \hline
-hrv & FFFS & 0.58 & 0.69\\
+HRV & FFFS & 0.58 & 0.69\\
 \hline
-FFFS & hrv & 0.58 & 0.31\\
+FFFS & HRV & 0.58 & 0.31\\
 \hline
 gender & stiffness & 0.56 & 1.00\\
 \hline
@@ -272,21 +275,92 @@ RI & BIS & 0.35 & 0.29\\
 \hline
 BIS & RI & 0.35 & 0.71\\
 \hline
-pi & hrv & 0.33 & 1.00\\
+pi & HRV & 0.33 & 1.00\\
 \hline
 \end{longtable}
 
 \newpage
 
-\textbf{S4 Table. Probabilities of injury conditional on the variables in the Markov blanket for injured\_1.}
+\textbf{S4 Table. Breakdown of injury count by sport and injury type (chronic or acute)}
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-4}}
+\centering
+\begin{tabular}[t]{l|c|c}
+\hline
+sport & acute & chronic\\
+\hline
+athletics & 43.9\% (18) & 56.1\% (23)\\
+\hline
+basketball & 75.0\%  (6) & 25.0\%  (2)\\
+\hline
+cricket & 40.0\%  (4) & 60.0\%  (6)\\
+\hline
+football & 76.9\% (20) & 23.1\%  (6)\\
+\hline
+gym & 25.0\%  (1) & 75.0\%  (3)\\
+\hline
+hockey & 88.9\% (16) & 11.1\%  (2)\\
+\hline
+netball & 72.7\%  (8) & 27.3\%  (3)\\
+\hline
+other & 50.0\%  (3) & 50.0\%  (3)\\
+\hline
+rugby & 88.7\% (47) & 11.3\%  (6)\\
+\hline
+\end{tabular}
+\end{table}
+
+\newpage
+\begin{landscape}
+
+\textbf{S5 Table. Breakdown of injury count by sport and injury location}
 
 \begin{table}[H]
 
 \caption{\label{tab:unnamed-chunk-5}}
 \centering
+\begin{tabular}[t]{l|c|c|c|c|c|c|c|c|c}
+\hline
+sport & foot / ankle & lower leg & knee & upper leg & hip & torso & upper arm / shoulder & elbow / lower arm & head / neck\\
+\hline
+athletics & 36.6\% (15) & 14.6\%  (6) & 9.8\%  (4) & 17.1\%  (7) & 7.3\% (3) & 9.8\%  (4) & 4.9\%  (2) & 0.0\% (0) & 0.0\%  (0)\\
+\hline
+basketball & 25.0\%  (2) & 0.0\%  (0) & 12.5\%  (1) & 0.0\%  (0) & 0.0\% (0) & 37.5\%  (3) & 25.0\%  (2) & 0.0\% (0) & 0.0\%  (0)\\
+\hline
+cricket & 0.0\%  (0) & 10.0\%  (1) & 20.0\%  (2) & 30.0\%  (3) & 0.0\% (0) & 30.0\%  (3) & 0.0\%  (0) & 10.0\% (1) & 0.0\%  (0)\\
+\hline
+football & 15.4\%  (4) & 7.7\%  (2) & 15.4\%  (4) & 26.9\%  (7) & 0.0\% (0) & 0.0\%  (0) & 15.4\%  (4) & 3.8\% (1) & 15.4\%  (4)\\
+\hline
+gym & 0.0\%  (0) & 0.0\%  (0) & 25.0\%  (1) & 0.0\%  (0) & 25.0\% (1) & 25.0\%  (1) & 25.0\%  (1) & 0.0\% (0) & 0.0\%  (0)\\
+\hline
+hockey & 27.8\%  (5) & 16.7\%  (3) & 11.1\%  (2) & 22.2\%  (4) & 0.0\% (0) & 5.6\%  (1) & 0.0\%  (0) & 11.1\% (2) & 5.6\%  (1)\\
+\hline
+netball & 36.4\%  (4) & 0.0\%  (0) & 27.3\%  (3) & 9.1\%  (1) & 9.1\% (1) & 9.1\%  (1) & 9.1\%  (1) & 0.0\% (0) & 0.0\%  (0)\\
+\hline
+other & 16.7\%  (1) & 0.0\%  (0) & 16.7\%  (1) & 0.0\%  (0) & 0.0\% (0) & 50.0\%  (3) & 16.7\%  (1) & 0.0\% (0) & 0.0\%  (0)\\
+\hline
+rugby & 18.9\% (10) & 3.8\%  (2) & 26.4\% (14) & 17.0\%  (9) & 5.7\% (3) & 1.9\%  (1) & 17.0\%  (9) & 0.0\% (0) & 9.4\%  (5)\\
+\hline
+Total & 23.2\% (41) & 7.9\% (14) & 18.1\% (32) & 17.5\% (31) & 4.5\% (8) & 9.6\% (17) & 11.3\% (20) & 2.3\% (4) & 5.6\% (10)\\
+\hline
+\end{tabular}
+\end{table}
+
+\end{landscape}
+
+\newpage
+
+\textbf{S6 Table. Probabilities of injury conditional on the variables in the Markov blanket for injured\_1.}
+
+\begin{table}[H]
+
+\caption{\label{tab:unnamed-chunk-6}}
+\centering
 \begin{tabular}[t]{l|l|l|l|l|l}
 \hline
-prob & clevel & hours & nlelg\_1 & stiffness\_1 & balance\_1\\
+prob & clevel & hours & NLE\_1 & stiffness\_1 & balance\_1\\
 \hline
 0.53 & club\_university\_county & High & Low & High & High\\
 \hline
@@ -357,15 +431,15 @@ prob & clevel & hours & nlelg\_1 & stiffness\_1 & balance\_1\\
 
 \newpage
 
-\textbf{S5 Table. Probabilities of injury conditional on the variables in the Markov blanket for injured\_2.}
+\textbf{S7 Table. Probabilities of injury conditional on the variables in the Markov blanket for injured\_2.}
 
 \begin{table}[H]
 
-\caption{\label{tab:unnamed-chunk-6}}
+\caption{\label{tab:unnamed-chunk-7}}
 \centering
 \begin{tabular}[t]{r|l|l|l|l|l}
 \hline
-prob & FFFS\_1 & nlelg\_2 & stiffness\_2 & hrv\_2 & balance\_2\\
+prob & FFFS\_1 & NLE\_2 & stiffness\_2 & HRV\_2 & balance\_2\\
 \hline
 0.53 & Low & Low & High & Low & High\\
 \hline
@@ -436,7 +510,7 @@ prob & FFFS\_1 & nlelg\_2 & stiffness\_2 & hrv\_2 & balance\_2\\
 
 \newpage
 
-\textbf{S6 Table. Highest and lowest probability of injury, conditional on the all variables in the Markov blanket for ``injured''.}
+\textbf{S8 Table. Highest and lowest probability of injury, conditional on the all variables in the Markov blanket for ``injured''.}
 
 \begin{table}[H]
 \centering
