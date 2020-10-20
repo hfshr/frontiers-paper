@@ -142,9 +142,9 @@ icc <- irr::icc(d, model = "twoway", type = "agreement")
 
 
 
-data <- read_csv("data/full_data_raw.csv") %>%
+data <- read_csv("data/fulldatajoined.csv") %>%
   filter(time != 4) %>% 
-  rename(hrv= rmssd)# remove last time point as only questionnaire data is available
+  rename(HRV= rmssd)# remove last time point as only questionnaire data is available
 
 ####################### Cleaning up variables + impute #################################
 
@@ -183,7 +183,7 @@ voi <- data %>%
     stiffness,
     frequency,
     decrement,
-    hrv,
+    HRV,
     sdnn,
     meanHR,
     bis,
@@ -203,16 +203,16 @@ ids <- data %>%
 ## check how many missing
 
 missingcount <- tibble(
-  var = c("hrv", "myoton"),
-  missing = c(map(voi, ~ sum(is.na(.)))$hrv, map(voi, ~ sum(is.na(.)))$stiffness),
+  var = c("HRV", "myoton"),
+  missing = c(map(voi, ~ sum(is.na(.)))$HRV, map(voi, ~ sum(is.na(.)))$stiffness),
   total = c(668, 668)
 ) %>%
   mutate(percdiff = missing / total * 100)
 
 missingtot <- voi %>%
-  select(id, hrv, stiffness) %>%
+  select(id, HRV, stiffness) %>%
   mutate(
-    hrv = tidyr::replace_na(hrv, 0),
+    HRV = tidyr::replace_na(HRV, 0),
     stiffness = tidyr::replace_na(stiffness, 0)
   )
 
@@ -299,7 +299,7 @@ datanet <- datanew %>%
   ungroup() %>%
   mutate(negsev = ifelse(negsev == "NaN", 0, negsev)) %>%
   ungroup() %>%
-  mutate(hrv = round(log(hrv), digits = 2)) %>%
+  mutate(HRV = round(log(HRV), digits = 2)) %>%
   group_by(time) %>%
   mutate(
     totneg_d = splitr(totneg),
@@ -332,7 +332,7 @@ nlename <- list(
       GDP,
       RI,
       sdnn,
-      hrv,
+      HRV,
       balance,
       FFFS
     ) %>% names(),
@@ -355,7 +355,7 @@ nlename <- list(
       GDP,
       RI,
       sdnn,
-      hrv,
+      HRV,
       balance,
       FFFS
     ) %>% names(),
@@ -379,29 +379,29 @@ nlename <- list(
       GDP,
       RI,
       sdnn,
-      hrv,
+      HRV,
       balance,
       FFFS
     ) %>% names()
 )
 rstnames <- list(BAS = datanet %>% 
                    select(id, time, injured, nlelg, tlelg, pi, nlebase, gender, ind_team, clevel, hours, BIS, stiffness, 
-                          BAS, hrv,sdnn, balance, FFFS) %>% names(),
+                          BAS, HRV,sdnn, balance, FFFS) %>% names(),
                  RI = datanet %>% 
                    select(id, time, injured, nlelg, tlelg, pi, nlebase, gender, ind_team, clevel, hours, BIS, stiffness, 
-                          RI, hrv,sdnn, balance, FFFS) %>% names(),
+                          RI, HRV,sdnn, balance, FFFS) %>% names(),
                  GDP = datanet %>% 
                    select(id, time, injured,nlelg,tlelg, pi, nlebase, gender, ind_team, clevel, hours, BIS, stiffness, 
-                          GDP, hrv,sdnn, balance, FFFS) %>% names(),
+                          GDP, HRV,sdnn, balance, FFFS) %>% names(),
                  I = datanet %>% 
                    select(id, time, injured, nlelg,tlelg, pi, nlebase, gender, ind_team, clevel, hours, BIS, stiffness, 
-                          I, hrv,sdnn, balance, FFFS) %>% names(),
+                          I, HRV,sdnn, balance, FFFS) %>% names(),
                  RR = datanet %>% 
                    select(id, time, injured,nlelg,tlelg, pi, nlebase, gender, ind_team, clevel, hours, BIS, stiffness, 
-                          RR, hrv,sdnn, balance, FFFS) %>% names(),
+                          RR, HRV,sdnn, balance, FFFS) %>% names(),
                  ALL = datanet %>% 
                    select(id, time, injured, nlelg,tlelg, pi, nlebase, gender, ind_team, clevel, hours, BIS, stiffness, 
-                          RR, I, GDP, RI, hrv,sdnn, balance, FFFS) %>% names())
+                          RR, I, GDP, RI, HRV,sdnn, balance, FFFS) %>% names())
 
 scorer <- function(names) {
   test <- map(names, ~ networkmaker(.x))
@@ -434,7 +434,7 @@ networkdata <- datanet %>%
     stiffness,
     RI,
     BIS,
-    hrv,
+    HRV,
     balance,
     FFFS
   ) %>%
@@ -460,7 +460,7 @@ varcutoffs <- tallc %>%
     "Gender of the participant",
     "Number of hours spent training per week",
     "Participate in an individual or team based sport",
-    "Previous injury - Whether an injury had been sustained in the previous 12 months prior to the study"
+    "Whether an injury had been sustained in the previous 12 months prior to the study"
   )) %>%
   mutate_at(vars(state_1, state_2), funs(str_to_title(.))) %>%
   select(var, Definition, state_1, state_2) %>%
@@ -483,7 +483,7 @@ varcutoffs <- tallc %>%
         I,
         GDP,
         BIS,
-        hrv,
+        HRV,
         sdnn,
         bal_asym,
         balance,
@@ -542,7 +542,7 @@ varcutoffs <- tallc %>%
           "I",
           "GDP",
           "stiffness",
-          "hrv",
+          "HRV",
           "sdnn",
           "bal_asym",
           "balance"
@@ -550,7 +550,7 @@ varcutoffs <- tallc %>%
       )) %>%
       arrange(var) %>%
       mutate(Definition = c(
-        "Untransformed NLE at TP 1",
+        "Untransformed NLE at the first time point",
         "Fight-Flight-Freeze System",
         "Behavioural Inhibition System",
         "Reward Interest",
@@ -578,14 +578,19 @@ varcutoffs <- tallc %>%
     state_1 = ifelse(tempid == 3, "0-9 (Low)", state_1),
     state_2 = ifelse(tempid == 3, ">9-35 (High)", state_2)
   ) %>%
-  select(-tempid)
+  select(-tempid) %>% 
+  mutate(var = case_when(str_detect(var, "nlelg") ~ str_replace(var, "nlelg", "NLE"),
+                         str_detect(var, "tlelg") ~ str_replace(var, "tlelg", "TLE"),
+                         TRUE ~ var))
 
-varcutoffs[18, 2] <- "Log NLE at TP 1"
-varcutoffs[19, 2] <- "Log NLE at TP 2"
-varcutoffs[20, 2] <- "Log NLE at TP 3"
-varcutoffs[21, 2] <- "Log TLE at TP 1"
-varcutoffs[22, 2] <- "Log TLE at TP 2"
-varcutoffs[23, 2] <- "Log TLE at TP 3"
+varcutoffs[18, 2] <- "Log Negative life events (NLE) at time 1"
+varcutoffs[19, 2] <- "Log NLE at time 2"
+varcutoffs[20, 2] <- "Log NLE at time 3"
+varcutoffs[21, 2] <- "Log Total life events (TLE) at time 1"
+varcutoffs[22, 2] <- "Log TLE at time 2"
+varcutoffs[23, 2] <- "Log TLE at time 3"
+
+
 
 
 ####

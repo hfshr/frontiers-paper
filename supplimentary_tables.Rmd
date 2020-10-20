@@ -23,7 +23,7 @@ pacman::p_load(tidyverse, knitr, kableExtra, qwraps2, brms, broom.mixed, bnlearn
 # source("r-files/functions.R")
 # source("r-files/methods_code.R")
 # source("r-files/results_code.R")
-load("all_data2.RData")
+load("all_data2x.RData")
 ```
 
 
@@ -83,8 +83,31 @@ full <- str %>%
   filter(strength > 0.299 & direction != 0) %>%
   arrange(-strength) %>%
   `colnames<-`(str_replace_all(colnames(.), "_", "\\\\_")) %>%
+    mutate(across(1:2, .fns = ~case_when(.x == "pi" ~ "Previous\ninjury",
+                                       .x == "gender" ~ "Gender",
+                                       .x == "clevel" ~ "Competitive\nlevel",
+                                       .x == "hours" ~"Training hours",
+                                       .x == "ind_team" ~ "Sport type",
+                                       .x == "nlebase" ~ "Baseline\nNLE",
+                                       .x == "stiffness_1" ~ "Stiffness_1",
+                                       .x == "stiffness_2" ~ "Stiffness_2",
+                                       .x == "NLE_1" ~ "Negative life\nevents_1",
+                                       .x == "NLE_2" ~ "Negative life\nevents_2",
+                                       .x == "RI_1" ~ "Reward\nInterest_1",
+                                       .x == "RI_2" ~ "Reward\nInterest_2",
+                                       .x == "BIS_1" ~ "Behavioural\nInhibition\nSystem_1",
+                                       .x == "BIS_2" ~ "Behavioural\nInhibition\nSystem_2",
+                                       .x == "HRV_1" ~ "Heart rate\nvariability_1",
+                                       .x == "HRV_2" ~ "Heart rate\nvariability_2",
+                                       .x == "balance_1" ~ "Balance_1",
+                                       .x == "balance_2" ~ "Balance_2",
+                                       .x == "FFFS_1" ~ "Fight-Flight-\nFreeze\nSystem_1",
+                                       .x == "FFFS_2" ~ "Fight-Flight-\nFreeze\nSystem_2",
+                                       .x == "injured_1" ~ "Injured_1",
+                                       .x == "injured_2" ~ "Injured_2"
+  ))) %>% 
    mutate_at(c("from", "to"), ~str_replace_all(., "_", "\\\\_")) %>% 
-  dendroTools::round_df(2) 
+  dendroTools::round_df(2)
 
   kable(
     full,
@@ -106,7 +129,19 @@ full <- str %>%
 ```{r results='asis'}
 strchange %>%
   filter(strength > 0.299 & direction != 0) %>%
-  arrange(-strength) %>%
+  arrange(-strength) %>% 
+  mutate(across(1:2, .fns = ~case_when(.x == "pi" ~ "Previous\ninjury",
+                                       .x == "gender" ~ "Gender",
+                                       .x == "clevel" ~ "Competitive\nlevel",
+                                       .x == "hours" ~"Training\nhours",
+                                       .x == "stiffness" ~ "Stiffness",
+                                       .x == "nlec" ~ "Negative life\nevents",
+                                       .x == "RI" ~ "Reward\ninterest",
+                                       .x == "BIS" ~ "Behavioural\nInhibition\nSystem",
+                                       .x == "HRV" ~ "Heart rate\nvariability",
+                                       .x == "balance" ~ "Balance",
+                                       .x == "FFFS" ~ "Fight-Flight-\nFreeze\nSystem",
+                                       .x == "injured" ~ "Injured"))) %>%
   `colnames<-`(str_replace_all(colnames(.), "_", "\\\\_")) %>%
    mutate_at(c("from", "to"), ~str_replace_all(., "_", "\\\\_")) %>% 
   dendroTools::round_df(2) %>% 
@@ -199,13 +234,18 @@ tab3 <- newprobtable(
   select(outcome, everything()) %>%
   dendroTools::round_df(2) %>% 
   select(7, 2:6) %>% 
+    rename(Probability = "prob",
+         "Competitive level" = clevel,
+         "Training hours" = hours,
+         "Negative life events_1" = "NLE_1") %>% 
   `colnames<-`(str_replace_all(colnames(.), "_", "\\\\_")) %>% 
   mutate_all(~str_replace_all(., "_", "\\\\_"))
 
 kable(
   tab3,
   caption = "",
-    escape = F
+    escape = F,
+  align = "c"
 ) %>%
   kable_styling(latex_options = "HOLD_position")
 ```
@@ -229,15 +269,24 @@ tab4 <- newprobtable(
   select(outcome, everything()) %>%
   dendroTools::round_df(2) %>%
   select(7, 2:6) %>%
+    rename(Probability = "prob",
+         "Fight-Flight-Freeze System_1" = FFFS_1,
+         "Negative life events_2 "= NLE_2,
+         "Heart rate variability_2" = "HRV_2",
+         Stiffness_2 = stiffness_2,
+         Balance_2 = balance_2) %>%
   `colnames<-`(str_replace_all(colnames(.), "_", "\\\\_")) 
 
 
   kable(
     tab4,
     caption = "",
-    escape = F
+    escape = F,
+    align = "c"
   ) %>%
-  kable_styling(latex_options = "HOLD_position")
+  kable_styling(latex_options = "HOLD_position") %>% 
+      column_spec(c(2,3),width = "2cm") %>% 
+  column_spec(5, width = "2.8cm")
 
 ```
 
@@ -284,14 +333,17 @@ query7 %>%
     . == -1 ~ "-1SD"
   )) %>%
   select(prob, hours, pi, nle, stiffness) %>%
-  rename(Probability = "prob") %>%
+    rename(Probability = "prob",
+         "Training hours" = hours,
+         "Previous injury" = pi,
+         "Negative life events" = nle,
+         Stiffness = stiffness) %>%
   dendroTools::round_df(2) %>%
   kable(
     .,
     align = "ccccc"
   ) %>%
   kable_styling(latex_options = "HOLD_position") %>%
-
   row_spec(0,bold=TRUE)
 ```
 

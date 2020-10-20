@@ -80,7 +80,7 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
 # source("r-files/methods_code.R")
 # source("r-files/results_code.R")
 
-load("all_data2.RData")
+load("all_data2x.RData")
 #myEnv <- new.env()
 #attach(myEnv, name="sourced_scripts")
 
@@ -177,7 +177,7 @@ All participants were injury free (no modifications to their usual training rout
 
 kable(
   npars %>% 
-    mutate(name = ifelse(name == "Hours per week", "Hours per week training", name)) %>%
+    mutate(name = ifelse(name == "Hours per week", "Training hours per week", name)) %>%
     slice(c(1,3,8, 4, 9:11)) %>% 
   mutate(name = case_when(name == "Age" ~ "Age (yrs)",
                           name == "Height" ~ "Height (cm)",
@@ -185,7 +185,7 @@ kable(
                           TRUE ~ name)),
   caption = "Participant characteristics.",
   col.names = c(" ","Female (n = 120)", "Male (n = 231)"),
-  align = "c",
+  align = "lccc",
   escape = F
 ) %>%
   kable_styling(latex_options = "HOLD_position") %>%
@@ -383,8 +383,8 @@ A median split technique was used to discretise the data used in the network int
 All variables apart from negative and total life events were approximately normally distributed and required no further transformation prior to the median split.
 For the LESCA questionnaire data, a cumulative total of the current, and previous time points was calculated at each time point to account for the potential continuing effect of the life events experienced by athletes over time.
 Given the limited support for a relationship between positive life events and injury [@Williams2007], only negative and total life events were included in the network.
-Cumulative negative, and cumulative total life event scores at each time point were first log scaled so distributions were approximately normal, and then binarised using the median at each time point (nlelg and tlelg respectively).
-In addition to the log scaled cumulative values, an untransformed negative life event score from the first time point was included as an additional variable based on previous literature that indicates this variable should have a strong relationship with injury outcome [@Ivarsson2017].
+Cumulative negative, and cumulative total life event scores at each time point were first log scaled so distributions were approximately normal, and then binarised using the median at each time point.
+In addition to the log scaled cumulative values, an untransformed negative life event score from the first time point (baseline NLE) was included as an additional variable based on previous literature that indicates this variable should have a strong relationship with injury outcome [@Ivarsson2017].
 
 #### Network structure
 
@@ -399,7 +399,7 @@ Independent variable names were suffixed with \_1 for time point T, and \_2 for 
 Formatting the data in this way meant participants who completed T1 and T2, but did not complete T3, could still be included in the analysis.
 In addition to the blacklisted arcs between T2 $\rightarrow$ T1 and T3 $\rightarrow$ T2, the direction of arcs was restricted between independent variables and explanatory variables (e.g., independent $\rightarrow$ explanatory); however, arcs were not restricted between explanatory $\rightarrow$ independent variables.
 Finally, arc direction was restricted between specific nodes within the explanatory variables.
-Arcs from competitive level $\rightarrow$ gender, baseline negative life events (NLE) $\rightarrow$ gender and baseline NLE $\rightarrow$ sport type (individual or team) were included in the blacklist, as arcs in these directions did not make logical sense.
+Arcs from competitive level $\rightarrow$ gender, baseline NLE $\rightarrow$ gender and baseline NLE $\rightarrow$ sport type (individual or team) were included in the blacklist, as arcs in these directions did not make logical sense.
 All subsequent models used the same blacklist.
 
 #### Preliminary network structures
@@ -411,21 +411,31 @@ BIC values for each combination of variables of interest are reported as the com
 
 Initially, both negative life events (NLE) and total life events (TLE) were included in the network structure, however, the network score was improved when only NLE or TLE was included (NLE = `r round(le[1,2], 2)`, TLE only = `r round(le[2,2],2)`, TLE and NLE = `r round(le[3,2],2)`).
 Additionally, despite strong evidence in the literature that both NLE and TLE stress are related to injury occurrence [@Williams2007], network structures learned using the Tabu search algorithm failed to identify a relationship between NLE and injury or TLE and injury in the data.
-Given that nlelg provided the highest network score, and there is a stronger relationship between negative life events and injury in the literature, an arc was whitelisted between NLE\_1 and injured\_1 and NLE\_2 and injured\_2 in the final network structure.
-TLE score was not included in the final structure.
+Given that NLE provided the highest network score, and there is a stronger relationship between negative life events and injury in the literature, an arc was whitelisted between NLE\_1 and injured\_1 and NLE\_2 and injured\_2 in the final network structure.
+TLE was not included in the final structure.
 
 The subscales representing the Behavioural Activation System (Reward Reactivity [RR], Reward Interest [RI], Goal Drive Persistence [GDP] and Impulsivity [I]) showed limited connection to other variables in the network.
 Therefore, competing models were examined and BIC scores compared to establish the model with the best fit to the data (values are shown relative to the highest value).
 RI provided the highest BIC value (`r rstmodel[1,2]`), compared to RR (`r rstmodel[2,2]`), GDP (`r rstmodel[4,2]`) and I (`r rstmodel[5,2]`).
 Including all the variables (RR, RI, GDP and I) resulted in a significantly lower score `r rstmodel[6,2]`) indicating that including all the variables was not beneficial to the model structure and did not offset the cost of the additional parameters.
 Therefore, only RI was included in the final structure.
-Finally, both total score and asymmetry for balance were included in the initial network.
-However, visual inspection of the network revealed no arcs between bal\_asym\_1 or bal\_asym\_2 and any other node in the network.
+Finally, both total score and asymmetry (percentage difference in score between limbs) for balance were included in the initial network.
+However, visual inspection of the network revealed no arcs between the balance asymmetry node and any other node in the network.
 Therefore, balance asymmetry was removed from the final network structure.
 To summarise, Table \ref{tab:table2} reports the variables that were included in the final network structure.
 
 ```{r table2, results='asis'}
+
 varcutoffs %>% 
+  mutate(var = case_when(var == "clevel" ~ "Competitve level",
+                         var == "gender" ~"Gender",
+                         var == "pi" ~ "Previous injury",
+                         var == "hours" ~ "Training hours",
+                         var == "ind_team" ~ "Sport type",
+                         var == "nlebase" ~ "Baseline NLE",
+                         var == "stiffness" ~ "Stiffness",
+                         var == "balance" ~ "Balance",
+                         TRUE ~ var))  %>% 
   filter(!var %in% c("sdnn", "RR", "I", "GDP", "tlelg", "tlelg_1", "tlelg_2", "tlelg_3", "bal_asym")
 ) %>% 
   mutate(var = ifelse(var == "HRV", "HRV", var)) %>% 
@@ -433,7 +443,7 @@ varcutoffs %>%
        align = c("llcc"),
        caption = "Variables included in the final Bayesian network structure.",
        col.names = c("Variable", "Definition", "State 1", "State 2")) %>%
-  kable_styling(latex_options = "HOLD_position") %>% 
+  kable_styling(latex_options = "HOLD_position", font_size = 11) %>% 
   column_spec(2, width = c("5.2cm")) 
 ```
 
@@ -478,7 +488,7 @@ The final network was obtained using the same approach as the first network.Netw
 
 Conditional probability queries (CPQ) were again used to perform inference the network structures.
 The Markov blanket of the "injured" node was of particular interest, and the probability of injury was investigated with combinations of variables in the Markov blanket below the mean change, at the mean change and above the mean change.
-Initial visual inspection of the network structure also revealed arcs between Behavioural Inhibition System (BIS) $\rightarrow$ Fight-Flight-Freeze System (FFFS) and HRV $\rightarrow$ FFFS.
+Initial visual inspection of the network structure also revealed arcs between Behavioural Inhibition System (BIS) $\rightarrow$ Fight-Flight-Freeze System (FFFS) and heart arte variability (HRV) $\rightarrow$ FFFS.
 To investigate this relationship further, random samples were generated for BIS, HRV and FFFS based on the conditional distribution of the nodes included as evidence in the query.
 The samples were then examined using a Bayesian linear regression models with the *brms* R package [@Burkner2017a] to determine the relationship between these nodes.
 Weakly regularising priors (normal prior with mean of 0 and standard deviation of 5) were used for all parameters in the model.
@@ -573,13 +583,13 @@ str_cfinder <- function(from, to) {
 
 The first network structure obtained from the data (Figure \ref{fig:fig1}) examined the interactions between explanatory variables, independent variables and probability of injury across time points in the study.
 Strong sport-related and gender-based connections between several explanatory and independent variables were demonstrated for individual and team-based sports.
-The "individual or team sport" node had strong arcs to hours per week (`r str_finder("ind_team", "hours")`) and baseline negative life events (NLE) (`r str_finder("ind_team", "nlebase")`).
-Individual athletes were more likely to have "High" hours per week (`r x[5,1]`) compared to team-based athletes (`r x[6,1]`).
+The "Sport type" node had strong arcs to training hours (`r str_finder("ind_team", "hours")`) and baseline negative life events (NLE) (`r str_finder("ind_team", "nlebase")`).
+Individual athletes were more likely to have "High" training hours (`r x[5,1]`) compared to team-based athletes (`r x[6,1]`).
 Individual athletes were also more likely to have "High" negative life events in the 12 months preceding the start of the study compared to team-based athletes (individual athletes = `r x[7,1]`, team-based athletes = `r x[8,1]`).
 The arc from competitive level $\rightarrow$ balance\_1 had a strength of `r str_finder("clevel", "balance_1")`, with lower level performers more likely to have decreased balance ability (`r x[21,1]`), compared to national level athletes (`r x[22,1]`).
 High gender-based connections were reported for the arcs from gender $\rightarrow$ stiffness\_1 (`r str_finder("gender", "stiffness_1")`) and gender $\rightarrow$ stiffness\_2 (`r str_finder("gender", "stiffness_2")`), with males more likely to have "High" stiffness compared to females (males = `r x[14,1]`, females = `r x[13,1]`).
 Irrespective of sport or gender, strong connections were found between explanatory variables.
-The arc from baseline NLE (nlebase) $\rightarrow$ Reward Interest (RI\_1) had a strength of `r str_finder("nlebase", "RI_1")`, and the probability of RI\_1 being in the "High" state increased from `r x[2,1]` to `r x[3,1]` when nlebase increased from "Low" to "High".
+The arc from baseline NLE $\rightarrow$ Reward Interest (RI\_1) had a strength of `r str_finder("nlebase", "RI_1")`, and the probability of RI\_1 being in the "High" state increased from `r x[2,1]` to `r x[3,1]` when baseline NLE increased from "Low" to "High".
 
 The first network demonstrated further strong variable interactions between high stiffness, poor balance and injury probability.
 The arc from previous injury $\rightarrow$ stiffness\_1 was `r str_finder("pi", "stiffness_1")` with athletes who reported an injury in the preceding 12 months being more likely to have "High" (`r x[26,1]`) compared to "Low" (`r x[28,1]`).
@@ -590,7 +600,8 @@ The arc between NLE $\rightarrow$ BIS had a strength of `r str_finder("NLE_1", "
 "Low" negative life events increased the probability of BIS being in the "High" state from `r y[13,1]` to `r y[14,1]` for NLE\_1 $\rightarrow$ BIS\_1, and `r y[17,1]` to `r y[18,1]` for NLE\_2 $\rightarrow$ BIS\_2.
 
 ```{r fig1, fig.align='default', fig.height=10, fig.width=15, fig.cap='The full Bayesian network structure was plotted using the _strength.plot_ function in bnlearn. The strength of each arc is shown graphically by the style of the arc. Thin, dashed arcs indicate the weakest arcs (arc strength below 0.50), whereas thick solid arcs indicate the strongest arcs (arc strength of 1). White nodes in the network indicate the explanatory variables, blue nodes indicate T1_1 and T2_1 variables, and red nodes indicated T2_2 and T3_2 variables. The injured_X nodes have been coloured gold as they are the main nodes of interest within the network.'}
-renderGraph(gR)
+#renderGraph(gR)
+include_graphics("figures_doc/Fig1.jpeg")
 ```
 
 ### Markov blanket for injured\_1
@@ -628,7 +639,7 @@ query2 <- newprobtable(
   dendroTools::round_df(2)
 ```
 
-The first conditional probability query (CPQ) investigated the variables in the Markov blanket for injured\_1 (Figure \ref{fig:fig2}), which contained hours spent training per week, negative life events (NLE\_1), muscle stiffness (stiffness\_1), current competitive level and balance (balance\_1).
+The first conditional probability query (CPQ) investigated the variables in the Markov blanket for injured\_1 (Figure \ref{fig:fig2}), which contained hours spent training per week, negative life events (NLE\_1), muscle stiffness (stiffness\_1), competitive level and balance (balance\_1).
 The arc between NLE\_1 and injured\_1 was fixed in the network, so has the maximum strength of 1.
 
 ```{r fig2, fig.cap="Markov blanket of injured\\_1. Arc strengths are included as arc labels.", out.width="100%", fig.align="center"}
@@ -642,6 +653,9 @@ Negative life events had a negligible effect when moving from the "Low" to "High
 ```{r table4, results='asis'}
 query1 %>%
   select(c(1, 2, 3)) %>%
+  mutate(variable = case_when(variable == "hours" ~ "Training hours",
+                              variable == "NLE_1" ~ "Negative life events_1",
+                              TRUE ~ str_to_sentence(variable))) %>% 
   mutate(variable = str_replace_all(variable, "_", "\\\\_")) %>%
   kable(
     .,
@@ -664,20 +678,25 @@ In this instance, the probability of injured\_1 being "injured" rose marginally 
 ```{r table5, results='asis'}
 
 query2 %>%
-  select(7, 2:6) %>%
-  rename(Probability = "prob") %>%
-  `colnames<-`(str_replace_all(colnames(.), "_", "\\\\_")) %>%
+  select(7, 2:6) %>% 
   mutate(clevel = str_replace_all(clevel, "_", "\\\\_")) %>%
+  rename(Probability = "prob",
+         "Competitive level" = clevel,
+         "Training hours" = hours,
+         "Negative life events_1" = "NLE_1") %>%
+  rename_all(~str_to_sentence(.x))%>%
+  `colnames<-`(str_replace_all(colnames(.), "_", "\\\\_")) %>%
   kable(
     .,
     caption = "Highest and lowest probability of injured\\_1 being in the ``injured'' state, conditional on the all variables in the Markov blanket for injured\\_1.",
     escape = F,
     align = "ccccc"
   ) %>%
-  kable_styling(latex_options = "HOLD_position") %>%
+  kable_styling(latex_options = "HOLD_position",font_size = 11) %>%
   pack_rows("Highest", 1, 3) %>%
   pack_rows("Lowest", 4, 6) %>%
-  row_spec(0,bold=TRUE)
+  row_spec(0,bold=TRUE) %>% 
+  column_spec(3:4, width = "2cm")
 ```
 
 ### Markov blanket of injured\_2
@@ -719,13 +738,17 @@ FFFS\_1 in the "Low" state increased probability of injured\_2 being "injured" b
 
 query3 %>%
   mutate(Low = format(Low, nsmall = 2)) %>% 
+  mutate(variable = case_when(variable == "FFFS_1" ~ "Fight-Flight-Freeze System_1",
+                              variable == "NLE_2" ~ "Negative life events_2",
+                              variable == "HRV_2" ~ "Heart rate variability_2",
+                              TRUE ~ str_to_sentence(variable))) %>% 
   mutate_all(~str_replace_all(., "_", "\\\\_"))%>%
   kable(
     .,
     caption = "Probability of injured\\_2 being in the ``injured'' state, conditional on each variable in the Markov blanket for injured\\_2.",
     col.names = c("Variable", "Low", "High"),
     escape = F,
-    align = "cccccc"
+    align = "lccccc"
   ) %>%
   kable_styling(latex_options = "HOLD_position") %>%
   row_spec(0,bold=TRUE)
@@ -750,7 +773,12 @@ The combination of "Low" stiffness, "Low" balance and "High" FFFS resulted in th
 query4 %>% 
   toptail(3) %>%
   select(7,2:6) %>%
-  rename(Probability = "prob") %>%
+  rename(Probability = "prob",
+         "Fight-Flight-Freeze System_1" = FFFS_1,
+         "Negative life events_2 "= NLE_2,
+         "Heart rate variability_2" = "HRV_2",
+         Stiffness_2 = stiffness_2,
+         Balance_2 = balance_2) %>%
   `colnames<-`(str_replace_all(colnames(.), "_", "\\\\_")) %>%
   mutate_all(~str_replace_all(., "_", "\\\\_"))%>%
   kable(
@@ -759,10 +787,12 @@ query4 %>%
     escape = F,
     align = "cccccc"
   ) %>%
-  kable_styling(latex_options = "HOLD_position") %>%
+  kable_styling(latex_options = "HOLD_position", font_size = 11) %>%
   pack_rows("Highest", 1, 3) %>%
   pack_rows("Lowest", 4, 6) %>%
-  row_spec(0,bold=TRUE)
+  row_spec(0,bold=TRUE) %>% 
+  column_spec(c(2,3),width = "2cm") %>% 
+  column_spec(5, width = "2.8cm")
 ```
 
 ## Second network structure - changes within variables
@@ -798,10 +828,13 @@ Increases in BIS were associated with increases in FFFS ($b$ = `r bmtable[3,2]`,
 There was no clear interaction between HRV and BIS ($b$ = `r bmtable[4,2]`, 95% CrI = `r bmtable[4,4]`).
 
 ```{r table8, results="asis"}
-bmtable %>%
+bmtable %>% 
+  mutate(Term = case_when(Term == "BIS" ~ "Behavioural Inhibition System (BIS)",
+                          Term == "HRV" ~ "Heart rate variability (HRV)",
+                          TRUE ~ Term)) %>% 
   kable(
     .,
-    caption = "Estimate, error and 95\\% credible intervals for the fixed effects in the linear model containing FFFS, BIS and HRV.",
+    caption = "Estimate, error and 95\\% credible intervals for the fixed effects in the linear model containing Fight-Flight-Freeze System, Behavioural Inhibition System and Heart rate variability",
     col.names = c("Term", "Estimate", "Error", "95\\% CI"),
     escape = F,
     align = "lccc"
@@ -870,8 +903,8 @@ query6 %>%
   select(c(3, 1, 2)) %>%
   kable(
     .,
-    col.names = c("Probability", "nlec", "Stiffness"),
-    caption = "The probability of injury with values of stiffness and nlec held at 1SD below the mean change, at the mean change and 1 SD above the mean change.",
+    col.names = c("Probability", "Negative life events", "Stiffness"),
+    caption = "The probability of injury with values of stiffness and negative life events held at 1SD below the mean change, at the mean change and 1 SD above the mean change.",
     align = "ccc"
   ) %>%
   kable_styling(latex_options = "HOLD_position") %>%
@@ -913,8 +946,8 @@ query7 <- pmap_dfr(
 ```
 
 Table \ref{tab:table10} shows the three highest and lowest probabilities for injury for all variables in the Markov blanket (full results in Supplementary Table 7).
-The combination of 1 SD above the mean change for nlec and stiffness and "High" hours per week and previous injury resulted in the highest probability that an injury would be sustained during the study (`r round(max(query7$prob), digits = 2)`).
-In contrast, below average changes in nlec and stiffness combined with "Low" hours per week and no previous injury resulted in the lowest probability of an injury (`r round(min(query7$prob), digits = 2)`).
+The combination of 1 SD above the mean change for negative life events (NLE)  and stiffness and "High" hours per week and previous injury resulted in the highest probability that an injury would be sustained during the study (`r round(max(query7$prob), digits = 2)`).
+In contrast, below average changes in NLE and stiffness combined with "Low" hours per week and no previous injury resulted in the lowest probability of an injury (`r round(min(query7$prob), digits = 2)`).
 
 ```{r table10, results="asis"}
 
@@ -926,7 +959,11 @@ query7 %>%
     . == -1 ~ "-1SD"
   )) %>%
   select(prob, hours, pi, nle, stiffness) %>%
-  rename(Probability = "prob") %>%
+  rename(Probability = "prob",
+         "Training hours" = hours,
+         "Previous injury" = pi,
+         "Negative life events" = nle,
+         Stiffness = stiffness) %>%
   kable(
     .,
     caption = "Highest and lowest probability of injury, conditional on the all variables in the Markov blanket for ``injured''.",
@@ -934,8 +971,9 @@ query7 %>%
   ) %>%
   pack_rows("Highest", 1, 3) %>%
   pack_rows("Lowest", 4, 6) %>%
-  kable_styling(latex_options = "HOLD_position") %>%
-  row_spec(0,bold=TRUE)
+  kable_styling(latex_options = "HOLD_position", font_size = 11) %>%
+  row_spec(0,bold=TRUE) %>% 
+  column_spec(c(2,4), width = "2.3cm")
 ```
 
 # Discussion

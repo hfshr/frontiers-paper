@@ -184,14 +184,14 @@ newprobtable <- function(tallc, vars, outcome, state, model, repeats = 500000) {
   
   str3 = rep(paste("(", outcome, " == '", state, "')", sep = ""), each = length(str1)/length(outcome))  # repeat each outcome for the length of combos
   
-  fitted <-  bn.fit(avg30, tallc, method = "bayes", iss = 1) # fit the model with bayes method
+  fitted <-  bn.fit(model, tallc, method = "bayes", iss = 1) # fit the model with bayes method
   
-
+  
   
   cmd = paste("cpquery(fitted, ", str3, ", ", str1, ", method = 'lw', n = ", repeats, ")", sep = "") # join all elements of string together
- 
   
-   prob <-  rep(0, length(str1)) # empty vector for probabilities 
+  
+  prob <-  rep(0, length(str1)) # empty vector for probabilities 
   for (i in seq(length(cmd))){
     prob[i] <- eval(parse(text = cmd[i]))
   } # for each combination of strings, what is the probability of outcome
