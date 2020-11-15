@@ -76,13 +76,9 @@ options(kableExtra.auto_format = FALSE)
 ```{r include=FALSE}
 options(scipen=999, digits = 2)
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
-# source("r-files/functions.R")
-# source("r-files/methods_code.R")
-# source("r-files/results_code.R")
-
-load("all_data2x.RData")
-#myEnv <- new.env()
-#attach(myEnv, name="sourced_scripts")
+source("r-files/functions.R")
+source("r-files/methods_code.R")
+source("r-files/results_code.R")
 
 pacman::p_load(tidyverse, 
                knitr,
@@ -126,7 +122,7 @@ Rodgers and Landers [@Rogers2005] further supported Andersen and Williams's [@An
 Knowledge of the physiological factors (e.g., increased muscle tension and reduced motor control) contributing to the remaining variance between negative life events and athletic injury remains sparse [cf. @Williams1998].
 One challenge faced by researchers addressing the sports injury problem through a psychological lens is the multifactorial nature of injury, and the possible interaction with physiological factors in the stress response [@Meeuwisse2007; @Wiese-Bjornstal2009].
 For example, a large body of research has suggested that training-related stress is also likely to contribute to the stress response and injury occurrence [@Lee2017; @Djaoui2017] and may account for the unexplained variance from the psychological predictors.
-In an attempt to combine the psychosocial factors proposed by Williams and Andersen (1998) and potential markers of training-related stress, Appaneal and Perna [@Appaneal2014] proposed the biopsychosocial model of stress athletic injury and health (BMSAIH) to serve as an extension to Williams and Andersen's [@Williams1998] model.
+In an attempt to combine the psychosocial factors proposed by Williams and Andersen (1998) and potential markers of training-related stress, Appaneal and Perna [@Appaneal2014] proposed the biopsychosocial model of stress, athletic injury and health (BMSAIH) to serve as an extension to Williams and Andersen's [@Williams1998] model.
 The BMSAIH enhances our understanding of the mediating pathways between the stress response and injury alongside other health outcomes and behavioural factors that impact sports participation [@Appaneal2014].
 The central tenet of the BMSAIH is that psychosocial distress (e.g., negative life events) may act synergistically with training-related stress as a result of high-intensity and high-volume sports training, and "widen the window of susceptibility" [@Appaneal2014, p. 74] to a range of undesirable health outcomes including illness and injury.
 Consequently, the BMSAIH provides an important framework that has enhanced insight into the multi-faceted nature of the injury process by building on Williams and Andersen's [@Williams1998] model whilst including other physiological markers of training-related stress.
@@ -150,8 +146,7 @@ The learned BN structure can be used for inference by obtaining the posterior pr
 Furthermore, unlike regression or structural equation models, BN's do not distinguish between dependent and independent variables when the underlying relationship in the network may not be known [@Olmedilla2018].
 BN modelling subsequently provides a valuable but underused interdisciplinary approach to investigating the complex and unpredictable interactions of psychosocial and physiological factors implicated in the injury process.
 
-Using the frameworks provided by Williams and Andersen's [@Williams1998] stress injury model and Appaneal's BMSAIH model [@Appaneal2014], the aim of this interdisciplinary study was to develop new understanding of the multifaceted interactions of psychosocial and physiological stress-related factors with injury occurrence.
-A prospective, repeated measures design incorporating field-based physiological (heart rate variability, muscle stiffness and postural control) and psychosocial measures (Life Event Survey for Collegiate Athletes and Reinforcement Sensitivity Questionnaire Personality Questionnaire) combined with a BN modelling analysis was used to address the study aim.
+Using the frameworks provided by Williams and Andersen's [@Williams1998] stress injury model and Appaneal's BMSAIH model [@Appaneal2014], the aim of this longitudinal interdisciplinary study was to develop new understanding of the multifaceted interactions of psychosocial (life event stress and reinforcement sensitivity) and physiological stress-related factors (heart rate variability, muscle stiffness and postural control) with injury occurrence. Due to the inevitable constraints of a longitudinal interdisciplinary study of this kind, we have not been able to incorporate a number of other variables that might also be of interest (e.g., coping resources, emotional states and attentional deficits). A prospective, repeated measures design incorporating the physiological and psychosocial measures combined with BN modelling was used to address the study aim.
 
 # Material and Methods
 
@@ -255,7 +250,7 @@ In total, each trial of the mBESS was performed without shoes [@McCrory2013] and
 To determine leg dominance, participants were asked their preferred leg to kick a ball to a target, and the chosen limb was labelled as dominant [cf. @VanCingel2017].
 Participants were asked to maintain each stance for a total of 20-seconds.
 Participants hands were placed on hips at the level of the iliac crests.
-A Sony DSC-RX10 video camera (Sony Europe Limited, Surrey, United Kingdom) was used to record each participants performance during the mBESS.
+A Sony DSC-RX10 video camera (Sony Europe Limited, Surrey, United Kingdom) was used to record each participants' performance during the mBESS.
 
 The error identification criteria from the original BESS protocol was used by the lead researcher who scored all the BESS trials.
 One error was recorded if any of the following movements were observed during each trial: a) lifting hands off iliac crests; b) opening eyes; c) stepping, stumbling, or falling; d) moving the thigh into more than 30 degrees of flexion or abduction; e) lifting the forefoot or heel; and f) remaining out of the testing position for more than 5-seconds [@Riemann1999d].
@@ -427,7 +422,7 @@ To summarise, Table \ref{tab:table2} reports the variables that were included in
 ```{r table2, results='asis'}
 
 varcutoffs %>% 
-  mutate(var = case_when(var == "clevel" ~ "Competitve level",
+  mutate(var = case_when(var == "clevel" ~ "Competitive level",
                          var == "gender" ~"Gender",
                          var == "pi" ~ "Previous injury",
                          var == "hours" ~ "Training hours",
@@ -599,7 +594,7 @@ In both instances, "High" FFFS was more likely when BIS was "High" (`r y[2,1]` f
 The arc between NLE $\rightarrow$ BIS had a strength of `r str_finder("NLE_1", "BIS_1")` for NLE\_1 $\rightarrow$ BIS\_1, and `r str_finder("NLE_2", "BIS_2")` NLE\_2 and BIS\_2.
 "Low" negative life events increased the probability of BIS being in the "High" state from `r y[13,1]` to `r y[14,1]` for NLE\_1 $\rightarrow$ BIS\_1, and `r y[17,1]` to `r y[18,1]` for NLE\_2 $\rightarrow$ BIS\_2.
 
-```{r fig1, fig.align='default', fig.height=10, fig.width=15, fig.cap='The full Bayesian network structure was plotted using the _strength.plot_ function in bnlearn. The strength of each arc is shown graphically by the style of the arc. Thin, dashed arcs indicate the weakest arcs (arc strength below 0.50), whereas thick solid arcs indicate the strongest arcs (arc strength of 1). White nodes in the network indicate the explanatory variables, blue nodes indicate T1_1 and T2_1 variables, and red nodes indicated T2_2 and T3_2 variables. The injured_X nodes have been coloured gold as they are the main nodes of interest within the network.'}
+```{r fig1, fig.align='default', fig.height=10, fig.width=15, fig.cap='The full Bayesian network structure was plotted using the "strength.plot" function in bnlearn. The strength of each arc is shown graphically by the style of the arc. Thin, dashed arcs indicate the weakest arcs (arc strength below 0.50), whereas thick solid arcs indicate the strongest arcs (arc strength of 1). White nodes in the network indicate the explanatory variables, blue nodes indicate T1\\_1 and T2\\_1 variables, and red nodes indicated T2\\_2 and T3\\_2 variables. The injured\\_X nodes have been coloured gold as they are the main nodes of interest within the network.'}
 #renderGraph(gR)
 include_graphics("figures_doc/Fig1.jpeg")
 ```
@@ -659,7 +654,7 @@ query1 %>%
   mutate(variable = str_replace_all(variable, "_", "\\\\_")) %>%
   kable(
     .,
-    caption = "Probability of injured\\_1 being in the ``injured'' state, conditional on each variable",
+    caption = "Probability of injured\\_1 being in the ``injured'' state, conditional on each variable.",
     col.names = c("Variable", "Low", "High"),
     escape = F
   ) %>%
@@ -1046,14 +1041,12 @@ This study had a number of strengths.
 A major critique of the sport injury literature has been the use of only one wave of measurement that may not be reflective of the dynamic nature of the variables that are associated with injury [@Johnson2014].
 The longitudinal repeated measures design of the current study allowed changes over time and between time points to be captured and explored.
 Although there are unique and significant challenges with research employing such designs, a more fine-grained understanding of the dynamic relationships between stress-related factors and injury occurrence in athletes was achieved when compared to traditional cross-sectional, single time point research.
-Sport injury research has been criticised for adopting analytic approaches that are reductionist in nature [@Bittencourt2016] that fail to account for the complex, emergent behaviour that is characteristic of injury occurrence.
+As advocated by Johnson et al. (2014), future research should continue to use repeated measure designs, including designs with more frequent monitoring, such as daily and weekly measures to gain further insight into the dynamic interplay between stress-related factors and injury.
+Sport injury research has also been criticised for adopting analytic approaches that are reductionist in nature [@Bittencourt2016] that fail to account for the complex, emergent behaviour that is characteristic of injury occurrence.
 The use of an interdisciplinary framework combined with a BN modelling approach in the study facilitated extended insight into the complex interplay that exists between psychosocial and physiological markers of stress and injury occurrence.
 The BN networks allowed several markers of stress that were free to interact with each other, as well as injury, to be explored.
 
-While the BN's provided a contemporary approach that improved upon traditional methods such as logistic regression [@Olmedilla2018], a number of assumptions were made that potentially limited the approach employed in the study.
-Firstly, the choice was made to binarise variables in the first network so only "Low" and "High" states were observed.
-Although binarising variables is a common procedure in BN analysis and has several advantages Qian and Miltner [@Qian2015] highlighted that both a loss of statistical accuracy and potential difficulty in the subsequent interpretation of the model may arise.
-For example, the meaning of a "Low" and "High" value in this study was only meaningful for the population studied, and there could be additional levels within each category that were not investigated.
+While the BNs provided a contemporary approach that improved upon traditional methods such as logistic regression [@Olmedilla2018], a number of assumptions were made that potentially limited the approach employed in the study. Firstly, the choice was made to binarise variables in the first network so only "Low" and "High" states were observed. Although binarising variables is a common procedure in BN analysis and has several advantages, Qian and Miltner [@Qian2015] highlighted that both a loss of statistical accuracy and potential difficulty in the subsequent interpretation of the model may arise. For example, the meaning of a "Low" and "High" value in this study was only meaningful for the population studied, and there could be additional levels within each category that were not investigated. The use of a median split to determine the "Low" and "High" states could also be improved by using known cut-off scores that are associated with a higher risk of injury. While the measures used in the current research did not have any clear cut-off scores supported by the literature, future research should aim to identify potential cut-off scores that would consequently enable a more meaningful splitting procedure compared to using the group median. 
 Furthermore, in order to collect data on a large sample of participants, suitable measures were required to ensure the viability of the data collection.
 However, a reduction in the sensitivity of some of these measures may have inhibited our ability to detect more subtle variation in the athletes' responses.
 For example, a more sensitive measure of postural stability may have been achieved with the use of a force plate, which is considered the gold standard to provide detailed data and enable a more fine-grained analysis [@Ross2011].
@@ -1069,7 +1062,8 @@ However, the more holistic, interdisciplinary approach adopted in this study was
 
 The multifactorial, interdisciplinary approach employed in the study required the selection of stress-related measures derived from a psychosocial and physiological perspective.
 The variables used in the present study were not definitive.
-Additional measures relating to coping, injury-specific biomechanics and stress hormones such as cortisol, which been found to be a marker of both psychological and training-related stress [@Appaneal2014; @Perna1995], could help to further elucidate the relationship between stress and injury.
+Additional measures relating to coping, injury prevention behaviours, injury-specific biomechanics and stress hormones such as cortisol, which been found to be a marker of both psychological and training-related stress [@Appaneal2014; @Perna1995], could help to further elucidate the relationship between stress and injury. Future research should continue to explore the relationship between these measures, as well as their effect on the risk of injury. 
+In particular, there is scope to build upon Appaneal and Perna's (2014) biopsychosocial model of stress, athletic injury and health which provides a framework for examining the interplay between psychological, behavioural and training-related factors. 
 Future developments in the capture of life event stress using the LESCA are also warranted.
 Although the LESCA is the most widely used measures of major life events in sports injury research, modifications, including adjustment to the scoring of items are potentially justified to facilitate extended insight into the reported responses.
 For example, the LESCA may negate vastly different psychological and physiological effects between moderately negative and extremely negative events since there is no way to differentiate between an athlete who has answered four items as moderately negative, and one item as extremely negative.

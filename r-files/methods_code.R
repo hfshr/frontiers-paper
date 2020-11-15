@@ -596,3 +596,29 @@ varcutoffs[23, 2] <- "Log TLE at time 3"
 ####
 
 
+# datanet %>%
+#   select(time, gender, stiffness, balance, HRV, FFFS, BIS, RI) %>% 
+#   group_by(time, gender) %>% 
+#   summarise(across(.cols = 1:6, .fns = list(mean = mean))) %>% 
+#   pivot_longer(cols = c(-time, -gender), names_to = "median", values_to = "variable") %>% 
+#   mutate(median = str_remove(median, "_[a-z]*")) %>% 
+#   pivot_wider(names_from = gender, values_from = variable)
+#   view
+# 
+# datanet %>%
+#     select(gender, stiffness) 
+# 
+# 
+# 
+# 
+# 
+# 
+# %>% 
+#     group_by(time, gender) %>% 
+#     summarise(across(.cols = 1:6, .fns = list(mean = mean))) %>% 
+#     pivot_longer(cols = c(-time, -gender), names_to = "median", values_to = "variable") %>% 
+#     mutate(median = str_remove(median, "_[a-z]*")) %>% 
+#     pivot_wider(names_from = gender, values_from = variable)
+#   view
+#   
+

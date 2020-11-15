@@ -459,6 +459,7 @@ labels <- as.character(strq1$strength)
 labels[4] <- str_pad(labels[4], side = "left", width = 2)
 
 edgenames <- edgeNames(q1p)
+edgenames <- edgenames[c(1,5,2,3,4)]
 names(labels) <- edgenames
 nodeRenderInfo(q1p)$fill[c("Injured_1", "Negative\nlife\nevents_1")] = "gold"
 edgeRenderInfo(q1p) <- list(lwd = c("Negative life\nevents_1~Injured_1" = 6,
@@ -469,7 +470,7 @@ edgeRenderInfo(q1p) <- list(lwd = c("Negative life\nevents_1~Injured_1" = 6,
 
 q1p <- layoutGraph(q1p, edgeAttrs=list(label = labels))
 graph.par(list(edges=list(fontsize = 15), 
-               nodes=list(fontsize = 16)))
+               nodes=list(fontsize = 15)))
 
 nodeRenderInfo(q1p)$fill[c("Negative life\nevents_1", "Stiffness_1", "Balance_1")] = "deepskyblue"
 nodeRenderInfo(q1p)$fill["Injured_1"] = "gold"
@@ -479,7 +480,7 @@ renderGraph(q1p)
 dev.off()
 
 
-plotsg2 <- model2network('[Negative life\nevents_2][Gender][Fight-Flight-Freeze\nSystem_1][Injured_2|Fight-Flight-Freeze\nSystem_1:Negative life\nevents_2][Stiffness_2|Gender:Injured_2][Balance_2|Injured_2][Heart rate\nvariability_2|Injured_2]')
+plotsg2 <- model2network('[Negative life\nevents_2][Gender][Fight Flight\nFreeze\nSystem_1][Injured_2|Fight Flight\nFreeze\nSystem_1:Negative life\nevents_2][Stiffness_2|Gender:Injured_2][Balance_2|Injured_2][Heart rate\nvariability_2|Injured_2]')
 q2p <- graphviz.plot(plotsg2,
                      render = F,
                      shape = "rectangle",
@@ -495,36 +496,36 @@ strq2 <- str %>%
 labels <- as.character(strq2$strength)
 labels[6] <- str_pad(labels[6], side = "left", width = 2)
 edgenames <- c("Gender~Stiffness_2", 
-               "Fight-Flight-Freeze\nSystem_1~Injured_2",
+               "Fight Flight\nFreeze\nSystem_1~Injured_2",
                "Injured_2~Stiffness_2", 
+               "Injured_2~Heart rate\nvariability_2",
                "Injured_2~Balance_2", 
-               "Injured_2~Heart rate\nvariability_2", 
                "Negative life\nevents_2~Injured_2")
 names(labels) <- edgenames
 nodeRenderInfo(q2p)$fill[c("Injured_2", "Negative life\nevents_2")] = "gold"
 edgeRenderInfo(q2p) <- list(lwd = c("Injured_2~Stiffness_2" = 3,
                                     "Negative life\nevents_2~Injured_2" = 6,
                                     "clevel~Balance_1" = 3,
-                                    "Gender~Stiffness_2" = 4),
-                            lty = c("Fight-Flight-Freeze\nSystem_1~Injured_2" = "dashed",
-                                    "Injured_2~Balance_2" = "dashed",
+                                    "Fight Flight\nFreeze\nSystem_1~Injured_2" = 3,
+                                    "Gender~Stiffness_2" = 3),
+                            lty = c("Injured_2~Balance_2" = "dashed",
                                     "Injured_2~Heart rate\nvariability_2" = "dashed"))
 
 q2p <- layoutGraph(q2p, edgeAttrs=list(label = labels))
 graph.par(list(edges=list(fontsize = 15),
-               nodes=list(fontsize = 15)))
-nodeRenderInfo(q2p)$fill[c("Negative life\nevents_2", "Stiffness_2", "Balance_2", "Fight-Flight-Freeze\nSystem_1", "Heart rate\nvariability_2")] = "tomato"
+               nodes=list(fontsize = 17)))
+nodeRenderInfo(q2p)$fill[c("Negative life\nevents_2", "Stiffness_2", "Balance_2", "Fight Flight\nFreeze\nSystem_1", "Heart rate\nvariability_2")] = "tomato"
 nodeRenderInfo(q2p)$fill["Injured_2"] = "gold"
 jpeg("figures_doc/Fig3.jpeg", res = 300, width = 20, height = 15, units = "cm")
 renderGraph(q2p)
 dev.off()
 
 
-plotsg3 <- model2network('[Gender][Previous injury][Training\nhours][Injured|Previous injury:Training\nhours][Stiffness|Gender:Injured][Negative life\nevents|Injured]')
+plotsg3 <- model2network('[Gender][Previous\ninjury][Training\nhours][Injured|Previous\ninjury:Training\nhours][Stiffness|Gender:Injured][Negative life\nevents|Injured]')
 q3p <- graphviz.plot(plotsg3,
                      render = F,
                      shape = "rectangle",
-                     groups = list(c("Gender", "Previous injury", "Training\nhours"), "Injured", c("Stiffness", "Negative life\nevents")))
+                     groups = list(c("Gender", "Previous\ninjury", "Training\nhours"), "Injured", c("Stiffness", "Negative life\nevents")))
 strq3 <- strchange %>%
   filter(from %in% c("pi", "hours", "injured", "gender") &
            to %in% c("stiffness", "nlec", "injured")) %>%
@@ -532,17 +533,18 @@ strq3 <- strchange %>%
   mutate(strength = format(round(strength, digits = 2), nsmall = 2))
 
 labels <- as.character(strq3$strength)
-edgenames <- c("Previous injury~Injured", "Gender~Stiffness", "Training\nhours~Injured",
+edgenames <- c("Previous\ninjury~Injured", "Gender~Stiffness", "Training\nhours~Injured",
                "Injured~Stiffness", "Injured~Negative life\nevents")
 names(labels) <- edgenames
 nodeRenderInfo(q3p)$fill[c("Injured")] = "gold"
 edgeRenderInfo(q3p) <- list(lwd = c("Injured~Stiffness" = 4,
                                     "Training\nhours~Injured" = 5,
                                     "Gender~Stiffness" = 4),
-                            lty = c("Previous injury~Injured" = "dashed"))
+                            lty = c("Previous\ninjury~Injured" = "dashed"))
 
 q3p <- layoutGraph(q3p, edgeAttrs=list(label = labels))
-graph.par(list(edges=list(fontsize = 15)))
+graph.par(list(edges=list(fontsize = 15),
+               nodes=list(fontsize = 15)))
 nodeRenderInfo(q3p)$fill[c("Negative life\nevents", "Stiffness")] = "tomato"
 nodeRenderInfo(q3p)$fill["Injured"] = "gold"
 jpeg("./figures_doc/Fig5.jpeg", res = 300, width = 20, height = 15, units = "cm")
